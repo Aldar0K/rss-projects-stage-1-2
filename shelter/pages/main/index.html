@@ -9,10 +9,101 @@
     <link rel="stylesheet" href="#">
 </head>
 <body>
-    <p class="georgia-regular">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, dignissimos numquam reprehenderit, recusandae officiis veritatis sapiente voluptate eveniet esse voluptatem dicta. Reprehenderit quaerat doloribus possimus atque. Maxime reiciendis debitis porro?</p>
-    <p class="georgia-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sequi ex corporis accusantium maxime debitis dolores aut, dolorem id veniam ipsum placeat, suscipit ab! Et quam cumque magnam deleniti totam.</p>
-    <p class="georgia-italic">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic odit officia minima modi fugiat nobis delectus animi cumque, dolorem eos quibusdam quisquam sapiente officiis vel, obcaecati, dolores sit expedita porro.</p>
-    <p class="arial-regular">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ex magni quos ut tempora, quaerat deserunt nostrum, enim similique officia tenetur, reprehenderit maxime voluptate? Omnis doloribus cum voluptates fuga porro!</p>
-    <p class="arial-italic">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ex magni quos ut tempora, quaerat deserunt nostrum, enim similique officia tenetur, reprehenderit maxime voluptate? Omnis doloribus cum voluptates fuga porro!</p>
+    <header class="header">
+        <div class="wrapper">
+            <a href="#" class="logo">
+                <h1 class="logo__title">Cozy House</h1>
+                <p class="logo__subtitle">Shelter for pets in Boston</p>
+            </a>
+            <nav class="header__navigation">
+                <ul class="navigation">
+                    <li><a href="#">About the shelter</a></li>
+                    <li><a href="#">Our pets</a></li>
+                    <li><a href="#Help">Help the shelter</a></li>
+                    <li><a href="#Footer">Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="not-only">
+        <div class="wrapper">
+            <div class="not-only__content">
+                <h2>Not only people need a house</h2>
+                <p>We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
+                <!-- Кнопка должна перебрасывать пользователя на блок Our Friends (якорная ссылка). -->
+                <a href="#" class="not-only__button">
+                    <button class="button button_colored">Make a friend</button>
+                </a>
+            </div>
+            <img class="not-only__image" src="#" alt="not-only__image">
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="wpapper">
+            <img class="about__image" src="#" alt="about__image">
+            <div class="about__content">
+                <h3>About the shelter “Cozy House”</h3>
+                <p>Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of them will find a family. The others will continue to live with us and will be waiting for a lucky chance to become dearly loved.</p>
+                <p>We feed our wards with the best food and make sure that they do not get sick, feel comfortable (including psychologically) and well. We are supported by 87 volunteers and 28 employees of various skill levels. About 12% of the animals are taken by the shelter staff. Taking care of the animals, they become attached to the pets and would hardly ever leave them alone.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pets">
+        <div class="wrapper">
+            <h3>Our friends who are looking for a house</h3>
+            <div class="slider"></div>
+            <button class="button button_big">Get to know the rest</button>
+        </div>
+    </section>
+
+    <section class="help">
+        <div class="wrapper">
+            <h3>How you can help our shelter</h3>
+            <div class="help__list">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="donation">
+        <div class="wrapper">
+            <img src="#" alt="" class="dontaion__image">
+            <div class="dontaion__content">
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="wrapper">
+            <div class="footer__contacts">
+                <h3>For questions and suggestions</h3>
+                <p>
+                    <!-- При нажатии на email или его иконку должен открываться почтовый сервис. -->
+                    <a href="mailto:email@shelter.com"><span class="ico ico_letter"></span>email@shelter.com</a>
+                </p>
+                <p>
+                    <!-- При нажатии на телефон или его иконку должен открываться набор номера. -->
+                    <a href="tel:+13 674 567 75 54"><span class="ico ico_phone"></span>+13 674 567 75 54</a>
+                </p>
+            </div>
+            <div class="footer__locations">
+                <h3>We are waiting for your visit</h3>
+                <!-- При нажатии на локацию должна открываться страница с google maps в отдельном окне с любой локацией на ваш выбор. -->
+                <p>
+                    <a href="#"><span class="ico ico_location"></span>1 Central Street, Boston (entrance from the store)</a>
+                </p>
+                <p>
+                    <a href="#"><span class="ico ico_location"></span>18 South Park, London </a>
+                </p>
+            </div>
+            <img class="footer__image" src="#" alt="footer__image">
+        </div>
+    </footer>
 </body>
 </html>
