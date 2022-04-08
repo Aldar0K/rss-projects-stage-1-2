@@ -1,3 +1,14 @@
-@import "base/base";
-@import "abstract/fonts";
 @import "abstract/constants";
+@import "abstract/fonts";
+
+// Базовые стили.
+@import "base/base";
+@import "base/buttons";
+
+// Сетки.
+@import "layouts/wrapper";
+@import "layouts/header";
+
+// Компоненты.
+@import "components/pets";
+

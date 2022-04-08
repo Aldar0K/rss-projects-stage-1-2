@@ -1,8 +1,20 @@
+// Цвета текста.
 $color-primary: #F1CDB3;
 $color-light-s: #FAFAFA;
-$color-dark-s: #CDCDCD;
 $color-light-xl: #FFFFFF;
+$color-dark-s: #CDCDCD;
 $color-dark-3xl: #292929;
 $color-dark-l: #545454;
 $color-dark-xl: #4C4C4C;
 $color-dark-m: #B2B2B2;
+
+// Цвета заднего фона.
+$color-background-light: #FFFFFF;
+$color-background-dark: #F6F6F6;
+$color-background-gradient: radial-gradient(#5B483A 0%, #262425 100%);
+
+// Ширина контентной области.
+$content-width: 1200px;
+$tablet-width: 768px;
+$mobile-big-width: 414px;
+$mobile-small-width: 320px;
