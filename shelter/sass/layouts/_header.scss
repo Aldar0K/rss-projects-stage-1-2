@@ -1,15 +1,36 @@
 .header {
-    background: transparent;
+    // background: transparent;
 }
 
 .header__wrapper {
+    padding: 60px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // height: 60px;
+    background: $color-background-gradient;
+}
+
+// .logo {
+//     display: flex;
+//     flex-direction: column;
+// }
+
+.navigation {
     display: flex;
 }
 
-// .navigation {
-
-// }
-
-// .navigation__link {
-
-// }
+.navigation__link {
+    margin-left: 35px;
+    & a{
+        display: block;
+        font-family: 'Arial';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 160%;
+        /* identical to box height, or 24px */
+        color: $color-light-s;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,19 @@
+.logo {
+    display: block;
+    width: 184px;
+    height: 60px;
+
+    .logo__title {
+        margin: 0 0 10px;
+    }
+
+    .logo__subtitle {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    /* identical to box height */
+    color: $color-light-xl;
+    }
+}

@@ -1,14 +1,22 @@
+// Reset and Normalize.
+// @import "../node_modules/normalize-scss/sass/normalize";
+@import "base/reset";
+@import "base/normalize";
+
+
+// Abstract.
 @import "abstract/constants";
 @import "abstract/fonts";
 
-// Базовые стили.
+// Base.
 @import "base/base";
 @import "base/buttons";
+@import "base/logo";
 
-// Сетки.
+// Layouts.
 @import "layouts/wrapper";
 @import "layouts/header";
 
-// Компоненты.
+// Components.
 @import "components/pets";
-
+@import "components/not-only";
