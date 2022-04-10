@@ -16,6 +16,9 @@ h1 {
     font-size: 32px;
     line-height: 110%;
     /* or 35px */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.06em;
     color: $color-primary;
 }
 
@@ -36,6 +39,9 @@ h3 {
     font-size: 35px;
     line-height: 130%;
     /* or 45px */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.06em;
     color: $color-dark-l;
 }
 
@@ -46,6 +52,7 @@ h4 {
     font-size: 20px;
     line-height: 115%;
     /* identical to box height, or 23px */
+    letter-spacing: 0.06em;
     color: $color-dark-l;
 }
 

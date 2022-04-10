@@ -1,5 +1,6 @@
 // Цвета текста.
 $color-primary: #F1CDB3;
+$color-active: #FDDCC4;
 $color-light-s: #FAFAFA;
 $color-light-xl: #FFFFFF;
 $color-dark-s: #CDCDCD;
@@ -15,7 +16,7 @@ $color-background-gradient: radial-gradient(#5B483A 0%, #262425 100%);
 $color-background-gradient: linear-gradient(to right, #5B483A, #262425);
 
 // Ширина контентной области.
-$content-width: 1200px;
+$content-width: 1280px;
 $tablet-width: 768px;
 $mobile-big-width: 414px;
 $mobile-small-width: 320px;

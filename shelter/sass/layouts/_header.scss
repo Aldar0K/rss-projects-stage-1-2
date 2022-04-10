@@ -1,14 +1,19 @@
 .header {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
     // background: transparent;
 }
 
 .header__wrapper {
-    padding: 60px 0;
+    padding: 60px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // height: 60px;
-    background: $color-background-gradient;
+    max-height: 180px;
+    // background: $color-background-gradient;
 }
 
 // .logo {
@@ -30,7 +35,7 @@
         font-size: 15px;
         line-height: 160%;
         /* identical to box height, or 24px */
-        color: $color-light-s;
+        color: $color-dark-s;
         cursor: pointer;
     }
 }
