@@ -1,9 +1,12 @@
+.dontation {
+    background-color: $color-background-dark;
+}
+
 .donation_wrapper {
     padding: 80px 182px 100px 183px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $color-background-dark;
 }
 
 .dontaion__content {

@@ -1,8 +1,11 @@
+.footer {
+    background: $color-background-footer;
+}
+
 .footer__wrapper {
     padding: 40px 40px 0 40px;
     display: flex;
     justify-content: space-between;
-    background: $color-background-footer;
 }
 
 .footer__contacts {

@@ -673,6 +673,10 @@ h5 {
   max-height: 120px;
 }
 
+.footer {
+  background: radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
+}
+
 .footer__wrapper {
   padding: 40px 40px 0 40px;
   display: -webkit-box;
@@ -681,7 +685,6 @@ h5 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 }
 
 .footer__contacts {
@@ -731,7 +734,6 @@ h5 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: #FFFFFF;
 }
 
 .navigation__link {
@@ -762,6 +764,10 @@ h5 {
   color: #545454;
 }
 
+.pets {
+  background: #F6F6F6;
+}
+
 .pets__wrapper {
   padding: 80px 40px 100px;
   display: -webkit-box;
@@ -775,7 +781,6 @@ h5 {
       -ms-flex-align: center;
           align-items: center;
   gap: 60px;
-  background: #F6F6F6;
 }
 
 .pets__title {
@@ -783,9 +788,11 @@ h5 {
   text-align: center;
 }
 
-.not-only__wrapper {
-  background-image: url(../../assets/images/png/start-screen-background.png);
+.not-only {
   background: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+}
+
+.not-only__wrapper {
   padding: 180px 40px 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -979,6 +986,10 @@ h5 {
   color: #545454;
 }
 
+.dontation {
+  background-color: #F6F6F6;
+}
+
 .donation_wrapper {
   padding: 80px 182px 100px 183px;
   display: -webkit-box;
@@ -990,7 +1001,6 @@ h5 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #F6F6F6;
 }
 
 .dontaion__content {

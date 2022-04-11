@@ -1,10 +1,8 @@
-// .not-only {
-
-// }
+.not-only {
+    background: $color-background-gradient;
+}
 
 .not-only__wrapper {
-    background-image: url(../../assets/images/png/start-screen-background.png);
-    background: $color-background-gradient;
     padding: 180px 40px 0;
     display: flex;
     justify-content: space-between;
