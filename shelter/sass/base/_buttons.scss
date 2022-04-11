@@ -1,43 +1,42 @@
 .button {
-    // padding: 15px 45px;
     width: 207px;
     height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 100px;
-    cursor: pointer;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 130%;
+
+    @extend %font-prim;
+    @include font (17px, 130%);
     /* identical to box height, or 22px */
     letter-spacing: 0.06em;
+
     color: $color-dark-3xl;
     background: $color-light-s;
-    transition: all .3s ease-out;;
+
+    cursor: pointer;
+    @extend %transition;
 
     &:hover {
         background: $color-active;
     }
-}
 
-.button_colored {
-    background: $color-primary;
-}
+    &_colored {
+        background: $color-primary;
+    }
 
-.button_bordered {
-    border: 2px solid #F1CDB3;
-}
+    &_bordered {
+        border: 2px solid #F1CDB3;
+    }
 
-.button_arrow {
-    width: 52px;
-    height: 52px;
-    border: 2px solid #F1CDB3;
-}
+    &_arrow {
+        width: 52px;
+        height: 52px;
+        border: 2px solid #F1CDB3;
+    }
 
-.button_big {
-    width: 260px;
-    height: 52px;
+    &_big {
+        width: 260px;
+        height: 52px;
+    }
 }

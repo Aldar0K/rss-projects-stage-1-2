@@ -466,8 +466,18 @@ template {
   font-display: swap;
 }
 
+.button {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.button {
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+
 html {
   font-size: 10px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -555,18 +565,15 @@ h5 {
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 100px;
-  cursor: pointer;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-style: normal;
-  font-weight: 400;
   font-size: 17px;
   line-height: 130%;
+  font-style: normal;
+  font-weight: 400;
   /* identical to box height, or 22px */
   letter-spacing: 0.06em;
   color: #292929;
   background: #FAFAFA;
-  -webkit-transition: all .3s ease-out;
-  transition: all .3s ease-out;
+  cursor: pointer;
 }
 
 .button:hover {
@@ -759,8 +766,8 @@ h5 {
 }
 
 .not-only__wrapper {
-  background: -webkit-gradient(linear, left top, right top, from(#5B483A), to(#262425));
-  background: linear-gradient(to right, #5B483A, #262425);
+  background-image: url(../../assets/images/png/start-screen-background.png);
+  background: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
   padding: 180px 40px 0;
   display: -webkit-box;
   display: -ms-flexbox;

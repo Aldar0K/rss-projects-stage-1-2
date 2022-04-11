@@ -1,7 +1,11 @@
-%transition {
-    transition: all .3s ease-out;
+%font-prim {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 %font-sec {
     font-family: 'Arial', Helvetica, sans-serif;
+}
+
+%transition {
+    transition: all .3s ease-out;
 }

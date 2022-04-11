@@ -12,8 +12,8 @@ $color-dark-m: #B2B2B2;
 // Цвета заднего фона.
 $color-background-light: #FFFFFF;
 $color-background-dark: #F6F6F6;
-$color-background-gradient: radial-gradient(#5B483A 0%, #262425 100%);
-$color-background-gradient: linear-gradient(to right, #5B483A, #262425);
+$color-background-gradient: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+// $color-background-gradient: linear-gradient(to right, #5B483A, #262425);
 
 // Ширина контентной области.
 $content-width: 1280px;
