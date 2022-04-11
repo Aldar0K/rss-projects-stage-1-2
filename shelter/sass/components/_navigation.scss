@@ -1,0 +1,26 @@
+.navigation {
+    display: flex;
+}
+
+.navigation__link {
+    display: inline-block;
+    margin-left: 35px;
+    @extend %transition;
+    cursor: pointer;
+    &_active {
+        border-bottom: solid 3px $color-primary;
+    }
+    & a {
+        @extend %font-secondary;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 160%;
+        /* identical to box height, or 24px */
+        color: $color-dark-s;
+        cursor: pointer;
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}

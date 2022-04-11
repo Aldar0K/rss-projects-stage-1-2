@@ -1,34 +1,23 @@
 .about__wrapper {
-    padding: 80px 40px 100px;
+    padding: 80px 215px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    .about__content {
-        padding: 0 175px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+.about__content {
+    max-width: 430px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
 
-        // .about__image{}
+.about__tittle {
+    max-width: 370px;
+}
 
-        .about__text {
-            max-width: 430px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-
-            .about__tittle {
-                max-width: 370px;
-                max-height: 90px;
-            }
-
-            .about__paragraph {
-                font-family: 'Arial';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 15px;
-                line-height: 160%;
-                /* or 24px */
-                color: $color-dark-xl;
-            }
-        }
-    }
+.about__paragraph {
+    @extend %font-secondary;
+    @include font (1.5rem, 160%);
+    color: $color-dark-xl;
 }

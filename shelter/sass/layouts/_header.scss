@@ -4,7 +4,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    // background: transparent;
 }
 
 .header__wrapper {
@@ -13,29 +12,4 @@
     align-items: center;
     justify-content: space-between;
     max-height: 180px;
-    // background: $color-background-gradient;
-}
-
-// .logo {
-//     display: flex;
-//     flex-direction: column;
-// }
-
-.navigation {
-    display: flex;
-}
-
-.navigation__link {
-    margin-left: 35px;
-    & a{
-        display: block;
-        font-family: 'Arial';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 160%;
-        /* identical to box height, or 24px */
-        color: $color-dark-s;
-        cursor: pointer;
-    }
 }

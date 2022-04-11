@@ -1,0 +1,43 @@
+.slider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 53px;
+}
+
+.slider__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 90px;
+}
+
+.slider__card {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 270px;
+    height: 435px;
+    background: $color-light-s;
+    @extend %transition;
+    &:hover {
+        cursor: pointer;
+        background: darken($color-light-s, 10%);
+    }
+}
+
+.slider__pet-name {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: $color-dark-l;
+}

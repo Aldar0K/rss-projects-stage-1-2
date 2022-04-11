@@ -38,5 +38,6 @@ h4 {
 h5 {
     @extend %font-primary;
     @include font (1.5rem, 110%);
+    letter-spacing: 0.06em;
     color: $color-dark-l;
 }
