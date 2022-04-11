@@ -1,5 +1,8 @@
 .header-pets {
+    position: fixed;
+    z-index: 100;
     width: 100%;
+    background: $color-background-light;
 }
 
 .header-pets__wrapper {

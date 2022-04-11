@@ -656,7 +656,10 @@ h5 {
 }
 
 .header-pets {
+  position: fixed;
+  z-index: 100;
   width: 100%;
+  background: #FFFFFF;
 }
 
 .header-pets__wrapper {
@@ -1051,7 +1054,7 @@ h5 {
 }
 
 .pets-pets__wrapper {
-  padding: 80px 40px 100px;
+  padding: 200px 40px 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
