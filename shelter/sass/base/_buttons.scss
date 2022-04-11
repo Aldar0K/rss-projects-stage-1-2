@@ -19,13 +19,13 @@
     }
 
     &_bordered {
-        border: 2px solid #F1CDB3;
+        border: 2px solid $color-primary;
     }
 
     &_round {
         width: 52px;
         height: 52px;
-        border: 2px solid #F1CDB3;
+        border: 2px solid $color-primary;
     }
 
     &_big {
@@ -35,5 +35,13 @@
 
     &:hover {
         background: $color-active;
+    }
+
+    &_disabled {
+        border: 2px solid $color-dark-s;
+        color: $color-dark-s;
+        &:hover {
+            background: transparent;
+        }
     }
 }

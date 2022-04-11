@@ -1,5 +1,6 @@
 .navigation {
     display: flex;
+    background: $color-background-light;
 }
 
 .navigation__link {
@@ -21,6 +22,11 @@
         cursor: pointer;
         &:hover {
             color: $color-primary;
+        }
+    }
+    &_dark {
+        & a {
+            color: $color-dark-l;
         }
     }
 }

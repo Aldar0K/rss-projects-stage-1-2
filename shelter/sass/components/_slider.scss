@@ -24,7 +24,9 @@
     @extend %transition;
     &:hover {
         cursor: pointer;
-        background: darken($color-light-s, 10%);
+        .button {
+            background: $color-active;
+        }
     }
 }
 

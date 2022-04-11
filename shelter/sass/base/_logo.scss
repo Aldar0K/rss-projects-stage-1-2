@@ -3,21 +3,29 @@
     flex-direction: column;
     // width: 184px;
     // height: 60px;
-
-    .logo__title {
-        margin: 0 0 10px;
+    &_dark {
+        .logo__title {
+            color: $color-dark-l;
+        }
+        .logo__subtitle {
+            color: $color-dark-3xl;
+        }
     }
+}
 
-    .logo__subtitle {
-        margin-left: 4px;
-        font-family: 'Arial';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 13px;
-        line-height: 15px;
-        /* identical to box height */
-        align-items: center;
-        letter-spacing: 0.1em;
-        color: $color-light-xl;
-    }
+.logo__title {
+    margin: 0 0 10px;
+}
+
+.logo__subtitle {
+    margin-left: 4px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    /* identical to box height */
+    align-items: center;
+    letter-spacing: 0.1em;
+    color: $color-light-xl;
 }

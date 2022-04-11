@@ -9,31 +9,74 @@
 </head>
 <body>
     <!-- Хедер должен быть "липким". Т.е. при скролле он всегда показан на странице сверху, сохраняя свою позицию. -->
-    <header class="header">
-        <div class="wrapper">
-            <a href="#" class="logo">
+    <header class="header-pets">
+        <div class="wrapper header-pets__wrapper">
+            <a class="logo logo_dark" href="../main/index.html">
                 <h1 class="logo__title">Cozy House</h1>
                 <p class="logo__subtitle">Shelter for pets in Boston</p>
             </a>
             <nav class="header__navigation">
                 <ul class="navigation">
-                    <li><a href="#">About the shelter</a></li>
-                    <li><a href="#">Our pets</a></li>
-                    <li><a href="#Help">Help the shelter</a></li>
-                    <li><a href="#Footer">Contacts</a></li>
+                    <li class="navigation__link navigation__link_dark"><a href="../main/index.html">About the shelter</a></li>
+                    <li class="navigation__link navigation__link_dark navigation__link_active"><a href="#">Our pets</a></li>
+                    <li class="navigation__link navigation__link_dark"><a href="#">Help the shelter</a></li>
+                    <li class="navigation__link navigation__link_dark"><a href="#">Contacts</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="pets">
-        <div class="wrapper">
-            <h3>Our friends who are looking for a house</h3>
-            <div class="pets__cards">
-                <div></div>
-            </div>
-            <div class="pets__navigation">
-                <button></button>
+    <section class="pets-pets">
+        <div class="wrapper pets-pets__wrapper">
+            <h3 class="pets-pets__title">Our friends who<br> are looking for a house</h3>
+            <ul class="pets-pets__list">
+                <li class="pets-pets__card">
+                    <img class="slider__image" src="../../assets/images/png/pets-katrine.png" alt="pets-katrine.png">
+                    <p class="slider__pet-name">Katrine</p>
+                    <button class="button button_bordered">Learn more</button>
+                </li>
+                <li class="pets-pets__card">
+                    <img class="slider__image" src="../../assets/images/png/pets-jennifer.png" alt="pets-jennifer.png">
+                    <p class="slider__pet-name">Jennifer</p>
+                    <button class="button button_bordered">Learn more</button>
+                </li>
+                <li class="pets-pets__card">
+                    <img class="slider__image" src="../../assets/images/png/pets-woody.png" alt="pets-woody.png">
+                    <p class="slider__pet-name">Woody</p>
+                    <button class="button button_bordered">Learn more</button>
+                </li>
+                <li class="pets-pets__card">
+                    <img class="slider__image" src="../../assets/images/png/pets-sophia.png" alt="pets-sophia.png">
+                    <p class="slider__pet-name">Sophia</p>
+                    <button class="button button_bordered">Learn more</button>
+                </li>
+                <li class="pets-pets__card">
+                    <img class="slider__image" src="../../assets/images/png/pets-timmy.png" alt="pets-timmy.png">
+                    <p class="slider__pet-name">Timmy</p>
+                    <button class="button button_bordered">Learn more</button>
+                </li>
+                <li class="pets-pets__card">
+                    <img class="slider__image" src="../../assets/images/png/pets-charly.png"alt="pets-charly.png">
+                    <p class="slider__pet-name">Charly</p>
+                    <button class="button button_bordered">Learn more</button>
+                </li>
+                <li class="pets-pets__card">
+                    <img class="slider__image" src="../../assets/images/png/pets-scarlet.png" alt="pets-scarlet.png">
+                    <p class="slider__pet-name">Scarlett</p>
+                    <button class="button button_bordered">Learn more</button>
+                </li>
+                <li class="pets-pets__card">
+                    <img class="slider__image" src="../../assets/images/png/pets-freddie.png" alt="pets-freddie.png">
+                    <p class="slider__pet-name">Freddie</p>
+                    <button class="button button_bordered">Learn more</button>
+                </li>
+            </ul>
+            <div class="pets-pets__buttons">
+                <button class="button button_round button_disabled"><<</button>
+                <button class="button button_round button_disabled"><</button>
+                <button class="button button_round button_colored">1</button>
+                <button class="button button_round">></button>
+                <button class="button button_round">>></button>
             </div>
         </div>
     </section>
