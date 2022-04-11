@@ -833,6 +833,10 @@ h5 {
   color: #CDCDCD;
 }
 
+.about {
+  background: #FFFFFF;
+}
+
 .about__wrapper {
   padding: 80px 215px 100px;
   display: -webkit-box;
@@ -868,6 +872,10 @@ h5 {
   font-style: normal;
   font-weight: 400;
   color: #4C4C4C;
+}
+
+.help {
+  background: #FFFFFF;
 }
 
 .help__wrapper {
@@ -989,7 +997,7 @@ h5 {
   color: #545454;
 }
 
-.dontation {
+.donation {
   background-color: #F6F6F6;
 }
 
