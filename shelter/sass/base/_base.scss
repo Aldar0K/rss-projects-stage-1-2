@@ -4,65 +4,39 @@ html {
 }
 
 body {
-    font-size: 1.6rem;
-    font-family: 'Georgia', 'Times New Roman', Times, serif;
-    font-weight: normal;
-    font-style: normal;
+    @extend %font-primary;
+    @include font (1.6rem);
 }
 
 h1 {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 110%;
-    /* or 35px */
-    display: flex;
-    align-items: center;
+    @extend %font-primary;
+    @include font (3.2rem, 110%);
     letter-spacing: 0.06em;
     color: $color-primary;
 }
 
 h2 {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 44px;
-    line-height: 130%;
-    /* or 57px */
+    @extend %font-primary;
+    @include font (4.4rem, 130%);
     color: $color-light-xl;
 }
 
 h3 {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 35px;
-    line-height: 130%;
-    /* or 45px */
-    display: flex;
-    align-items: center;
+    @extend %font-primary;
+    @include font (3.5rem, 130%);
     letter-spacing: 0.06em;
     color: $color-dark-l;
 }
 
 h4 {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    /* identical to box height, or 23px */
+    @extend %font-primary;
+    @include font (2rem, 115%);
     letter-spacing: 0.06em;
     color: $color-dark-l;
 }
 
 h5 {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 110%;
-    /* identical to box height, or 17px */
+    @extend %font-primary;
+    @include font (1.5rem, 110%);
     color: $color-dark-l;
 }

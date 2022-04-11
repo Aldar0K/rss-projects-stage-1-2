@@ -6,7 +6,7 @@
     justify-content: center;
     border-radius: 100px;
 
-    @extend %font-prim;
+    @extend %font-primary;
     @include font (17px, 130%);
     /* identical to box height, or 22px */
     letter-spacing: 0.06em;

@@ -466,8 +466,8 @@ template {
   font-display: swap;
 }
 
-.button {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+body, h1, h2, h3, h4, h5, .button {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
 }
 
 .button {
@@ -482,73 +482,51 @@ html {
 
 body {
   font-size: 1.6rem;
-  font-family: 'Georgia', 'Times New Roman', Times, serif;
-  font-weight: normal;
+  line-height: 1.6rem;
   font-style: normal;
+  font-weight: 400;
 }
 
 h1 {
-  font-family: 'Georgia';
+  font-size: 3.2rem;
+  line-height: 110%;
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
-  line-height: 110%;
-  /* or 35px */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   letter-spacing: 0.06em;
   color: #F1CDB3;
 }
 
 h2 {
-  font-family: 'Georgia';
+  font-size: 4.4rem;
+  line-height: 130%;
   font-style: normal;
   font-weight: 400;
-  font-size: 44px;
-  line-height: 130%;
-  /* or 57px */
   color: #FFFFFF;
 }
 
 h3 {
-  font-family: 'Georgia';
+  font-size: 3.5rem;
+  line-height: 130%;
   font-style: normal;
   font-weight: 400;
-  font-size: 35px;
-  line-height: 130%;
-  /* or 45px */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   letter-spacing: 0.06em;
   color: #545454;
 }
 
 h4 {
-  font-family: 'Georgia';
+  font-size: 2rem;
+  line-height: 115%;
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 115%;
-  /* identical to box height, or 23px */
   letter-spacing: 0.06em;
   color: #545454;
 }
 
 h5 {
-  font-family: 'Georgia';
+  font-size: 1.5rem;
+  line-height: 110%;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
-  line-height: 110%;
-  /* identical to box height, or 17px */
   color: #545454;
 }
 
