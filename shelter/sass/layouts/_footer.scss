@@ -1,0 +1,35 @@
+.footer__wrapper {
+    padding: 40px 40px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    background: $color-background-footer;
+}
+
+.footer__contacts {
+    margin-top: 16px;
+    max-width: 279px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.footer__locations {
+    margin-top: 16px;
+    max-width: 302px;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+
+.footer__title {
+    color: $color-light-xl;
+}
+
+.footer__link {
+    display: flex;
+    gap: 20px;
+    @extend %font-primary;
+    @include font (2rem, 115%);
+    letter-spacing: 0.06em;
+    color: $color-primary;
+}
