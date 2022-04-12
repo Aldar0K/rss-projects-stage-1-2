@@ -467,11 +467,11 @@ template {
 }
 
 body, h1, h2, h3, h4, h5, .button, .footer__link {
-  font-family: 'Georgia', 'Times New Roman', 'Times', serif;
+  font-family: 'Georgia';
 }
 
 .navigation__link a, .about__paragraph, .dontation__text {
-  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-family: 'Arial';
 }
 
 .button, .navigation__link, .slider__card, .donation__card, .pets-pets__card {
