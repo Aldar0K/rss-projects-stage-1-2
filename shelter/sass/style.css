@@ -588,7 +588,8 @@ h5 {
 }
 
 .button_disabled:hover {
-  background: transparent;
+  background: none;
+  cursor: auto;
 }
 
 .logo {
