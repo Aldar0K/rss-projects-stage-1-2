@@ -467,14 +467,14 @@ template {
 }
 
 body, h1, h2, h3, h4, h5, .button, .footer__link {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Georgia', 'Times New Roman', 'Times', serif;
 }
 
 .navigation__link a, .about__paragraph, .dontation__text {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Arial', 'Helvetica', sans-serif;
 }
 
-.button, .navigation__link, .slider__card, .pets-pets__card {
+.button, .navigation__link, .slider__card, .donation__card, .pets-pets__card {
   -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
 }
@@ -1047,6 +1047,11 @@ h5 {
           justify-content: space-between;
   background: #F1CDB3;
   border-radius: 9px;
+  cursor: pointer;
+}
+
+.donation__card:hover {
+  background: #FDDCC4;
 }
 
 .dontation__text {
