@@ -35,6 +35,8 @@
     background: $color-light-s;
     @extend %transition;
     &:hover {
+        transform: scale(1.03);
+        box-shadow: 10px 15px 25px 0 $color-dark-s;
         cursor: pointer;
         .button {
             background: $color-active;

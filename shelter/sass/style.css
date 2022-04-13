@@ -968,6 +968,10 @@ h5 {
 }
 
 .slider__card:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  -webkit-box-shadow: 10px 15px 25px 0 #CDCDCD;
+          box-shadow: 10px 15px 25px 0 #CDCDCD;
   cursor: pointer;
 }
 
@@ -975,7 +979,7 @@ h5 {
   background: #FDDCC4;
 }
 
-.slider__pet-name {
+.slider__name {
   font-family: 'Georgia';
   font-style: normal;
   font-weight: 400;
@@ -1113,6 +1117,10 @@ h5 {
 }
 
 .pets-pets__card:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  -webkit-box-shadow: 10px 15px 25px 0 #CDCDCD;
+          box-shadow: 10px 15px 25px 0 #CDCDCD;
   cursor: pointer;
 }
 
