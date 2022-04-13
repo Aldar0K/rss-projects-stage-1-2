@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Georgia';
     src: url('../../assets/fonts/Georgia.eot');
-    src: local('Georgia'),
+    src: local('Georgia Regular'), local('Georgia-Regular'),
         url('../../assets/fonts/Georgia.eot?#iefix') format('embedded-opentype'),
         // url('../../assets/fonts/Georgia.woff2') format('woff2'),
         // url('../../assets/fonts/Georgia.woff') format('woff'),
@@ -14,7 +14,7 @@
 @font-face {
     font-family: 'Georgia';
     src: url('../../assets/fonts/Georgia-Bold.eot');
-    src: local('Georgia'),
+    src: local('Georgia Bold'), local('Georgia-Bold'),
         url('../../assets/fonts/Georgia-Bold.eot?#iefix') format('embedded-opentype'),
         // url('../../assets/fonts/Georgia-Bold.woff2') format('woff2'),
         // url('../../assets/fonts/Georgia-Bold.woff') format('woff'),
@@ -27,7 +27,7 @@
 @font-face {
     font-family: 'Georgia';
     src: url('../../assets/fonts/Georgia-Italic.eot');
-    src: local('Georgia'),
+    src: local('Georgia Italic'), local('Georgia-Italic'),
         url('../../assets/fonts/Georgia-Italic.eot?#iefix') format('embedded-opentype'),
         // url('../../assets/fonts/Georgia-Italic.woff2') format('woff2'),
         // url('../../assets/fonts/Georgia-Italic.woff') format('woff'),
@@ -40,7 +40,7 @@
 @font-face {
     font-family: 'Arial';
     src: url('../../assets/fonts/ArialMT.eot');
-    src: local('Arial'),
+    src: local('Arial Regular'), local('Arial-Regular'),
         url('../../assets/fonts/ArialMT.eot?#iefix') format('embedded-opentype'),
         // url('../../assets/fonts/ArialMT.woff2') format('woff2'),
         // url('../../assets/fonts/ArialMT.woff') format('woff'),
@@ -53,7 +53,7 @@
 @font-face {
     font-family: 'Arial';
     src: url('../../assets/fonts/Arial-ItalicMT.eot');
-    src: local('Arial'),
+    src: local('Arial Italic'), local('Arial-Italic'),
         url('../../assets/fonts/Arial-ItalicMT.eot?#iefix') format('embedded-opentype'),
         // url('../../assets/fonts/Arial-ItalicMT.woff2') format('woff2'),
         // url('../../assets/fonts/Arial-ItalicMT.woff') format('woff'),
