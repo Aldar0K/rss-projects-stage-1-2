@@ -1,5 +1,9 @@
 .wrapper {
-    min-width: $mobile-small-width;
+    // min-width: $mobile-small-width;
     max-width: $content-width;
     margin: 0 auto;
+    overflow: hidden;
+    @include media-laptop {
+
+    }
 }
