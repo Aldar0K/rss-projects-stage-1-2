@@ -1,6 +1,5 @@
 .slider {
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 53px;
 }
@@ -36,7 +35,7 @@
     font-family: 'Georgia';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 2rem;
     line-height: 23px;
     /* identical to box height */
     display: flex;
