@@ -5,11 +5,6 @@
 .navigation__link {
     display: inline-block;
     margin-left: 35px;
-    @extend %transition;
-    cursor: pointer;
-    &_active {
-        border-bottom: solid 3px $color-primary;
-    }
     & a {
         @extend %font-secondary;
         font-style: normal;
@@ -18,14 +13,25 @@
         line-height: 160%;
         /* identical to box height, or 24px */
         color: $color-dark-s;
+        @extend %transition;
         cursor: pointer;
         &:hover {
-            color: $color-primary;
+            color: $color-light-s;
         }
+    }
+    &_active {
+        & a {
+            color: $color-light-s;
+            cursor: auto;
+        }
+        border-bottom: solid 3px $color-primary;
     }
     &_dark {
         & a {
             color: $color-dark-l;
+            &:hover {
+                color: $color-dark-3xl;
+            }
         }
     }
 }

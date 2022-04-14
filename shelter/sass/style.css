@@ -469,7 +469,7 @@ body, h1, h2, h3, h4, h5, .button, .footer__link {
   font-family: 'Arial';
 }
 
-.button, .navigation__link, .slider__card, .donation__card, .pets-pets__card {
+.button, .navigation__link a, .slider__card, .donation__card, .pets-pets__card {
   -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
 }
@@ -625,6 +625,7 @@ h5 {
 }
 
 .wrapper {
+  min-width: 320px;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -738,11 +739,6 @@ h5 {
 .navigation__link {
   display: inline-block;
   margin-left: 35px;
-  cursor: pointer;
-}
-
-.navigation__link_active {
-  border-bottom: solid 3px #F1CDB3;
 }
 
 .navigation__link a {
@@ -756,11 +752,24 @@ h5 {
 }
 
 .navigation__link a:hover {
-  color: #F1CDB3;
+  color: #FAFAFA;
+}
+
+.navigation__link_active {
+  border-bottom: solid 3px #F1CDB3;
+}
+
+.navigation__link_active a {
+  color: #FAFAFA;
+  cursor: auto;
 }
 
 .navigation__link_dark a {
   color: #545454;
+}
+
+.navigation__link_dark a:hover {
+  color: #292929;
 }
 
 .pets {
