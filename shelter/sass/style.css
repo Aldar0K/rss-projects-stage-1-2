@@ -981,6 +981,12 @@ h5 {
           align-items: center;
 }
 
+@media (max-width: 1279px) {
+  .help__wrapper {
+    padding: 80px 69px 100px;
+  }
+}
+
 .help__tittle {
   margin-bottom: 60px;
   max-width: 310px;
@@ -1001,6 +1007,13 @@ h5 {
   row-gap: 55px;
 }
 
+@media (max-width: 1279px) {
+  .help__list {
+    -webkit-column-gap: 59.5px;
+            column-gap: 59.5px;
+  }
+}
+
 .help__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1013,6 +1026,12 @@ h5 {
       -ms-flex-align: center;
           align-items: center;
   gap: 30px;
+}
+
+@media (max-width: 1279px) {
+  .help__item {
+    width: 170px;
+  }
 }
 
 .slider {

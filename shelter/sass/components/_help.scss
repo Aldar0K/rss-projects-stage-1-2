@@ -7,6 +7,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include media-laptop {
+        padding: 80px 69px 100px;
+    }
 }
 
 .help__tittle {
@@ -21,6 +24,9 @@
     flex-wrap: wrap;
     column-gap: 119px;
     row-gap: 55px;
+    @include media-laptop {
+        column-gap: 59.5px;
+    }
 }
 
 .help__item {
@@ -28,4 +34,7 @@
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    @include media-laptop {
+        width: 170px;
+    }
 }
