@@ -9,7 +9,7 @@
 }
 
 .not-only__content {
-    margin-top: 163px;
+    padding-top: 163px;
     max-width: 460px;
 }
 
@@ -30,4 +30,8 @@
     align-items: center;
     /* color-dark-s */
     color: $color-dark-s;
+}
+
+.not-only__image img {
+    width: 100%;
 }

@@ -625,9 +625,27 @@ h5 {
 }
 
 .wrapper {
-  max-width: 1280px;
+  max-width: 1279px;
   margin: 0 auto;
   overflow: hidden;
+}
+
+@media (max-width: 1279px) {
+  .wrapper {
+    max-width: 767px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    max-width: 319px;
+  }
+}
+
+@media (max-width: 319px) {
+  .wrapper {
+    max-width: none;
+  }
 }
 
 .header {
@@ -811,7 +829,7 @@ h5 {
 }
 
 .not-only__content {
-  margin-top: 163px;
+  padding-top: 163px;
   max-width: 460px;
 }
 
@@ -836,6 +854,10 @@ h5 {
           align-items: center;
   /* color-dark-s */
   color: #CDCDCD;
+}
+
+.not-only__image img {
+  width: 100%;
 }
 
 .about {
