@@ -8,12 +8,19 @@
     flex-direction: column;
     align-items: center;
     gap: 45px;
+    @include media-laptop {
+        padding: 200px 30px 76px;
+        gap: 0;
+    }
 }
 
 .pets-pets__title {
     max-width: 400px;
     max-height: 90px;
     text-align: center;
+    @include media-laptop {
+        margin-bottom: 30px;
+    }
 }
 
 .pets-pets__list {
@@ -22,12 +29,16 @@
     flex-wrap: wrap;
     row-gap: 30px;
     column-gap: 40px;
+    @include media-laptop {
+        margin-bottom: 40px;
+        padding: 0;
+        justify-content: center;
+    }
 }
 
 .pets-pets__card {
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
     gap: 30px;
     width: 270px;
@@ -40,6 +51,11 @@
         cursor: pointer;
         .button {
             background: $color-active;
+        }
+    }
+    @include media-laptop {
+        &:nth-child(n+7) {
+            display: none;
         }
     }
 }
