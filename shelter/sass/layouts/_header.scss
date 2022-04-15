@@ -7,9 +7,13 @@
 }
 
 .header__wrapper {
+    max-height: 180px;
     padding: 60px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-height: 180px;
+    @include media-laptop {
+        max-height: 150px;
+        padding: 30px 30px 60px 30px;
+    }
 }

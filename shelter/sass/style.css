@@ -657,6 +657,7 @@ h5 {
 }
 
 .header__wrapper {
+  max-height: 180px;
   padding: 60px 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -667,7 +668,13 @@ h5 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  max-height: 180px;
+}
+
+@media (max-width: 1279px) {
+  .header__wrapper {
+    max-height: 150px;
+    padding: 30px 30px 60px 30px;
+  }
 }
 
 .header-pets {
