@@ -7,6 +7,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include media-laptop {
+        flex-direction: column-reverse;
+        padding: 80px 132px 100px 131px;
+        gap: 60px;
+    }
 }
 
 .dontaion__content {

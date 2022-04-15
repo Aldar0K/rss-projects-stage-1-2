@@ -1140,6 +1140,17 @@ h5 {
           align-items: center;
 }
 
+@media (max-width: 1279px) {
+  .donation_wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    padding: 80px 132px 100px 131px;
+    gap: 60px;
+  }
+}
+
 .dontaion__content {
   max-width: 380px;
   display: -webkit-box;
