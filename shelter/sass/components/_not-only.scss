@@ -6,11 +6,20 @@
     padding: 180px 40px 0;
     display: flex;
     justify-content: space-between;
+    @include media-laptop {
+        flex-direction: column;
+        padding: 150px 100px 0;
+        gap: 100px;
+        align-items: center;
+    }
 }
 
 .not-only__content {
     padding-top: 163px;
     max-width: 460px;
+    @include media-laptop {
+        padding-top: 0;
+    }
 }
 
 .not-only__title {
@@ -32,6 +41,16 @@
     color: $color-dark-s;
 }
 
+.not-only__button {
+    @include media-laptop {
+        display: flex;
+        justify-content: center;
+    }
+}
+
 .not-only__image img {
     width: 100%;
+    @include media-laptop {
+        transform: translateX(70px);
+    }
 }
