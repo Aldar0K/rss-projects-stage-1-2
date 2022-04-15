@@ -6,9 +6,12 @@
 }
 
 .header-pets__wrapper {
+    max-height: 120px;
     padding: 30px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-height: 120px;
+    @include media-laptop {
+        padding: 30px;
+    }
 }
