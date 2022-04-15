@@ -3,21 +3,34 @@
 }
 
 .footer__wrapper {
-    padding: 40px 40px 0 40px;
+    padding: 40px 40px 0;
     display: flex;
     justify-content: space-between;
+    @include media-laptop {
+        padding: 30px 64px 0;
+        flex-direction: column;
+        gap: 65px;
+    }
+}
+
+.footer__content {
+    margin-top: 16px;
+    display: flex;
+    gap: 160px;
+    @include media-laptop {
+        margin-top: 0;
+        gap: 60px;
+    }
 }
 
 .footer__contacts {
-    margin-top: 16px;
     max-width: 279px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 41px;
 }
 
 .footer__locations {
-    margin-top: 16px;
     max-width: 302px;
     display: flex;
     flex-direction: column;
@@ -35,4 +48,11 @@
     @include font (2rem, 115%);
     letter-spacing: 0.06em;
     color: $color-primary;
+}
+
+.footer__image {
+    @include media-laptop {
+        display: flex;
+        justify-content: center;
+    }
 }
