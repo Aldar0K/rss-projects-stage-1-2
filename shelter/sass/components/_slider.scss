@@ -2,6 +2,9 @@
     display: flex;
     align-items: center;
     gap: 53px;
+    @include media-laptop {
+        gap: 12px;
+    }
 }
 
 .slider__list {
@@ -9,6 +12,9 @@
     flex-direction: row;
     align-items: center;
     gap: 90px;
+    @include media-laptop {
+        gap: 40px;
+    }
 }
 
 .slider__card {
@@ -27,6 +33,11 @@
         cursor: pointer;
         .button {
             background: $color-active;
+        }
+    }
+    @include media-laptop {
+        &:last-child {
+            display: none;
         }
     }
 }

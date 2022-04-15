@@ -816,6 +816,12 @@ h5 {
   gap: 60px;
 }
 
+@media (max-width: 1279px) {
+  .pets__wrapper {
+    padding: 80px 30px 100px;
+  }
+}
+
 .pets__title {
   max-width: 400px;
   text-align: center;
@@ -1019,6 +1025,12 @@ h5 {
   gap: 53px;
 }
 
+@media (max-width: 1279px) {
+  .slider {
+    gap: 12px;
+  }
+}
+
 .slider__list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1031,6 +1043,12 @@ h5 {
       -ms-flex-align: center;
           align-items: center;
   gap: 90px;
+}
+
+@media (max-width: 1279px) {
+  .slider__list {
+    gap: 40px;
+  }
 }
 
 .slider__card {
@@ -1060,6 +1078,12 @@ h5 {
 
 .slider__card:hover .button {
   background: #FDDCC4;
+}
+
+@media (max-width: 1279px) {
+  .slider__card:last-child {
+    display: none;
+  }
 }
 
 .slider__name {
