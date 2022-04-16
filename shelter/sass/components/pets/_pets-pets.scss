@@ -53,7 +53,7 @@
             background: $color-active;
         }
     }
-    @include media-laptop {
+    @media (max-width: 1259px) {
         &:nth-child(n+7) {
             display: none;
         }

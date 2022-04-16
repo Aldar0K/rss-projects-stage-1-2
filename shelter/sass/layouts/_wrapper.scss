@@ -3,10 +3,10 @@
     margin: 0 auto;
     overflow: hidden;
     @include media-laptop {
-        max-width: $tablet-width;
+        max-width: $content-width;
     }
     @include media-tablet {
-        max-width: $mobile-width;
+        max-width: $tablet-width;
     }
     @include media-mobile {
         max-width: none;

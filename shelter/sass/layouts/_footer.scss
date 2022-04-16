@@ -19,6 +19,7 @@
     gap: 160px;
     @include media-laptop {
         margin-top: 0;
+        justify-content: center;
         gap: 60px;
     }
 }

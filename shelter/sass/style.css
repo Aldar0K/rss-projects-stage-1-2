@@ -632,13 +632,13 @@ h5 {
 
 @media (max-width: 1279px) {
   .wrapper {
-    max-width: 767px;
+    max-width: 1279px;
   }
 }
 
 @media (max-width: 767px) {
   .wrapper {
-    max-width: 319px;
+    max-width: 767px;
   }
 }
 
@@ -740,6 +740,9 @@ h5 {
 @media (max-width: 1279px) {
   .footer__content {
     margin-top: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     gap: 60px;
   }
 }
@@ -1329,7 +1332,7 @@ h5 {
   background: #FDDCC4;
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1259px) {
   .pets-pets__card:nth-child(n+7) {
     display: none;
   }
