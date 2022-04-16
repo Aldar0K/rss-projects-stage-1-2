@@ -17,14 +17,14 @@
         "layouts/_header.scss",
         "layouts/_header-pets.scss",
         "layouts/_footer.scss",
-        "components/_navigation.scss",
-        "components/_pets.scss",
-        "components/_not-only.scss",
-        "components/_about.scss",
-        "components/_help.scss",
-        "components/_slider.scss",
-        "components/_donation.scss",
-        "components/_pets-pets.scss"
+        "components/main/_navigation.scss",
+        "components/main/_pets.scss",
+        "components/main/_not-only.scss",
+        "components/main/_about.scss",
+        "components/main/_help.scss",
+        "components/main/_slider.scss",
+        "components/main/_donation.scss",
+        "components/pets/_pets-pets.scss"
     ],
     "names": [],
     "file": "style.css"

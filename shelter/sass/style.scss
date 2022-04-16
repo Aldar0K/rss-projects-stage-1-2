@@ -1,8 +1,6 @@
 // Reset and Normalize.
-// @import "../node_modules/normalize-scss/sass/normalize";
 @import "base/reset";
 @import "base/normalize";
-
 
 // Abstract.
 @import "abstract/constants";
@@ -23,11 +21,14 @@
 @import "layouts/footer";
 
 // Components.
-@import "components/navigation";
-@import "components/pets";
-@import "components/not-only";
-@import "components/about";
-@import "components/help";
-@import "components/slider";
-@import "components/donation";
-@import "components/pets-pets";
+// Page main.
+@import "components/main/navigation";
+@import "components/main/pets";
+@import "components/main/not-only";
+@import "components/main/about";
+@import "components/main/help";
+@import "components/main/slider";
+@import "components/main/donation";
+
+// Page pets.
+@import "components/pets/pets-pets";
