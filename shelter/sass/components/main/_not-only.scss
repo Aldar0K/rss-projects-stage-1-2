@@ -12,6 +12,9 @@
         gap: 100px;
         align-items: center;
     }
+    @include media-tablet {
+     padding: 150px 10px 0;   
+    }
 }
 
 .not-only__content {
@@ -19,12 +22,21 @@
     max-width: 460px;
     @include media-laptop {
         padding-top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
 .not-only__title {
     max-width: 310px;
     margin-bottom: 42px;
+    @include media-tablet {
+        max-width: 200px;
+        text-align: center;
+        font-size: 25px;
+        letter-spacing: 0.06em;
+    }
 }
 
 .not-only__subtitle {
@@ -37,8 +49,10 @@
     /* or 24px */
     display: flex;
     align-items: center;
-    /* color-dark-s */
     color: $color-dark-s;
+    @include media-tablet {
+        text-align: center;
+    }
 }
 
 .not-only__button {
@@ -52,5 +66,10 @@
     width: 100%;
     @include media-laptop {
         transform: translateX(70px);
+    }
+    @include media-tablet {
+        transform: translateX(20px);
+        width: 260px;
+        height: 275px;
     }
 }

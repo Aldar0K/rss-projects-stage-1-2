@@ -10,12 +10,21 @@
     @include media-laptop {
         padding: 80px 69px 100px;
     }
+    @include media-tablet {
+        padding: 42px 15px;
+    }
 }
 
 .help__tittle {
     margin-bottom: 60px;
     max-width: 310px;
     text-align: center;
+    @include media-tablet {
+        margin-bottom: 42px;
+        max-width: 230px;
+        @include font (2.5rem, 130%);
+        letter-spacing: 0.06em;
+    }
 }
 
 .help__list {
@@ -27,6 +36,18 @@
     @include media-laptop {
         column-gap: 59.5px;
     }
+    @include media-tablet {
+        column-gap: 30px;
+        row-gap: 30px;
+        justify-content: stretch;
+        img {
+            width: 50px;
+            height: 50px;
+        }
+        h4 {
+            @include font(1.5rem, 110%);
+        }
+    }
 }
 
 .help__item {
@@ -36,5 +57,9 @@
     gap: 30px;
     @include media-laptop {
         width: 170px;
+    }
+    @include media-tablet {
+        width: 130px;
+        gap: 20px;
     }
 }

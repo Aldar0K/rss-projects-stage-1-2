@@ -16,4 +16,7 @@
         max-height: 150px;
         padding: 30px 30px 60px 30px;
     }
+    @include media-tablet {
+        padding: 30px 53px 60px 10px;
+    }
 }

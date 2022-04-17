@@ -12,22 +12,45 @@
         padding: 80px 132px 100px 131px;
         gap: 60px;
     }
+    @include media-tablet {
+        padding: 42px 10px;
+        gap: 42px;
+    }
+}
+
+.dontation__image {
+    img {
+        width: 100%;
+    }
+    @include media-tablet {
+        max-width: 260px;
+    }
 }
 
 .dontaion__content {
     max-width: 380px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;   
 }
 
 .dontaion__tittle {
     max-width: 300px;
     max-height: 90px;
+    @include media-tablet {
+        max-width: 220px;
+        @include font(2.5rem, 130%);
+        text-align: center;
+    }
 }
 
 .dontaion__subtitle {
     max-width: 308px;
+    @include media-tablet {
+        @include font(1.5rem, 160%);
+        letter-spacing: 0;
+    }
 }
 
 .donation__card {
@@ -36,6 +59,7 @@
     max-height: 43px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background: $color-primary;
     border-radius: 9px;
     cursor: pointer;
@@ -43,10 +67,22 @@
     &:hover {
         background: $color-active;
     }
+    @include media-tablet {
+        width: 281px;
+        h4 {
+            @include font(1.5rem, 110%);
+            letter-spacing: 0.06em;
+        }
+    }
 }
 
 .dontation__text {
     @extend %font-secondary;
     @include font (1.2rem, 150%, 400, italic);
     color: $color-dark-m;
+    @include media-tablet {
+        max-width: 280px;
+        text-align: justify;
+        line-height: 18px;
+    }
 }

@@ -5,6 +5,11 @@
     @include media-laptop {
         gap: 12px;
     }
+    @include media-tablet {
+        height: 507px;
+        position: relative;
+        align-items: flex-start;
+    }
 }
 
 .slider__list {
@@ -40,18 +45,31 @@
             display: none;
         }
     }
+    @include media-tablet {
+        &:nth-child(2n) {
+            display: none;
+        }
+    } 
 }
 
 .slider__name {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2rem;
-    line-height: 23px;
-    /* identical to box height */
-    display: flex;
-    align-items: center;
-    text-align: center;
+    @extend %font-primary;
+    @include font (2rem, 23px);
     letter-spacing: 0.06em;
     color: $color-dark-l;
+}
+
+.slider__button {
+    @include media-tablet {
+        &:first-child {
+            position: absolute;
+            bottom: 0;
+            left: 43px;
+        }
+        &:last-child {
+            position: absolute;
+            bottom: 0;
+            right: 43px;
+        }
+    }
 }
