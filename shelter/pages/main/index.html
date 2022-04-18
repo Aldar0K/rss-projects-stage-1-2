@@ -7,7 +7,8 @@
     <title>main</title>
     <link rel="stylesheet" href="../../sass/style.css">
 </head>
-<body>
+<!-- При активации меню добавлять класс body_lock тегу body. -->
+<body class="body">
     <header class="header">
         <div class="wrapper header__wrapper">
             <a class="logo" href="#">
@@ -26,7 +27,16 @@
                 <div class="menu__icon">
                     <span class="menu__line"></span>
                 </div>
-                <div class="menu__body"></div>
+                <!-- По нажатию на иконку меню добавлять класс menu__body_active. -->
+                <div class="menu__body">
+                    <div class="menu__dropout"></div>
+                    <ul class="menu__list">
+                        <li class="menu__link menu__link_active"><a href="#">About the shelter</a></li>
+                        <li class="menu__link"><a href="../pets/index.html">Our pets</a></li>
+                        <li class="menu__link"><a href="#help">Help the shelter</a></li>
+                        <li class="menu__link"><a href="#footer">Contacts</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -171,5 +181,6 @@
             </div>
         </div>
     </footer>
+    <script src="../../index.js"></script>
 </body>
 </html>

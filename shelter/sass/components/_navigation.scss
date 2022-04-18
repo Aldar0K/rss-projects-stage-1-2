@@ -1,5 +1,8 @@
 .navigation {
     display: flex;
+    @include media-tablet {
+        display: none;   
+    }
 }
 
 .navigation__link {
@@ -7,11 +10,7 @@
     margin-left: 35px;
     & a {
         @extend %font-secondary;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 1.5rem;
-        line-height: 160%;
-        /* identical to box height, or 24px */
+        @include font(1.5rem, 160%);
         color: $color-dark-s;
         @extend %transition;
         cursor: pointer;
@@ -22,7 +21,6 @@
     &_active {
         & a {
             color: $color-light-s;
-            cursor: auto;
         }
         border-bottom: solid 3px $color-primary;
     }
@@ -33,8 +31,5 @@
                 color: $color-dark-3xl;
             }
         }
-    }
-    @include media-tablet {
-     display: none;   
     }
 }

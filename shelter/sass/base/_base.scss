@@ -3,9 +3,12 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
+.body {
     @extend %font-primary;
     @include font (1.6rem);
+    &_lock {
+        overflow: hidden;
+    }
 }
 
 h1 {
