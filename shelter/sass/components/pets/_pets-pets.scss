@@ -41,9 +41,10 @@
         margin-bottom: 40px;
         padding: 0;
         justify-content: center;
+        max-width: 580px;
     }
     @include media-tablet {
-
+        max-width: 270px;
     }
 }
 
@@ -64,12 +65,12 @@
             background: $color-active;
         }
     }
-    @media (max-width: 1259px) {
+    @include media-laptop {
         &:nth-child(n+7) {
             display: none;
         }
     }
-    @media (max-width: 599px) {
+    @include media-tablet {
         &:nth-child(n+4) {
             display: none;
         }
