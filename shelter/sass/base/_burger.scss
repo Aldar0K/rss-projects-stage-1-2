@@ -24,6 +24,14 @@
         @extend %burger-line;
         bottom: 0;
     }
+    &_dark {
+        &::before {
+            background-color: $color-dark-d;
+        }
+        &::after {
+            background-color: $color-dark-d;
+        }
+    }
     @include media-tablet {
         display: block;
     }
@@ -32,4 +40,7 @@
 .menu__line {
     @extend %burger-line;
     top: calc(50% - 1px);
+    &_dark {
+        background-color: $color-dark-d;
+    }
 }

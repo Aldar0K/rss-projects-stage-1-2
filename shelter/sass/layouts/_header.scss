@@ -11,7 +11,7 @@
     padding: 60px 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     @include media-laptop {
         max-height: 150px;
         padding: 30px 30px 60px 30px;
@@ -19,4 +19,8 @@
     @include media-tablet {
         padding: 30px 53px 60px 10px;
     }
+}
+
+.header__navigation {
+    margin-left: auto;
 }

@@ -14,4 +14,7 @@
     @include media-laptop {
         padding: 30px;
     }
+    @include media-tablet {
+        padding: 30px 50px 30px 10px;
+    }
 }

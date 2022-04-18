@@ -12,6 +12,9 @@
         padding: 200px 30px 76px;
         gap: 0;
     }
+    @include media-tablet {
+        padding: 162px 10px 42px;
+    }
 }
 
 .pets-pets__title {
@@ -20,6 +23,11 @@
     text-align: center;
     @include media-laptop {
         margin-bottom: 30px;
+    }
+    @include media-tablet {
+        margin-bottom: 42px;
+        @include font(2.5rem, 130%);
+        text-align: center;
     }
 }
 
@@ -33,6 +41,9 @@
         margin-bottom: 40px;
         padding: 0;
         justify-content: center;
+    }
+    @include media-tablet {
+
     }
 }
 
@@ -58,9 +69,17 @@
             display: none;
         }
     }
+    @media (max-width: 599px) {
+        &:nth-child(n+4) {
+            display: none;
+        }
+    }
 }
 
 .pets-pets__buttons {
     display: flex;
     gap: 20px;
+    @include media-tablet {
+        gap: 10px;
+    }
 }

@@ -39,7 +39,7 @@
     @include media-tablet {
         column-gap: 30px;
         row-gap: 30px;
-        justify-content: stretch;
+        // justify-content: stretch;
         img {
             width: 50px;
             height: 50px;
@@ -47,6 +47,9 @@
         h4 {
             @include font(1.5rem, 110%);
         }
+    }
+    @media (max-width: 320px) {
+        justify-content: stretch;
     }
 }
 

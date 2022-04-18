@@ -651,6 +651,14 @@ h5 {
   bottom: 0;
 }
 
+.menu__icon_dark::before {
+  background-color: #000000;
+}
+
+.menu__icon_dark::after {
+  background-color: #000000;
+}
+
 @media (max-width: 767px) {
   .menu__icon {
     display: block;
@@ -659,6 +667,10 @@ h5 {
 
 .menu__line {
   top: calc(50% - 1px);
+}
+
+.menu__line_dark {
+  background-color: #000000;
 }
 
 .wrapper {
@@ -702,9 +714,6 @@ h5 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 @media (max-width: 1279px) {
@@ -718,6 +727,10 @@ h5 {
   .header__wrapper {
     padding: 30px 53px 60px 10px;
   }
+}
+
+.header__navigation {
+  margin-left: auto;
 }
 
 .header-pets {
@@ -744,6 +757,12 @@ h5 {
 @media (max-width: 1279px) {
   .header-pets__wrapper {
     padding: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header-pets__wrapper {
+    padding: 30px 50px 30px 10px;
   }
 }
 
@@ -1402,9 +1421,6 @@ h5 {
     -webkit-column-gap: 30px;
             column-gap: 30px;
     row-gap: 30px;
-    -webkit-box-pack: stretch;
-        -ms-flex-pack: stretch;
-            justify-content: stretch;
   }
   .help__list img {
     width: 50px;
@@ -1415,6 +1431,14 @@ h5 {
     line-height: 110%;
     font-style: normal;
     font-weight: 400;
+  }
+}
+
+@media (max-width: 320px) {
+  .help__list {
+    -webkit-box-pack: stretch;
+        -ms-flex-pack: stretch;
+            justify-content: stretch;
   }
 }
 
@@ -1612,6 +1636,12 @@ h5 {
   }
 }
 
+@media (max-width: 767px) {
+  .pets-pets__wrapper {
+    padding: 162px 10px 42px;
+  }
+}
+
 .pets-pets__title {
   max-width: 400px;
   max-height: 90px;
@@ -1621,6 +1651,17 @@ h5 {
 @media (max-width: 1279px) {
   .pets-pets__title {
     margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .pets-pets__title {
+    margin-bottom: 42px;
+    font-size: 2.5rem;
+    line-height: 130%;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
   }
 }
 
@@ -1681,10 +1722,22 @@ h5 {
   }
 }
 
+@media (max-width: 599px) {
+  .pets-pets__card:nth-child(n+4) {
+    display: none;
+  }
+}
+
 .pets-pets__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 20px;
+}
+
+@media (max-width: 767px) {
+  .pets-pets__buttons {
+    gap: 10px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
