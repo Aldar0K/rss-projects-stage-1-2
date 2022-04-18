@@ -1,31 +1,35 @@
 .navigation {
     display: flex;
+    @include media-tablet {
+        display: none;   
+    }
 }
 
 .navigation__link {
     display: inline-block;
     margin-left: 35px;
-    @extend %transition;
-    cursor: pointer;
-    &_active {
-        border-bottom: solid 3px $color-primary;
-    }
     & a {
         @extend %font-secondary;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 160%;
-        /* identical to box height, or 24px */
+        @include font(1.5rem, 160%);
         color: $color-dark-s;
+        @extend %transition;
         cursor: pointer;
         &:hover {
-            color: $color-primary;
+            color: $color-light-s;
         }
+    }
+    &_active {
+        & a {
+            color: $color-light-s;
+        }
+        border-bottom: solid 3px $color-primary;
     }
     &_dark {
         & a {
             color: $color-dark-l;
+            &:hover {
+                color: $color-dark-3xl;
+            }
         }
     }
 }

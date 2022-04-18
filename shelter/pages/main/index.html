@@ -7,7 +7,8 @@
     <title>main</title>
     <link rel="stylesheet" href="../../sass/style.css">
 </head>
-<body>
+<!-- При активации меню добавлять класс body_lock тегу body. -->
+<body class="body">
     <header class="header">
         <div class="wrapper header__wrapper">
             <a class="logo" href="#">
@@ -22,6 +23,21 @@
                     <li class="navigation__link"><a href="#footer">Contacts</a></li>
                 </ul>
             </nav>
+            <div class="menu">
+                <div class="menu__icon">
+                    <span class="menu__line"></span>
+                </div>
+                <!-- По нажатию на иконку меню добавлять класс menu__body_active. -->
+                <div class="menu__body">
+                    <div class="menu__dropout"></div>
+                    <ul class="menu__list">
+                        <li class="menu__link menu__link_active"><a href="#">About the shelter</a></li>
+                        <li class="menu__link"><a href="../pets/index.html">Our pets</a></li>
+                        <li class="menu__link"><a href="#help">Help the shelter</a></li>
+                        <li class="menu__link"><a href="#footer">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -34,13 +50,17 @@
                     <button class="button button_colored">Make a friend</button>
                 </a>
             </div>
-            <img class="not-only__image" src="../../assets/images/png/start-screen-puppy.png" alt="not-only__image">
+            <div class="not-only__image">
+                <img src="../../assets/images/png/start-screen-puppy.png" alt="start-screen-puppy.png">
+            </div>
         </div>
     </section>
 
     <section class="about">
         <div class="wrapper about__wrapper">
-            <img class="about__image" src="../../assets/images/png/about-pets.png" width="300" height="408" alt="about__image">
+            <div class="about__image">
+                <img class="about__image" src="../../assets/images/png/about-pets.png" width="300" height="408" alt="about-pets.png">
+            </div>
                 <div class="about__content">
                     <h3 class="about__tittle">About the shelter “Cozy House”</h3>
                     <p class="about__paragraph">Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of them will find a family. The others will continue to live with us and will be waiting for a lucky chance to become dearly loved.</p>
@@ -53,32 +73,31 @@
         <div class="wrapper pets__wrapper">
             <h3 class="pets__title">Our friends who<br> are looking for a house</h3>
             <div class="slider pets__slider">
-                <button class="button button_round">
-                    <img src="../../assets/images/svg/arrow-left.svg" alt="arrow-left">
+                <button class="button button_round slider__button">
+                    <img src="../../assets/images/svg/arrow-left.svg" alt="arrow-left.svg">
                 </button>
                 <ul class="slider__list">
                     <li class="slider__card">
                         <img class="slider__image" src="../../assets/images/png/pets-katrine.png" width="270" height="270" alt="pets-katrine.png">
-                        <p class="slider__pet-name">Katrine</p>
+                        <p class="slider__name">Katrine</p>
                         <button class="button button_bordered">Learn more</button>
                     </li>
                     <li class="slider__card">
                         <img class="slider__image" src="../../assets/images/png/pets-jennifer.png" width="270" height="270" alt="pets-jennifer.png">
-                        <p class="slider__pet-name">Jennifer</p>
+                        <p class="slider__name">Jennifer</p>
                         <button class="button button_bordered">Learn more</button>
                     </li>
                     <li class="slider__card">
                         <img class="slider__image" src="../../assets/images/png/pets-woody.png" width="270" height="270" alt="pets-woody.png">
-                        <p class="slider__pet-name">Woody</p>
+                        <p class="slider__name">Woody</p>
                         <button class="button button_bordered">Learn more</button>
                     </li>
                 </ul>
-                <button class="button button_round">
+                <button class="button button_round slider__button">
                     <img src="../../assets/images/svg/arrow-right.svg" alt="arrow-right">
                 </button>
             </div>
-            <!-- Нажатие на Get to know the rest перебрасывает нас на страницу our pets. -->
-            <a href="#pets" style="display: block;"><button class="button button_colored button_big">Get to know the rest</button></a>
+            <a href="../pets/index.html#pets-pets" style="display: block;"><button class="button button_colored button_big">Get to know the rest</button></a>
         </div>
     </section>
 
@@ -128,15 +147,16 @@
 
     <section class="donation">
         <div class="wrapper donation_wrapper">
-            <img src="../../assets/images/png/donation-dog.png" alt="donation-dog.png">
+            <div class="dontation__image">
+                <img src="../../assets/images/png/donation-dog.png" alt="donation-dog.png">
+            </div>
             <div class="dontaion__content">
-                <!-- Интерактивный блок с номером банковского счета. Номер должен быть ссылкой, которая никуда не ведет. -->
                 <h3 class="dontaion__tittle">You can also make a donation</h3>
                 <h5 class="dontaion__subtitle">Name of the bank / Type of bank account</h5>
-                <div class="donation__card">
+                <a class="donation__card" href="#">
                     <img src="../../assets/images/svg/credit-card.svg" alt="credit-card.svg">
-                    <a href="#"></span><h4>8380 2880 8028 8791 7435</h4></a>
-                </div>
+                    <h4>8380 2880 8028 8791 7435</h4>
+                </a>
                 <p class="dontation__text">Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus tortor et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
             </div>
         </div>
@@ -144,21 +164,23 @@
 
     <footer class="footer" id="footer">
         <div class="wrapper footer__wrapper">
-            <div class="footer__contacts">
-                <h3 class="footer__title">For questions and suggestions</h3>
-                <!-- При нажатии на email или его иконку должен открываться почтовый сервис. -->
-                <a class="footer__link" href="mailto:email@shelter.com"><img src="../../assets/images/svg/icon-email.svg" alt="icon-email.svg">email@shelter.com</a>
-                <!-- При нажатии на телефон или его иконку должен открываться набор номера. -->
-                <a class="footer__link" href="tel:+13 674 567 75 54"><img src="../../assets/images/svg/icon-phone.svg" alt="icon-phone.svg">+13 674 567 75 54</a>
+            <div class="footer__content">
+                <div class="footer__contacts">
+                    <h3 class="footer__title">For questions and suggestions</h3>
+                    <a class="footer__link" href="mailto:email@shelter.com"><img src="../../assets/images/svg/icon-email.svg" alt="icon-email.svg">email@shelter.com</a>
+                    <a class="footer__link" href="tel:+13 674 567 75 54"><img src="../../assets/images/svg/icon-phone.svg" alt="icon-phone.svg">+13 674 567 75 54</a>
+                </div>
+                <div class="footer__locations">
+                    <h3 class="footer__title">We are waiting for your visit</h3>
+                    <a class="footer__link" href="https://goo.gl/maps/zBg6fj6Rf8C8sUMa7" target="_blank"><img src="../../assets/images/svg/icon-marker.svg" alt="icon-marker.svg">1 Central Street, Boston (entrance from the store)</a>
+                    <a class="footer__link" href="https://goo.gl/maps/F5T4DatksUWieUBa7" target="_blank"><img src="../../assets/images/svg/icon-marker.svg" alt="icon-marker.svg">18 South Park, London</a>
+                </div>
             </div>
-            <div class="footer__locations">
-                <h3 class="footer__title">We are waiting for your visit</h3>
-                <!-- При нажатии на локацию должна открываться страница с google maps в отдельном окне с любой локацией на ваш выбор. -->
-                <a class="footer__link" href="#"><img src="../../assets/images/svg/icon-marker.svg" alt="icon-marker.svg">1 Central Street, Boston (entrance from the store)</a>
-                <a class="footer__link" href="#"><img src="../../assets/images/svg/icon-marker.svg" alt="icon-marker.svg">18 South Park, London</a>
+            <div class="footer__image">
+                <img src="../../assets/images/png/footer-puppy.png" alt="footer-puppy.png">
             </div>
-            <img class="footer__image" src="../../assets/images/png/footer-puppy.png" alt="footer-puppy.png">
         </div>
     </footer>
+    <script src="../../index.js"></script>
 </body>
 </html>

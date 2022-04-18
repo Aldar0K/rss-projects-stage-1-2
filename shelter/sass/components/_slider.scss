@@ -1,8 +1,15 @@
 .slider {
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 53px;
+    @include media-laptop {
+        gap: 12px;
+    }
+    @include media-tablet {
+        height: 507px;
+        position: relative;
+        align-items: flex-start;
+    }
 }
 
 .slider__list {
@@ -10,6 +17,9 @@
     flex-direction: row;
     align-items: center;
     gap: 90px;
+    @include media-laptop {
+        gap: 40px;
+    }
 }
 
 .slider__card {
@@ -23,23 +33,43 @@
     background: $color-light-s;
     @extend %transition;
     &:hover {
+        transform: scale(1.03);
+        box-shadow: 10px 15px 25px 0 $color-dark-s;
         cursor: pointer;
         .button {
             background: $color-active;
         }
     }
+    @include media-laptop {
+        &:last-child {
+            display: none;
+        }
+    }
+    @include media-tablet {
+        &:nth-child(2n) {
+            display: none;
+        }
+    } 
 }
 
-.slider__pet-name {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    /* identical to box height */
-    display: flex;
-    align-items: center;
-    text-align: center;
+.slider__name {
+    @extend %font-primary;
+    @include font (2rem, 23px);
     letter-spacing: 0.06em;
     color: $color-dark-l;
+}
+
+.slider__button {
+    @include media-tablet {
+        &:first-child {
+            position: absolute;
+            bottom: 0;
+            left: 43px;
+        }
+        &:last-child {
+            position: absolute;
+            bottom: 0;
+            right: 43px;
+        }
+    }
 }
