@@ -49,6 +49,7 @@
 }
 
 .menu__body {
+    // z-index: 5;
     position: fixed;
     padding: 248px 38px 248px 39px;
     top: 0;
@@ -63,7 +64,24 @@
     }
 }
 
+.menu__dropout {
+    z-index: 1;
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color-dropout;
+    transition: all 1s ease-in;
+    &_active {
+        display: block;
+    }
+}
+
 .menu__list {
+    z-index: 10;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
