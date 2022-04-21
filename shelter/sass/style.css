@@ -684,6 +684,7 @@ h5 {
 }
 
 .menu__body {
+  z-index: 5;
   position: fixed;
   padding: 248px 38px 248px 39px;
   top: 0;
@@ -700,21 +701,24 @@ h5 {
   right: 0;
 }
 
+.menu__body_light {
+  background: #FFFFFF;
+}
+
 .menu__dropout {
   z-index: 1;
-  display: none;
   position: fixed;
-  left: 0;
+  left: -100%;
   top: 0;
-  width: 100%;
+  width: calc(100% - 320px);
   height: 100%;
-  background-color: rgba(41, 41, 41, 0.6);
-  -webkit-transition: all 1s ease-in;
-  transition: all 1s ease-in;
+  background: rgba(41, 41, 41, 0.6);
+  -webkit-transition: left .5s ease-in 0s;
+  transition: left .5s ease-in 0s;
 }
 
 .menu__dropout_active {
-  display: block;
+  left: 0;
 }
 
 .menu__list {
@@ -752,6 +756,14 @@ h5 {
 
 .menu__link_active a {
   color: #FAFAFA;
+}
+
+.menu__link_dark a {
+  color: #545454;
+}
+
+.menu__link_dark a:hover {
+  color: #292929;
 }
 
 .wrapper {

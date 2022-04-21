@@ -49,7 +49,7 @@
 }
 
 .menu__body {
-    // z-index: 5;
+    z-index: 5;
     position: fixed;
     padding: 248px 38px 248px 39px;
     top: 0;
@@ -62,20 +62,23 @@
     &_active {
         right: 0;
     }
+    &_light {
+        background: $color-background-light;
+    }
 }
 
 .menu__dropout {
     z-index: 1;
-    display: none;
+    // display: none;
     position: fixed;
-    left: 0;
+    left: -100%;
     top: 0;
-    width: 100%;
+    width: calc(100% - 320px);
     height: 100%;
-    background-color: $color-blackout;
-    transition: all 1s ease-in;
+    background: $color-blackout;
+    transition: left .5s ease-in 0s;
     &_active {
-        display: block;
+        left: 0;
     }
 }
 
@@ -104,5 +107,13 @@
             color: $color-light-s;
         }
         border-bottom: solid 3px $color-primary;
+    }
+    &_dark {
+        & a {
+            color: $color-dark-l;
+            &:hover {
+                color: $color-dark-3xl;
+            }
+        }
     }
 }
