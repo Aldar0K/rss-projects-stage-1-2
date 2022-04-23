@@ -30,6 +30,9 @@ class Modal {
         
         this.appendModalElements();
 
+        // Bind Events.
+        this.bindEvents();
+
         // Open Modal.
         this.openModal();
     }
@@ -55,8 +58,17 @@ class Modal {
         this.overlay.append(this.modal);
     }
 
+    bindEvents () {
+        // this.modalCloseBtn.addEventListener('click', this.closeModal);
+        this.overlay.addEventListener('click', this.closeModal);
+    }
+
     openModal () {
         document.body.append(this.overlay);
+    }
+
+    closeModal () {
+        document.querySelector('.overlay').remove();
     }
 }
 
