@@ -1,6 +1,9 @@
 // Score.
 console.log('Score: 100 / 100');
 
+// Иморт массива petsArr из файла pets.js.
+import petsArr from './js/pets';
+
 // Функция для блокировки и разблокировки скролла на странице.
 function blockBody () {
     document.body.classList.toggle('body_lock');
@@ -26,4 +29,3 @@ menuLinks.forEach((link) => link.addEventListener('click', toogleMenu))
 }
 
 // Попап (модальное окно).
-// export
