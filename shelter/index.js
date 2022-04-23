@@ -1,13 +1,27 @@
-// Score.
-console.log('Score: 100 / 100');
-
 // Иморт массива petsArr из файла pets.js.
-import petsArr from './js/pets';
+import petsArr from './js/pets.js';
+import Modal from './js/Modal.js';
+
+
+// При загрузке странице.
+window.onload = function () {
+    console.log('Score: 100 / 100');
+
+    // Render Modals.
+    if (petsArr) {
+        console.log('petsArr imported');
+    }
+    if (Modal) {
+        console.log('Modal imported');
+    }
+}
+
 
 // Функция для блокировки и разблокировки скролла на странице.
 function blockBody () {
     document.body.classList.toggle('body_lock');
 }
+
 
 // Меню бургер.
 const iconMenu = document.querySelector('.menu__icon');
@@ -28,4 +42,9 @@ iconMenu.addEventListener('click', toogleMenu);
 menuLinks.forEach((link) => link.addEventListener('click', toogleMenu))
 }
 
+
 // Попап (модальное окно).
+// Фурнкция для рендера объектов питомцев в DOM.
+function renderModalToDom () {
+    // const body = document.querySelector('body');
+}
