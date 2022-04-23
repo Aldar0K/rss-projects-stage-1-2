@@ -7,13 +7,16 @@ import Modal from './js/Modal.js';
 window.onload = function () {
     console.log('Score: 100 / 100');
 
-    // Render Modals.
+    // Проверка импортов.
     if (petsArr) {
-        console.log('petsArr imported');
+        console.log('petsArr imported', typeof petsArr);
     }
     if (Modal) {
-        console.log('Modal imported');
+        console.log('Modal imported', typeof Modal);
     }
+
+    // Generate Base Modal from Modal Class.
+    addCardsClickHandler();
 }
 
 
@@ -44,7 +47,23 @@ menuLinks.forEach((link) => link.addEventListener('click', toogleMenu))
 
 
 // Попап (модальное окно).
-// Фурнкция для рендера объектов питомцев в DOM.
-function renderModalToDom () {
-    // const body = document.querySelector('body');
+
+// Добавление слушателей для карточек питомцев.
+function addCardsClickHandler () {
+    document.querySelectorAll('.slider__card').forEach(card => {
+        card.addEventListener('click', () => {
+            generatePetModal();
+        })
+    })
+}
+
+// Функция для рендера модальных окон питомцев в DOM.
+function generatePetModal () {
+    renderModalWindow('Test content for Pet Modal');
+}
+
+// Функция для рендера любых модальных окон.
+function renderModalWindow (content) {
+    let modal = new Modal ('pets-modal');
+    modal.buildModal(content);
 }
