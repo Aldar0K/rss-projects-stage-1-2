@@ -62,7 +62,7 @@ function generatePetModal () {
     renderModalWindow('Test content for Pet Modal');
 }
 
-// Функция для рендера любых модальных окон.
+// Функция для рендера любых модальных окон в DOM.
 function renderModalWindow (content) {
     let modal = new Modal ('pets-modal');
     modal.buildModal(content);

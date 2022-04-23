@@ -1,4 +1,5 @@
 .overlay {
+    z-index: 1;
     position: fixed;
     top: 0;
     left: 0;
@@ -12,37 +13,44 @@
 
 .modal {
     position: relative;
-    padding: 52px 52px 0 0;
-    // border-radius: ;
-    // background-color: ;
-    width: 952px;
-    // min-height: 552px;
-    max-height: 552px;
-    overflow: auto;
+    overflow: visible;
+    width: 900px;
+    height: 500px;
+    border-radius: 9px;
+    background: $color-light-s;
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
     @extend %custom-scroll;
 
     @include media-tablet {
-        width: 682px;
+        width: 630px;
+        height: 350px;
     }
     @include media-mobile {
-        padding: 52px 31px 0 0;
-        width: 271px;
+        width: 240px;
+        height: 341px;
     }
 }
 
 .modal__close-icon {
+    z-index: 10;
     position: absolute;
-    top: 0;
-    right: 10px;
+    top: -52px;
+    right: -42px;
+    width: 52px;
+    height: 52px;
     border: 2px solid $color-primary;
     box-sizing: border-box;
     border-radius: 100px;
     cursor: pointer;
     content: "x";
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.2rem;
-    // svg {
-    //     pointer-events: none;
-    // }
+    svg {
+        pointer-events: none;
+    }
+    @extend %transition;
     &:hover {
         background: $color-active;
     }
@@ -56,19 +64,17 @@
 }
 
 .modal__content {
-    width: 900px;
-    height: 500px;
-    border-radius: 9px;
-    background: $color-light-s;
-    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    margin: 50px 20px 0 29px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 
     @include media-tablet {
-        width: 630px;
-        height: 350px;
+        margin: 10px 9px 0 11px;
+        gap: 20px;
     }
     @include media-mobile {
-        width: 240px;
-        height: 341px;
+        margin: 10px 10px 10px 10px;
     }
 }
 
@@ -82,21 +88,6 @@
     }
     @include media-mobile {
         display: none;
-    }
-}
-
-.modal__text {
-    margin: 50px 20px 0 29px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-
-    @include media-tablet {
-        margin: 10px 9px 0 11px;
-        gap: 20px;
-    }
-    @include media-mobile {
-        margin: 10px 10px 10px 10px;
     }
 }
 

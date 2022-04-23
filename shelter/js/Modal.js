@@ -4,6 +4,11 @@ class Modal {
         this.modal = '';
         this.modalContent = '';
         this.modalCloseBtn = '';
+        // this.modalImage = '';
+        // this.modalText = '';
+        // this.modalTitle = '';
+        // this.modalParagraph = '';
+        // this.modalList = '';
         this.overlay = '';
     }
 
@@ -12,7 +17,7 @@ class Modal {
         this.overlay = this.createDomNode(this.overlay, 'div', 'overlay');
 
         // Modal.
-        this.modal = this.createDomNode(this.modal, 'div', this.classes);
+        this.modal = this.createDomNode(this.modal, 'div', 'modal', this.classes);
 
         // Modal content.
         this.modalContent = this.createDomNode(this.modalContent, 'div', 'modal__content');
@@ -25,7 +30,8 @@ class Modal {
         
         this.appendModalElements();
 
-        console.log(this.modal);
+        // Open Modal.
+        this.openModal();
     }
 
     createDomNode (node, element, ...classes) {
@@ -34,7 +40,7 @@ class Modal {
         return node;
     }
 
-    setContent(content) {
+    setContent (content) {
         if (typeof content === 'string') {
             this.modalContent.innerHTML = content;
         } else {
@@ -43,10 +49,14 @@ class Modal {
         }
     }
 
-    appendModalElements() {
+    appendModalElements () {
         this.modal.append(this.modalCloseBtn);
         this.modal.append(this.modalContent);
         this.overlay.append(this.modal);
+    }
+
+    openModal () {
+        document.body.append(this.overlay);
     }
 }
 
