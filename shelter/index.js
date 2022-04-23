@@ -24,3 +24,6 @@ menuDropout.addEventListener('click', toogleMenu);
 iconMenu.addEventListener('click', toogleMenu);
 menuLinks.forEach((link) => link.addEventListener('click', toogleMenu))
 }
+
+// Попап (модальное окно).
+// export
