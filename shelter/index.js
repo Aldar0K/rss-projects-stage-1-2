@@ -1,6 +1,9 @@
-// Иморт массива petsArr из файла pets.js.
+// Импорт массива объектов petsArr.
 import petsArr from './js/pets.js';
+// Импорт класса Modal.
 import Modal from './js/Modal.js';
+// Импорт подкласса ArticleModal.
+import ArticleModal from './js/ArticleModal.js';
 
 
 // При загрузке странице.
@@ -13,6 +16,9 @@ window.onload = function () {
     }
     if (Modal) {
         console.log('Modal imported', typeof Modal);
+    }
+    if (ArticleModal) {
+        console.log('ArticleModal imported', typeof ArticleModal);
     }
 
     // Generate Base Modal from Modal Class.
@@ -47,23 +53,35 @@ menuLinks.forEach((link) => link.addEventListener('click', toogleMenu))
 
 
 // Попап (модальное окно).
-
 // Добавление слушателей для карточек питомцев.
 function addCardsClickHandler () {
     document.querySelectorAll('.slider__card').forEach(card => {
-        card.addEventListener('click', () => {
-            generatePetModal();
+        card.addEventListener('click', (e) => {
+            if (e.target.closest('.slider__card')) {
+                let clickedCardId = e.target.closest('.slider__card').getAttribute('data-id');
+                let clickedCardData = getClickedData(clickedCardId);
+                
+                // console.log(clickedCardData);
+                renderArticleModalWindow(clickedCardData);
+            }
         })
     })
 }
 
-// Функция для рендера модальных окон питомцев в DOM.
-function generatePetModal () {
-    renderModalWindow('Test content for Pet Modal');
+// Функция для поиска объекта по id.
+function getClickedData (id) {
+    return petsArr.find(article => article.id == id);
 }
 
 // Функция для рендера любых модальных окон в DOM.
 function renderModalWindow (content) {
     let modal = new Modal ('pets-modal');
     modal.buildModal(content);
+}
+
+// Функция для рендера модальных окон питомцев в DOM.
+function renderArticleModalWindow (article) {
+    // renderModalWindow('Test content for Pet Modal');
+    let modal = new ArticleModal ('article-modal', article);
+    modal.renderModal();
 }

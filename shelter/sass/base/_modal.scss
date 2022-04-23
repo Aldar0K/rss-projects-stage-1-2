@@ -20,12 +20,13 @@
     background: $color-light-s;
     box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
     @extend %custom-scroll;
+    display: flex;
 
-    @include media-tablet {
+    @include media-laptop {
         width: 630px;
         height: 350px;
     }
-    @include media-mobile {
+    @include media-tablet {
         width: 240px;
         height: 341px;
     }
@@ -55,10 +56,10 @@
         background: $color-active;
     }
 
-    @include media-tablet {
+    @include media-laptop {
         right: 9px;
     }
-    @include media-mobile {
+    @include media-tablet {
         right: 0;
     }
 }
@@ -69,11 +70,11 @@
     flex-direction: column;
     gap: 40px;
 
-    @include media-tablet {
+    @include media-laptop {
         margin: 10px 9px 0 11px;
         gap: 20px;
     }
-    @include media-mobile {
+    @include media-tablet {
         margin: 10px 10px 10px 10px;
     }
 }
@@ -82,11 +83,11 @@
     width: 500px;
     height: 500px;
 
-    @include media-tablet {
+    @include media-laptop {
         width: 630px;
         height: 350px;
     }
-    @include media-mobile {
+    @include media-tablet {
         display: none;
     }
 }
@@ -95,13 +96,13 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    @include media-mobile {
+    @include media-tablet {
         align-items: center;
     }
 }
 
 .modal__paragraph {
-    @include media-mobile {
+    @include media-tablet {
         text-align: justify;
     }
 }
@@ -110,8 +111,7 @@
     ul li {
         &:first-child {
             content: "";
-            border: 2px solid $color-primary;
-            border-radius: 2px;
+            // background: '../../assets';
         }
     }
 }
