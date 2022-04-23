@@ -1,5 +1,6 @@
-[
+const petsArr = [
     {
+      "id": 1,
       "name": "Jennifer",
       "img": "../../assets/images/jennifer.png",
       "type": "Dog",
@@ -9,9 +10,10 @@
       "inoculations": ["none"],
       "diseases": ["none"],
       "parasites": ["none"],
-      "id": 1
+
     },
     {
+      "id": 2,
       "name": "Sophia",
       "img": "../../assets/images/sophia.png",
       "type": "Dog",
@@ -21,9 +23,9 @@
       "inoculations": ["parvovirus"],
       "diseases": ["none"],
       "parasites": ["none"],
-      "id": 2
     },
     {
+      "id": 3,
       "name": "Woody",
       "img": "../../assets/images/woody.png",
       "type": "Dog",
@@ -33,9 +35,9 @@
       "inoculations": ["adenovirus", "distemper"],
       "diseases": ["right back leg mobility reduced"],
       "parasites": ["none"],
-      "id": 3
     },
     {
+      "id": 4,
       "name": "Scarlett",
       "img": "../../assets/images/scarlett.png",
       "type": "Dog",
@@ -45,9 +47,9 @@
       "inoculations": ["parainfluenza"],
       "diseases": ["none"],
       "parasites": ["none"],
-      "id": 4
     },
     {
+      "id": 5,
       "name": "Katrine",
       "img": "../../assets/images/katrine.png",
       "type": "Cat",
@@ -57,9 +59,9 @@
       "inoculations": ["panleukopenia"],
       "diseases": ["none"],
       "parasites": ["none"],
-      "id": 5
     },
     {
+      "id": 6, 
       "name": "Timmy",
       "img": "../../assets/images/timmy.png",
       "type": "Cat",
@@ -69,9 +71,9 @@
       "inoculations": ["calicivirus", "viral rhinotracheitis"],
       "diseases": ["kidney stones"],
       "parasites": ["none"],
-      "id": 6
     },
     {
+      "id": 7,
       "name": "Freddie",
       "img": "../../assets/images/freddie.png",
       "type": "Cat",
@@ -81,9 +83,9 @@
       "inoculations": ["rabies"],
       "diseases": ["none"],
       "parasites": ["none"],
-      "id": 7
     },
     {
+      "id": 8,
       "name": "Charly",
       "img": "../../assets/images/charly.png",
       "type": "Dog",
@@ -93,6 +95,5 @@
       "inoculations": ["bordetella bronchiseptica", "leptospirosis"],
       "diseases": ["deafness", "blindness"],
       "parasites": ["lice", "fleas"],
-      "id": 8
     }
 ]
