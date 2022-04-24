@@ -1465,6 +1465,7 @@ h5 {
 }
 
 .slider__item {
+  width: 990px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

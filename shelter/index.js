@@ -23,6 +23,9 @@ window.onload = function () {
 
     // Добавление слушателей для карточек питомцев.
     addCardsClickHandler();
+
+    // Добавление слушателей для кнопок слайдера.
+    addSliderBtnsHandler();
 }
 
 
@@ -85,3 +88,35 @@ function renderArticleModalWindow (article) {
     modal.renderModal();
     blockBody();
 }
+
+
+// Slider main page.
+// Переменные для слайдера.
+const slider = document.querySelector('#slider');
+const btnLeft = document.querySelector("#btn-left");
+const btnRight = document.querySelector("#btn-right");
+
+// Функция добавление слушателей для кнопок слайдера.
+function addSliderBtnsHandler () {
+    btnLeft.addEventListener('click', moveLeft);
+    btnRight.addEventListener('click', moveRight);
+}
+
+// Функции для перелистывания слайдов.
+function moveLeft () {
+    slider.classList.add('transition-left');
+    btnLeft.removeEventListener('click', moveLeft);
+    btnLeft.removeEventListener('click', moveRight);
+}
+function moveRight () {
+    slider.classList.add('transition-right');
+    btnLeft.removeEventListener('click', moveRight);
+    btnLeft.removeEventListener('click', moveLeft);
+}
+
+// Конец css анимации.
+slider.addEventListener('animationend', () => {
+    slider.classList.remove('transition-left');
+    slider.classList.remove('transition-right');
+    addSliderBtnsHandler();
+});
