@@ -806,6 +806,8 @@ h5 {
   height: 552px;
   -webkit-transform: translateX(26px);
           transform: translateX(26px);
+  -webkit-transform: translateY(-26px);
+          transform: translateY(-26px);
 }
 
 @media (max-width: 1279px) {
@@ -822,6 +824,8 @@ h5 {
     padding-right: 31px;
     -webkit-transform: translateX(15.5px);
             transform: translateX(15.5px);
+    -webkit-transform: translateY(-26px);
+            transform: translateY(-26px);
   }
 }
 

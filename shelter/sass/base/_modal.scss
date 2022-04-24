@@ -17,6 +17,7 @@
     width: 952px;
     height: 552px;
     transform: translateX(26px);
+    transform: translateY(-26px);
     @include media-laptop {
         width: 682px;
         height: 402px;
@@ -26,6 +27,7 @@
         height: 393px;
         padding-right: 31px;
         transform: translateX(15.5px);
+        transform: translateY(-26px);
     }
 }
 
