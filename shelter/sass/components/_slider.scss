@@ -1,3 +1,23 @@
+@keyframes move-left {
+    from {left: -990px;}
+    to {left: 0px;}
+}
+
+@keyframes move-right {
+    from {left: -990px;}
+    to {left: -1980px;}
+}
+
+.transition-left {
+    animation-name: move-left;
+    animation-duration: 2s;
+}
+
+.transition-right {
+    animation-name: move-right;
+    animation-duration: 2s;
+}
+
 .slider {
     display: flex;
     align-items: center;
@@ -12,13 +32,35 @@
     }
 }
 
+.slider__wrapper {
+    width: 990px;
+    overflow: hidden;
+
+    @include media-laptop {
+        width: 580px;
+    }
+    @include media-tablet {
+        width: 270px;
+    }
+}
+
 .slider__list {
+    display: flex;
+    position: relative;
+    left: -990px;
+}
+
+.slider__item {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 90px;
     @include media-laptop {
+        width: 580px;
         gap: 40px;
+    }
+    @include media-tablet {
+        width: 270px;
     }
 }
 
