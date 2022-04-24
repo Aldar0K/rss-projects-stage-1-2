@@ -1,15 +1,10 @@
 class Modal {
     constructor (classes) {
         this.classes = classes;
-        this.modal = '';
-        this.modalContent = '';
-        this.modalCloseBtn = '';
-        // this.modalImage = '';
-        // this.modalText = '';
-        // this.modalTitle = '';
-        // this.modalParagraph = '';
-        // this.modalList = '';
         this.overlay = '';
+        this.modal = '';
+        // this.modalContent = '';
+        this.modalCloseBtn = '';
     }
 
     buildModal(content) {
@@ -20,7 +15,7 @@ class Modal {
         this.modal = this.createDomNode(this.modal, 'div', 'modal', this.classes);
 
         // Modal content.
-        this.modalContent = this.createDomNode(this.modalContent, 'div', 'modal__content');
+        // this.modalContent = this.createDomNode(this.modalContent, 'div', 'modal__content');
 
         // Modal close button.
         this.modalCloseBtn = this.createDomNode(this.modalCloseBtn, 'span', 'modal__close-icon');
@@ -45,21 +40,21 @@ class Modal {
 
     setContent (content) {
         if (typeof content === 'string') {
-            this.modalContent.innerHTML = content;
+            this.modal.innerHTML = content;
         } else {
-            this.modalContent.innerHTML = '';
-            this.modalContent.appendChild(content);
+            this.modal.innerHTML = '';
+            this.modal.appendChild(content);
         }
     }
 
     appendModalElements () {
         this.modal.append(this.modalCloseBtn);
-        this.modal.append(this.modalContent);
+        // this.modal.append(this.modalContent);
         this.overlay.append(this.modal);
     }
 
     bindEvents () {
-        // this.modalCloseBtn.addEventListener('click', this.closeModal);
+        this.modalCloseBtn.addEventListener('click', this.closeModal);
         this.overlay.addEventListener('click', this.closeModal);
     }
 
@@ -67,8 +62,15 @@ class Modal {
         document.body.append(this.overlay);
     }
 
-    closeModal () {
-        document.querySelector('.overlay').remove();
+    closeModal (e) {
+        let classes = e.target.classList;
+        if (classes.contains('overlay') || classes.contains('modal__close-icon') 
+        && document.querySelector('.overlay')) {
+            document.querySelector('.overlay').remove();
+        }
+        if (document.body.classList.contains('body_lock')) {
+            document.body.classList.remove('body_lock');
+        }
     }
 }
 

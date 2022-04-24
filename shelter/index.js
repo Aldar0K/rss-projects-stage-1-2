@@ -21,7 +21,7 @@ window.onload = function () {
         console.log('ArticleModal imported', typeof ArticleModal);
     }
 
-    // Generate Base Modal from Modal Class.
+    // Добавление слушателей для карточек питомцев.
     addCardsClickHandler();
 }
 
@@ -61,14 +61,14 @@ function addCardsClickHandler () {
                 let clickedCardId = e.target.closest('.slider__card').getAttribute('data-id');
                 let clickedCardData = getClickedData(clickedCardId);
                 
-                // console.log(clickedCardData);
+                // Рендер модального окна для объекта питомца.
                 renderArticleModalWindow(clickedCardData);
             }
         })
     })
 }
 
-// Функция для поиска объекта по id.
+// Функция для поиска объекта питомца в petsArr по id.
 function getClickedData (id) {
     return petsArr.find(article => article.id == id);
 }
@@ -81,7 +81,7 @@ function renderModalWindow (content) {
 
 // Функция для рендера модальных окон питомцев в DOM.
 function renderArticleModalWindow (article) {
-    // renderModalWindow('Test content for Pet Modal');
     let modal = new ArticleModal ('article-modal', article);
     modal.renderModal();
+    blockBody();
 }

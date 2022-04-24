@@ -17,21 +17,21 @@ class ArticleModal extends Modal {
     }
 
     //Article Modal generator.
-    generateContent() {
+    generateContent () {
         let template = '';
         let article = document.createElement('div');
-        article.className = 'article-modal__content';
+        article.className = 'modal__content';
 
         this.img &&
         (template += `<img class="modal__image" src=${this.img} alt="pet.png">`)
 
-        template += `<div class="modal__content">`
+        template += `<div class="modal__text">`
 
         this.name && this.type && this.breed &&
         (template += `<div class="modal__title"><h3>${this.name}</h3><h4>${this.type} - ${this.breed}</h4></div>`)
 
         this.description &&
-        (template += `<p class="modal__paragraph">${this.description}</p>`)
+        (template += `<h5 class="modal__paragraph">${this.description}</h5>`)
 
         this.age && this.inoculations && this.diseases && this.parasites &&
         (template += `<div class="modal__list"><ul><li><b>Age</b>: ${this.age}</li><li><b>Inoculations</b>: ${this.inoculations}</li><li><b>Diseases</b>: ${this.diseases}</li><li><b>Parasites</b>: ${this.parasites}</li></ul></div>`)
