@@ -17,8 +17,7 @@
     padding: 52px 52px 0 0;
     width: 952px;
     height: 552px;
-    transform: translateX(26px);
-    transform: translateY(-26px);
+    transform: translate(26px, -26px);
 
     @include media-laptop {
         width: 682px;
@@ -28,8 +27,7 @@
         width: 271px;
         height: 393px;
         padding-right: 31px;
-        transform: translateX(15.5px);
-        transform: translateY(-26px);
+        transform: translate(15.5px, -26px);
     }
 }
 
