@@ -67,9 +67,10 @@ class Modal {
         if (classes.contains('overlay') || classes.contains('modal__close-icon') 
         && document.querySelector('.overlay')) {
             document.querySelector('.overlay').remove();
-        }
-        if (document.body.classList.contains('body_lock')) {
-            document.body.classList.remove('body_lock');
+            
+            if (document.body.classList.contains('body_lock')) {
+                document.body.classList.remove('body_lock');
+            }
         }
     }
 }

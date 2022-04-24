@@ -55,10 +55,10 @@ menuLinks.forEach((link) => link.addEventListener('click', toogleMenu))
 // Попап (модальное окно).
 // Добавление слушателей для карточек питомцев.
 function addCardsClickHandler () {
-    document.querySelectorAll('.slider__card').forEach(card => {
+    document.querySelectorAll('.pet-card').forEach(card => {
         card.addEventListener('click', (e) => {
-            if (e.target.closest('.slider__card')) {
-                let clickedCardId = e.target.closest('.slider__card').getAttribute('data-id');
+            if (e.target.closest('.pet-card')) {
+                let clickedCardId = e.target.closest('.pet-card').getAttribute('data-id');
                 let clickedCardData = getClickedData(clickedCardId);
                 
                 // Рендер модального окна для объекта питомца.
