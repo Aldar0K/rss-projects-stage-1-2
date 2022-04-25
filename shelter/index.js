@@ -95,6 +95,9 @@ function renderArticleModalWindow (article) {
 const slider = document.querySelector('#slider');
 const btnLeft = document.querySelector("#btn-left");
 const btnRight = document.querySelector("#btn-right");
+const leftItem = document.querySelector('#item-left');
+const rightItem = document.querySelector('#item-right');
+const activeItem = document.querySelector('#item-active');
 
 // Функция добавление слушателей для кнопок слайдера.
 function addSliderBtnsHandler () {
@@ -106,17 +109,56 @@ function addSliderBtnsHandler () {
 function moveLeft () {
     slider.classList.add('transition-left');
     btnLeft.removeEventListener('click', moveLeft);
-    btnLeft.removeEventListener('click', moveRight);
+    btnRight.removeEventListener('click', moveRight);
 }
 function moveRight () {
     slider.classList.add('transition-right');
-    btnLeft.removeEventListener('click', moveRight);
+    btnRight.removeEventListener('click', moveRight);
     btnLeft.removeEventListener('click', moveLeft);
 }
 
 // Конец css анимации.
-slider.addEventListener('animationend', () => {
-    slider.classList.remove('transition-left');
-    slider.classList.remove('transition-right');
+slider.addEventListener('animationend', (animationEvent) => {
+    console.log(animationEvent);
+
+    if (animationEvent.animationName === 'move-left') {
+        slider.classList.remove('transition-left');
+
+        activeItem.innerHTML = leftItem.innerHTML;
+
+        leftItem.innerHTML = '';
+        leftItem.innerHTML = generateSliderItemTemplate();
+    } else {
+        slider.classList.remove('transition-right');
+
+        activeItem.innerHTML = rightItem.innerHTML;
+
+        rightItem.innerHTML = '';
+        rightItem.innerHTML = generateSliderItemTemplate();
+    }
+
     addSliderBtnsHandler();
 });
+
+// Функция для создания нового элемента слайдрера.
+function generateSliderItemTemplate () {
+    let template = '';
+    for (let i = 0; i < 3; i++) {
+        template += createCardTemplate(1);
+    }
+    return template;
+}
+
+// Функция для создания карточки питомца (Универсальная).
+function createCardTemplate (id) {
+    let template = '';
+    let CardData = getClickedData(id);
+    template += `<div class="pet-card" data-id="${id}">`
+    template += `<img class="slider__image" src=${CardData.img} width="270" height="270" alt="pet.png">`
+    template += `<p class="slider__name">${CardData.name}</p>`
+    template += `<button class="button button_bordered">Learn more</button>`
+    template += `</div>`
+    return template;
+}
+
+// Функция для получения неповторяющихся id.
