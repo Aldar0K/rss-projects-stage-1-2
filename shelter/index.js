@@ -309,6 +309,7 @@ function lastPage () {
     btnPagLeft.addEventListener('click', prevPage);
 }
 function prevPage () {
+    generateNewPagination();
     if (btnPagInfo.innerHTML === '2') {
         btnPagInfo.innerHTML = +btnPagInfo.innerHTML - 1;
         btnPagDblLeft.classList.add('button_disabled');
@@ -316,7 +317,6 @@ function prevPage () {
         btnPagDblLeft.removeEventListener('click', firstPage);
         btnPagLeft.removeEventListener('click', prevPage);
     } else {
-        generateNewPagination();
         btnPagDblRight.classList.remove('button_disabled');
         btnPagRight.classList.remove('button_disabled');
         btnPagInfo.innerHTML = +btnPagInfo.innerHTML - 1;
