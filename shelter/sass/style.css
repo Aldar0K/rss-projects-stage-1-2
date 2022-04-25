@@ -1608,11 +1608,17 @@ h5 {
             justify-content: center;
     max-width: 580px;
   }
+  .pagination__list .pet-card:nth-child(n+7) {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
   .pagination__list {
     max-width: 270px;
+  }
+  .pagination__list .pet-card:nth-child(n+6) {
+    display: none;
   }
 }
 
