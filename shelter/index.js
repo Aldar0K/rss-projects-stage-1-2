@@ -119,8 +119,6 @@ function moveRight () {
 
 // Конец css анимации.
 slider.addEventListener('animationend', (animationEvent) => {
-    console.log(animationEvent);
-
     if (animationEvent.animationName === 'move-left') {
         slider.classList.remove('transition-left');
 
@@ -143,8 +141,10 @@ slider.addEventListener('animationend', (animationEvent) => {
 // Функция для создания нового элемента слайдрера.
 function generateSliderItemTemplate () {
     let template = '';
+    let uniqueIds = getTreeUniqueIds();
     for (let i = 0; i < 3; i++) {
-        template += createCardTemplate(1);
+        template += createCardTemplate(uniqueIds[i]);
+        // template += createCardTemplate(getUniqueId());
     }
     return template;
 }
@@ -161,4 +161,33 @@ function createCardTemplate (id) {
     return template;
 }
 
-// Функция для получения неповторяющихся id.
+// Функция для получения уникального id.
+function getTreeUniqueIds () {
+    let treeUniqueIds = [];
+    let activeIds = getActiveIds();
+
+    for (let i = 0; i < 3; i++) {
+        let uniqueId = getRandomInRange(1, 8);
+        while (activeIds.includes(uniqueId) || treeUniqueIds.includes(uniqueId)) {
+            uniqueId = getRandomInRange(1, 8);
+        }
+        treeUniqueIds.push(uniqueId);
+    }
+    
+    console.log(treeUniqueIds);
+    return treeUniqueIds;
+};
+
+// Функция для получения рандомного числа в диапазане (Универсальная).
+function getRandomInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Функция для получения массива занятых id.
+function getActiveIds () {
+    const activeIds = [];
+    for (let i = 0; i < 3; i++) {
+        activeIds.push(+activeItem.children[i].dataset.id);
+    }
+    return activeIds;
+}
