@@ -17,6 +17,12 @@ window.onload = function () {
     if (slider) {
         addSliderBtnsHandler();
     }
+
+    // Добавление слушателей для кнопок пагинации, а также генерация новой пагинации.
+    if (pagintaion) {
+        addPagintationBtnsHandler();
+        generateNewPagination();
+    }
 }
 
 
@@ -192,3 +198,141 @@ function getActiveIds () {
 
 
 // Pagination pets page.
+// Переменные для пагинации.
+const pagintaion = document.querySelector('#pagination');
+const pagintaionList = document.querySelector('.pagination__list');
+const btnPagDblLeft = document.querySelector('#btn-dblleft');
+const btnPagLeft = document.querySelector('#btn-left');
+const btnPagRight = document.querySelector('#btn-right');
+const btnPagDblRight = document.querySelector('#btn-dblright');
+const btnPagInfo = document.querySelector('#btn-info');
+
+// Функция добавление слушателей для кнопок слайдера.
+function addPagintationBtnsHandler () {
+    btnPagDblLeft.addEventListener('click', firstPage);
+    btnPagLeft.addEventListener('click', prevPage);
+    btnPagDblRight.addEventListener('click', lastPage);
+    btnPagRight.addEventListener('click', nexPage);
+}
+
+// Создаем новый массив, состоящий из 48 элементов, используя исходный массив.
+function getNewArr (pages = 6) {
+    const newArr = [];
+    for (let i = 0; i < pages; i++) {
+        newArr.push(getShuffleArr());
+    }
+    return newArr;
+}
+
+// Функция дял перемешки массива.
+function getShuffleArr () {
+    return [1, 2, 3, 4, 5, 6, 7, 8].sort(() => Math.random() - 0.5);
+}
+
+// Медиа-запросы
+let queryDesktop = window.matchMedia("(min-width: 1280px)");
+let queryLaptop = window.matchMedia("(max-width: 1279px) and (min-width: 768px");
+let queryTablet = window.matchMedia("(max-width: 767px)");
+
+// Переменная для текущей строки.
+let currentPage = 1;
+
+// Генерация новой пагинации.
+function generateNewPagination () {
+    if (queryDesktop.matches) {
+        console.log('Desktop');
+        const currentArr = getNewArr(6);
+        pagintaionList.innerHTML = '';
+        pagintaionList.innerHTML = generatePaginationTemplate(currentArr, currentPage);
+    }
+    
+    if (queryLaptop.matches) {
+        console.log('Laptop');
+        const currentArr = getNewArr(8);
+        pagintaionList.innerHTML = '';
+        pagintaionList.innerHTML = generatePaginationTemplate(currentArr, currentPage);
+    }
+    
+    if (queryTablet.matches) {
+        console.log('Tablet');
+        const currentArr = getNewArr(16);
+        pagintaionList.innerHTML = '';
+        pagintaionList.innerHTML = generatePaginationTemplate(currentArr, currentPage);
+    }
+}
+
+function generatePaginationTemplate (arr, page) {
+    let template = '';
+    for (let i = 0; i < 8; i++) {
+        template += createCardTemplate(arr[page - 1][i]);
+    }
+    return template;
+}
+
+// Функция для смены активных кнопок.
+function changeActiveBtns () {
+    btnPagDblLeft.classList.toggle('button_disabled');
+    btnPagLeft.classList.toggle('button_disabled');
+    btnPagDblRight.classList.toggle('button_disabled');
+    btnPagRight.classList.toggle('button_disabled');
+}
+
+// Функции для переключения страниц.
+function nexPage () {
+    generateNewPagination();
+    if (btnPagInfo.innerHTML === '5') {
+        btnPagInfo.innerHTML = +btnPagInfo.innerHTML + 1;
+        btnPagDblRight.classList.add('button_disabled');
+        btnPagRight.classList.add('button_disabled');
+        btnPagDblRight.removeEventListener('click', lastPage);
+        btnPagRight.removeEventListener('click', nexPage);
+        btnPagDblLeft.addEventListener('click', firstPage);
+        btnPagLeft.addEventListener('click', prevPage);
+    } else {
+        btnPagDblLeft.classList.remove('button_disabled');
+        btnPagLeft.classList.remove('button_disabled');
+        btnPagInfo.innerHTML = +btnPagInfo.innerHTML + 1;
+        btnPagDblLeft.addEventListener('click', firstPage);
+        btnPagLeft.addEventListener('click', prevPage);
+    }
+}
+function lastPage () {
+    generateNewPagination();
+    btnPagInfo.innerHTML = '6';
+    btnPagDblRight.classList.add('button_disabled');
+    btnPagRight.classList.add('button_disabled');
+    btnPagDblLeft.classList.remove('button_disabled');
+    btnPagLeft.classList.remove('button_disabled');
+    btnPagDblRight.removeEventListener('click', lastPage);
+    btnPagRight.removeEventListener('click', nexPage);
+    btnPagDblLeft.addEventListener('click', firstPage);
+    btnPagLeft.addEventListener('click', prevPage);
+}
+function prevPage () {
+    if (btnPagInfo.innerHTML === '2') {
+        btnPagInfo.innerHTML = +btnPagInfo.innerHTML - 1;
+        btnPagDblLeft.classList.add('button_disabled');
+        btnPagLeft.classList.add('button_disabled');
+        btnPagDblLeft.removeEventListener('click', firstPage);
+        btnPagLeft.removeEventListener('click', prevPage);
+    } else {
+        generateNewPagination();
+        btnPagDblRight.classList.remove('button_disabled');
+        btnPagRight.classList.remove('button_disabled');
+        btnPagInfo.innerHTML = +btnPagInfo.innerHTML - 1;
+        btnPagDblRight.addEventListener('click', lastPage);
+        btnPagRight.addEventListener('click', nexPage);
+    }
+}
+function firstPage () {
+    generateNewPagination();
+    btnPagInfo.innerHTML = '1';
+    btnPagDblLeft.classList.add('button_disabled');
+    btnPagLeft.classList.add('button_disabled');
+    btnPagDblRight.classList.remove('button_disabled');
+    btnPagRight.classList.remove('button_disabled');
+    btnPagDblLeft.removeEventListener('click', firstPage);
+    btnPagLeft.removeEventListener('click', prevPage);
+    btnPagDblRight.addEventListener('click', lastPage);
+    btnPagRight.addEventListener('click', nexPage);
+}
