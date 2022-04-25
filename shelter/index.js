@@ -10,17 +10,6 @@ import ArticleModal from './js/ArticleModal.js';
 window.onload = function () {
     console.log('Score: 100 / 100');
 
-    // Проверка импортов.
-    if (petsArr) {
-        console.log('petsArr imported', typeof petsArr);
-    }
-    if (Modal) {
-        console.log('Modal imported', typeof Modal);
-    }
-    if (ArticleModal) {
-        console.log('ArticleModal imported', typeof ArticleModal);
-    }
-
     // Добавление слушателей для карточек питомцев.
     addCardsClickHandler();
 
@@ -122,12 +111,18 @@ slider.addEventListener('animationend', (animationEvent) => {
     if (animationEvent.animationName === 'move-left') {
         slider.classList.remove('transition-left');
 
+        rightItem.innerHTML = '';
+        rightItem.innerHTML = activeItem.innerHTML;
+
         activeItem.innerHTML = leftItem.innerHTML;
 
         leftItem.innerHTML = '';
         leftItem.innerHTML = generateSliderItemTemplate();
     } else {
         slider.classList.remove('transition-right');
+
+        leftItem.innerHTML = '';
+        leftItem.innerHTML = activeItem.innerHTML;
 
         activeItem.innerHTML = rightItem.innerHTML;
 
@@ -138,18 +133,17 @@ slider.addEventListener('animationend', (animationEvent) => {
     addSliderBtnsHandler();
 });
 
-// Функция для создания нового элемента слайдрера.
+// Функция для создания нового уникального элемента слайдера.
 function generateSliderItemTemplate () {
     let template = '';
-    let uniqueIds = getTreeUniqueIds();
+    let uniqueIdsArr = getTreeUniqueIds();
     for (let i = 0; i < 3; i++) {
-        template += createCardTemplate(uniqueIds[i]);
-        // template += createCardTemplate(getUniqueId());
+        template += createCardTemplate(uniqueIdsArr[i]);
     }
     return template;
 }
 
-// Функция для создания карточки питомца (Универсальная).
+// Функция для создания карточки питомца по id (Универсальная).
 function createCardTemplate (id) {
     let template = '';
     let CardData = getClickedData(id);
@@ -161,11 +155,10 @@ function createCardTemplate (id) {
     return template;
 }
 
-// Функция для получения уникального id.
+// Функция для получения 3x уникальных id в виде массива.
 function getTreeUniqueIds () {
     let treeUniqueIds = [];
     let activeIds = getActiveIds();
-
     for (let i = 0; i < 3; i++) {
         let uniqueId = getRandomInRange(1, 8);
         while (activeIds.includes(uniqueId) || treeUniqueIds.includes(uniqueId)) {
@@ -173,8 +166,6 @@ function getTreeUniqueIds () {
         }
         treeUniqueIds.push(uniqueId);
     }
-    
-    console.log(treeUniqueIds);
     return treeUniqueIds;
 };
 
