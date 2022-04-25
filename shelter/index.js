@@ -14,7 +14,9 @@ window.onload = function () {
     addCardsClickHandler();
 
     // Добавление слушателей для кнопок слайдера.
-    addSliderBtnsHandler();
+    if (slider) {
+        addSliderBtnsHandler();
+    }
 }
 
 
@@ -107,31 +109,36 @@ function moveRight () {
 }
 
 // Конец css анимации.
-slider.addEventListener('animationend', (animationEvent) => {
-    if (animationEvent.animationName === 'move-left') {
-        slider.classList.remove('transition-left');
-
-        rightItem.innerHTML = '';
-        rightItem.innerHTML = activeItem.innerHTML;
-
-        activeItem.innerHTML = leftItem.innerHTML;
-
-        leftItem.innerHTML = '';
-        leftItem.innerHTML = generateSliderItemTemplate();
-    } else {
-        slider.classList.remove('transition-right');
-
-        leftItem.innerHTML = '';
-        leftItem.innerHTML = activeItem.innerHTML;
-
-        activeItem.innerHTML = rightItem.innerHTML;
-
-        rightItem.innerHTML = '';
-        rightItem.innerHTML = generateSliderItemTemplate();
-    }
-
-    addSliderBtnsHandler();
-});
+if (slider) {
+    slider.addEventListener('animationend', (animationEvent) => {
+        if (animationEvent.animationName === 'move-left') {
+            slider.classList.remove('transition-left');
+    
+            rightItem.innerHTML = '';
+            rightItem.innerHTML = activeItem.innerHTML;
+    
+            activeItem.innerHTML = leftItem.innerHTML;
+    
+            leftItem.innerHTML = '';
+            leftItem.innerHTML = generateSliderItemTemplate();
+        } else {
+            slider.classList.remove('transition-right');
+    
+            leftItem.innerHTML = '';
+            leftItem.innerHTML = activeItem.innerHTML;
+    
+            activeItem.innerHTML = rightItem.innerHTML;
+    
+            rightItem.innerHTML = '';
+            rightItem.innerHTML = generateSliderItemTemplate();
+        }
+    
+        addSliderBtnsHandler();
+    
+        // Добавление слушателей для новых карточек питомцев.
+        addCardsClickHandler();
+    });
+}
 
 // Функция для создания нового уникального элемента слайдера.
 function generateSliderItemTemplate () {
@@ -182,3 +189,6 @@ function getActiveIds () {
     }
     return activeIds;
 }
+
+
+// Pagination pets page.

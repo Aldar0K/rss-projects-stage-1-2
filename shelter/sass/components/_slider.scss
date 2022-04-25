@@ -10,12 +10,12 @@
 
 .transition-left {
     animation-name: move-left;
-    animation-duration: 2s;
+    animation-duration: 1.5s;
 }
 
 .transition-right {
     animation-name: move-right;
-    animation-duration: 2s;
+    animation-duration: 1.5s;
 }
 
 .slider {
@@ -48,6 +48,12 @@
     display: flex;
     position: relative;
     left: -990px;
+    @include media-laptop {
+        left: -580px
+    }
+    @include media-tablet {
+        left: -270px
+    }
 }
 
 .slider__item {
@@ -56,43 +62,26 @@
     flex-direction: row;
     align-items: center;
     gap: 90px;
+
     @include media-laptop {
         width: 580px;
         gap: 40px;
+        &.pet-card {
+            &:last-child {
+                display: none;
+            }
+        }
     }
     @include media-tablet {
         width: 270px;
+
+        &.pet-card {
+            &:nth-child(2n) {
+                display: none;
+            }
+        }
     }
 }
-
-// .slider__card {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 30px;
-//     width: 270px;
-//     height: 435px;
-//     background: $color-light-s;
-//     @extend %transition;
-//     &:hover {
-//         transform: scale(1.03);
-//         box-shadow: 10px 15px 25px 0 $color-dark-s;
-//         cursor: pointer;
-//         .button {
-//             background: $color-active;
-//         }
-//     }
-//     @include media-laptop {
-//         &:last-child {
-//             display: none;
-//         }
-//     }
-//     @include media-tablet {
-//         &:nth-child(2n) {
-//             display: none;
-//         }
-//     } 
-// }
 
 .slider__name {
     @extend %font-primary;
@@ -115,3 +104,57 @@
         }
     }
 }
+
+// @keyframes move-left {
+//     from {left: -990px;}
+//     to {left: 0px;}
+// }
+
+// @keyframes move-right {
+//     from {left: -990px;}
+//     to {left: -1980px;}
+// }
+
+// @keyframes move-left-tablet {
+//     from {left: -580px;}
+//     to {left: 0px;}
+// }
+
+// @keyframes move-right-tablet {
+//     from {left: -580px;}
+//     to {left: -1160px;}
+// }
+
+// @keyframes move-left-mobile {
+//     from {left: -270px;}
+//     to {left: 0px;}
+// }
+
+// @keyframes move-right-mobile {
+//     from {left: -270px;}
+//     to {left: -540px;}
+// }
+
+// .transition-left {
+//     animation-name: move-left;
+//     animation-duration: 1s;
+
+//     @include media-laptop {
+//         animation-name: move-left-tablet;
+//     }
+//     @include media-tablet {
+//         animation-name: move-left-mobile;
+//     }
+// }
+
+// .transition-right {
+//     animation-name: move-right;
+//     animation-duration: 1s;
+
+//     @include media-laptop {
+//         animation-name: move-right-tablet;
+//     }
+//     @include media-tablet {
+//         animation-name: move-right-mobile;
+//     }
+// }
