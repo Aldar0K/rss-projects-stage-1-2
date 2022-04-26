@@ -1037,8 +1037,6 @@ h5 {
 .pet-card:hover {
   -webkit-transform: scale(1.03);
           transform: scale(1.03);
-  -webkit-box-shadow: 10px 15px 25px 0 #CDCDCD;
-          box-shadow: 10px 15px 25px 0 #CDCDCD;
   cursor: pointer;
 }
 
