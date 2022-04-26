@@ -474,16 +474,16 @@ template {
   transition: all .3s ease-out;
 }
 
-.modal__content::-webkit-scrollbar {
+.modal__text::-webkit-scrollbar {
   width: 5px;
 }
 
-.modal__content::-webkit-scrollbar-track {
+.modal__text::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 1px grey;
           box-shadow: inset 0 0 1px grey;
 }
 
-.modal__content::-webkit-scrollbar-thumb {
+.modal__text::-webkit-scrollbar-thumb {
   background: #F1CDB3;
   border-radius: 10px;
 }
@@ -802,33 +802,12 @@ h5 {
 
 .modal {
   position: relative;
-  padding: 52px 52px 0 0;
-  width: 952px;
-  height: 552px;
-  -webkit-transform: translate(26px, -26px);
-          transform: translate(26px, -26px);
-}
-
-@media (max-width: 1279px) {
-  .modal {
-    width: 682px;
-    height: 402px;
-  }
-}
-
-@media (max-width: 767px) {
-  .modal {
-    width: 271px;
-    height: 393px;
-    padding-right: 31px;
-    -webkit-transform: translate(15.5px, -26px);
-            transform: translate(15.5px, -26px);
-  }
+  overflow: visible;
 }
 
 .modal__content {
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   width: 900px;
   height: 500px;
   border-radius: 9px;
@@ -856,7 +835,8 @@ h5 {
 }
 
 .modal__text {
-  margin: 50px 20px 0 29px;
+  padding: 50px 20px 0 29px;
+  overflow: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -869,14 +849,14 @@ h5 {
 
 @media (max-width: 1279px) {
   .modal__text {
-    margin: 10px 9px 0 11px;
+    padding: 10px 9px 0 11px;
     gap: 20px;
   }
 }
 
 @media (max-width: 767px) {
   .modal__text {
-    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
   }
 }
 
@@ -983,8 +963,8 @@ h5 {
 .modal__close-icon {
   z-index: 10;
   position: absolute;
-  right: 10px;
-  top: 0;
+  right: -42px;
+  top: -52px;
   width: 52px;
   height: 52px;
   border: 2px solid #F1CDB3;
@@ -1015,13 +995,13 @@ h5 {
 
 @media (max-width: 1279px) {
   .modal__close-icon {
-    right: 9px;
+    right: -43px;
   }
 }
 
 @media (max-width: 767px) {
   .modal__close-icon {
-    right: 0;
+    right: -31px;
   }
 }
 

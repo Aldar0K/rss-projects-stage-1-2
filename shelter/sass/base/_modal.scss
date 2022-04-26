@@ -14,33 +14,30 @@
 
 .modal {
     position: relative;
-    padding: 52px 52px 0 0;
-    width: 952px;
-    height: 552px;
-    transform: translate(26px, -26px);
+    overflow: visible;
 
-    @include media-laptop {
-        width: 682px;
-        height: 402px;
-    }
-    @include media-tablet {
-        width: 271px;
-        height: 393px;
-        padding-right: 31px;
-        transform: translate(15.5px, -26px);
-    }
+    // width: 900px;
+    // height: 500px;
+
+    // @include media-laptop {
+    //     width: 630px;
+    //     height: 350px;
+    // }
+    // @include media-tablet {
+    //     width: 240px;
+    //     height: 341px;
+    // }
 }
 
 .modal__content {
     position: relative;
-    overflow: auto;
+    overflow: hidden;
     width: 900px;
     height: 500px;
     border-radius: 9px;
     background: $color-light-s;
     box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
     display: flex;
-    @extend %custom-scroll;
     cursor: auto;
 
     @include media-laptop {
@@ -54,17 +51,19 @@
 }
 
 .modal__text {
-    margin: 50px 20px 0 29px;
+    padding: 50px 20px 0 29px;
+    overflow: auto;
+    @extend %custom-scroll;
     display: flex;
     flex-direction: column;
     gap: 40px;
 
     @include media-laptop {
-        margin: 10px 9px 0 11px;
+        padding: 10px 9px 0 11px;
         gap: 20px;
     }
     @include media-tablet {
-        margin: 10px 10px 10px 10px;
+        padding: 10px 10px 10px 10px;
     }
 }
 
@@ -143,8 +142,8 @@
 .modal__close-icon {
     z-index: 10;
     position: absolute;
-    right: 10px;
-    top: 0;
+    right: -42px;
+    top: -52px;
     width: 52px;
     height: 52px;
     border: 2px solid $color-primary;
@@ -165,9 +164,9 @@
     }
 
     @include media-laptop {
-        right: 9px;
+        right: -43px;
     }
     @include media-tablet {
-        right: 0;
+        right: -31px;
     }
 }
