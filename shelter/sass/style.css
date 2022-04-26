@@ -800,9 +800,22 @@ h5 {
   cursor: pointer;
 }
 
+.overlay:hover .modal__close-icon {
+  background: #FDDCC4;
+}
+
 .modal {
+  z-index: 10;
   position: relative;
   overflow: visible;
+}
+
+.modal:hover .modal__close-icon {
+  background: none;
+}
+
+.modal:hover .modal__close-icon:hover {
+  background: #FDDCC4;
 }
 
 .modal__content {
@@ -961,7 +974,6 @@ h5 {
 }
 
 .modal__close-icon {
-  z-index: 10;
   position: absolute;
   right: -42px;
   top: -52px;
