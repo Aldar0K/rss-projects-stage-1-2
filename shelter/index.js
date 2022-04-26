@@ -8,7 +8,7 @@ import ArticleModal from './js/ArticleModal.js';
 
 // При загрузке странице.
 window.onload = function () {
-    console.log('Score: 100 / 100');
+    console.log('Не могли бы вы проверить мою работу в последний день кросчека? Не хватило времени на пагинацию');
 
     // Добавление слушателей для карточек питомцев.
     addCardsClickHandler();
@@ -259,6 +259,7 @@ function generateNewPagination () {
         pagintaionList.innerHTML = '';
         pagintaionList.innerHTML = generatePaginationTemplate(currentArr, currentPage);
     }
+    addCardsClickHandler();
 }
 
 function generatePaginationTemplate (arr, page) {
