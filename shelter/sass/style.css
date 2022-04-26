@@ -1355,7 +1355,7 @@ h5 {
   color: #292929;
 }
 
-@-webkit-keyframes move-left {
+@-webkit-keyframes move-left-990 {
   from {
     left: -990px;
   }
@@ -1364,7 +1364,7 @@ h5 {
   }
 }
 
-@keyframes move-left {
+@keyframes move-left-990 {
   from {
     left: -990px;
   }
@@ -1373,7 +1373,43 @@ h5 {
   }
 }
 
-@-webkit-keyframes move-right {
+@-webkit-keyframes move-left-580 {
+  from {
+    left: -580px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes move-left-580 {
+  from {
+    left: -580px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@-webkit-keyframes move-left-270 {
+  from {
+    left: -270px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes move-left-270 {
+  from {
+    left: -270px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@-webkit-keyframes move-right-990 {
   from {
     left: -990px;
   }
@@ -1382,27 +1418,99 @@ h5 {
   }
 }
 
-@keyframes move-right {
+@keyframes move-right-990 {
   from {
     left: -990px;
   }
   to {
     left: -1980px;
+  }
+}
+
+@-webkit-keyframes move-right-580 {
+  from {
+    left: -580px;
+  }
+  to {
+    left: -1160px;
+  }
+}
+
+@keyframes move-right-580 {
+  from {
+    left: -580px;
+  }
+  to {
+    left: -1160px;
+  }
+}
+
+@-webkit-keyframes move-right-270 {
+  from {
+    left: -270px;
+  }
+  to {
+    left: -540px;
+  }
+}
+
+@keyframes move-right-270 {
+  from {
+    left: -270px;
+  }
+  to {
+    left: -540px;
   }
 }
 
 .transition-left {
-  -webkit-animation-name: move-left;
-          animation-name: move-left;
+  -webkit-animation-name: move-left-990;
+          animation-name: move-left-990;
   -webkit-animation-duration: 1.5s;
           animation-duration: 1.5s;
 }
 
+@media (max-width: 1279px) {
+  .transition-left {
+    -webkit-animation-name: move-left-580;
+            animation-name: move-left-580;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+  }
+}
+
+@media (max-width: 767px) {
+  .transition-left {
+    -webkit-animation-name: move-left-270;
+            animation-name: move-left-270;
+    -webkit-animation-duration: .5s;
+            animation-duration: .5s;
+  }
+}
+
 .transition-right {
-  -webkit-animation-name: move-right;
-          animation-name: move-right;
+  -webkit-animation-name: move-right-990;
+          animation-name: move-right-990;
   -webkit-animation-duration: 1.5s;
           animation-duration: 1.5s;
+}
+
+@media (max-width: 1279px) {
+  .transition-right {
+    -webkit-animation-name: move-right-580;
+            animation-name: move-right-580;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+  }
+}
+
+@media (max-width: 767px) {
+  .transition-right {
+    -webkit-animation-name: move-right-270;
+            animation-name: move-right-270;
+    -webkit-animation-duration: .5s;
+            animation-duration: .5s;
+  }
 }
 
 .slider {

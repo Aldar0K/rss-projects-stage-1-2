@@ -117,7 +117,9 @@ function moveRight () {
 // Конец css анимации.
 if (slider) {
     slider.addEventListener('animationend', (animationEvent) => {
-        if (animationEvent.animationName === 'move-left') {
+        if (animationEvent.animationName === 'move-left-990' ||
+            animationEvent.animationName === 'move-left-580' ||
+            animationEvent.animationName === 'move-left-270') {
             slider.classList.remove('transition-left');
     
             rightItem.innerHTML = '';

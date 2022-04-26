@@ -1,21 +1,55 @@
-@keyframes move-left {
+@keyframes move-left-990 {
     from {left: -990px;}
     to {left: 0px;}
 }
+@keyframes move-left-580 {
+    from {left: -580px;}
+    to {left: 0px;}
+}
+@keyframes move-left-270 {
+    from {left: -270px;}
+    to {left: 0px;}
+}
 
-@keyframes move-right {
+@keyframes move-right-990 {
     from {left: -990px;}
     to {left: -1980px;}
 }
+@keyframes move-right-580 {
+    from {left: -580px;}
+    to {left: -1160px;}
+}
+@keyframes move-right-270 {
+    from {left: -270px;}
+    to {left: -540px;}
+}
 
 .transition-left {
-    animation-name: move-left;
+    animation-name: move-left-990;
     animation-duration: 1.5s;
+
+    @include media-laptop {
+        animation-name: move-left-580;
+        animation-duration: 1s;
+    }
+    @include media-tablet {
+        animation-name: move-left-270;
+        animation-duration: .5s;
+    }
 }
 
 .transition-right {
-    animation-name: move-right;
+    animation-name: move-right-990;
     animation-duration: 1.5s;
+
+    @include media-laptop {
+        animation-name: move-right-580;
+        animation-duration: 1s;
+    }
+    @include media-tablet {
+        animation-name: move-right-270;
+        animation-duration: .5s;
+    }
 }
 
 .slider {
