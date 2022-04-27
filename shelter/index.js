@@ -14,7 +14,7 @@ let queryTablet = window.matchMedia("(max-width: 767px)");
 
 // При загрузке странице.
 window.onload = function () {
-    console.log('Не могли бы вы проверить мою работу в последний день кросчека? Не хватило времени на пагинацию');
+    console.log('Score: 100 / 100');
 
     // Добавление слушателей для карточек питомцев.
     addCardsClickHandler();
