@@ -222,8 +222,8 @@ const btnPagInfo = document.querySelector('#btn-info');
 
 // Функция добавление слушателей для кнопок слайдера.
 function addPagintationBtnsHandler () {
-    btnPagDblLeft.addEventListener('click', firstPage);
-    btnPagLeft.addEventListener('click', prevPage);
+    // btnPagDblLeft.addEventListener('click', firstPage);
+    // btnPagLeft.addEventListener('click', prevPage);
     btnPagDblRight.addEventListener('click', lastPage);
     btnPagRight.addEventListener('click', nexPage);
 }
@@ -280,18 +280,8 @@ function generateNewPagination () {
     pagintaionList.innerHTML = '';
     pagintaionList.innerHTML = generatePaginationTemplate(currentArr, currentPage);
 
-    // Добавление слушателей для кнопок пагинации.
-    addPagintationBtnsHandler();
     // Добавление слушателей для новых карточек питомцев.
     addCardsClickHandler();
-}
-
-// Функция для смены активных кнопок.
-function changeActiveBtns () {
-    btnPagDblLeft.classList.toggle('button_disabled');
-    btnPagLeft.classList.toggle('button_disabled');
-    btnPagDblRight.classList.toggle('button_disabled');
-    btnPagRight.classList.toggle('button_disabled');
 }
 
 // Функции для переключения страниц.
@@ -330,7 +320,6 @@ function lastPage () {
     generateNewPagination();
 }
 function prevPage () {
-    
     if (btnPagInfo.innerHTML === '2') {
         btnPagInfo.innerHTML = +btnPagInfo.innerHTML - 1;
         btnPagDblLeft.classList.add('button_disabled');
