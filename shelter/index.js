@@ -6,6 +6,12 @@ import Modal from './js/Modal.js';
 import ArticleModal from './js/ArticleModal.js';
 
 
+// Медиа-запросы
+let queryDesktop = window.matchMedia("(min-width: 1280px)");
+let queryLaptop = window.matchMedia("(max-width: 1279px) and (min-width: 768px");
+let queryTablet = window.matchMedia("(max-width: 767px)");
+
+
 // При загрузке странице.
 window.onload = function () {
     console.log('Не могли бы вы проверить мою работу в последний день кросчека? Не хватило времени на пагинацию');
@@ -45,10 +51,15 @@ if (iconMenu) {
         menuBody.classList.toggle('menu__body_active');
         blockBody();
     }
+    
+    menuDropout.addEventListener('click', toogleMenu);
+    iconMenu.addEventListener('click', toogleMenu);
+    menuLinks.forEach((link) => link.addEventListener('click', toogleMenu));
 
-menuDropout.addEventListener('click', toogleMenu);
-iconMenu.addEventListener('click', toogleMenu);
-menuLinks.forEach((link) => link.addEventListener('click', toogleMenu))
+    // Закрытие меню при изменении разрешения.
+    window.addEventListener('resize', () => {
+        if (iconMenu.classList.contains("menu__icon_active")) toogleMenu();
+    });
 }
 
 
@@ -230,11 +241,6 @@ function getNewArr (pages = 6) {
 function getShuffleArr () {
     return [1, 2, 3, 4, 5, 6, 7, 8].sort(() => Math.random() - 0.5);
 }
-
-// Медиа-запросы
-let queryDesktop = window.matchMedia("(min-width: 1280px)");
-let queryLaptop = window.matchMedia("(max-width: 1279px) and (min-width: 768px");
-let queryTablet = window.matchMedia("(max-width: 767px)");
 
 // Переменная для текущей строки.
 let currentPage = 1;
