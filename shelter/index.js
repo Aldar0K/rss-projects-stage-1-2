@@ -222,14 +222,8 @@ const btnPagInfo = document.querySelector('#btn-info');
 
 // Функция добавление слушателей для кнопок слайдера.
 function addPagintationBtnsHandler () {
-    // btnPagDblLeft.addEventListener('click', firstPage);
-    // btnPagLeft.addEventListener('click', prevPage);
     btnPagDblRight.addEventListener('click', lastPage);
     btnPagRight.addEventListener('click', nexPage);
-}
-
-if (pagintaion) {
-    
 }
 
 function generatePaginationTemplate (arr, page) {
@@ -240,7 +234,7 @@ function generatePaginationTemplate (arr, page) {
     return template;
 }
 
-// Создаем новый массив, состоящий из 6 (8, 16) перемешанных исходных массивов.
+// Создаем новый массив, состоящий из 6, 8 или 16 перемешанных исходных массивов (один массив для каждой страницы).
 function getNewArr () {
     const newArr = [];
     if (queryDesktop.matches) {
@@ -268,15 +262,29 @@ function getShuffleArr () {
     return [1, 2, 3, 4, 5, 6, 7, 8].sort(() => Math.random() - 0.5);
 }
 
+function getMaxPages () {
+    let maxPages;
+    if (queryDesktop.matches) {
+        maxPages = 6;
+    }
+    
+    if (queryLaptop.matches) {
+        maxPages = 8;
+    }
+    
+    if (queryTablet.matches) {
+        maxPages = 16;
+    }
+    return maxPages;
+}
+
+// Глобальные переменные для пагинации.
 let currentArr = getNewArr();
 let currentPage = 1;
+let Pages = getMaxPages();
+
 // Генерация новой пагинации.
 function generateNewPagination () {
-    // Переменная для текущей строки.
-    // let currentPage = 1;
-    // let currentArr = getNewArr();
-    // console.log(currentArr);
-
     pagintaionList.innerHTML = '';
     pagintaionList.innerHTML = generatePaginationTemplate(currentArr, currentPage);
 
@@ -286,7 +294,7 @@ function generateNewPagination () {
 
 // Функции для переключения страниц.
 function nexPage () {
-    if (btnPagInfo.innerHTML === '5') {
+    if (btnPagInfo.innerHTML === (Pages - 1).toString()) {
         btnPagInfo.innerHTML = +btnPagInfo.innerHTML + 1;
         btnPagDblRight.classList.add('button_disabled');
         btnPagRight.classList.add('button_disabled');
@@ -307,7 +315,7 @@ function nexPage () {
     }
 }
 function lastPage () {
-    btnPagInfo.innerHTML = '6';
+    btnPagInfo.innerHTML = Pages.toString();
     btnPagDblRight.classList.add('button_disabled');
     btnPagRight.classList.add('button_disabled');
     btnPagDblLeft.classList.remove('button_disabled');
@@ -316,7 +324,7 @@ function lastPage () {
     btnPagRight.removeEventListener('click', nexPage);
     btnPagDblLeft.addEventListener('click', firstPage);
     btnPagLeft.addEventListener('click', prevPage);
-    currentPage = 6;
+    currentPage = Pages;
     generateNewPagination();
 }
 function prevPage () {
