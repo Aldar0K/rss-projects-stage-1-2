@@ -26,8 +26,8 @@ window.onload = function () {
 
     // Добавление слушателей для кнопок пагинации, а также генерация новой пагинации.
     if (pagintaion) {
-        addPagintationBtnsHandler();
         generateNewPagination();
+        addPagintationBtnsHandler();
     }
 }
 
@@ -152,8 +152,8 @@ if (slider) {
             rightItem.innerHTML = generateSliderItemTemplate();
         }
     
+        // Добавление слушателей для кнопок слайдера.
         addSliderBtnsHandler();
-    
         // Добавление слушателей для новых карточек питомцев.
         addCardsClickHandler();
     });
@@ -216,8 +216,8 @@ const pagintaion = document.querySelector('#pagination');
 const pagintaionList = document.querySelector('.pagination__list');
 const btnPagDblLeft = document.querySelector('#btn-dblleft');
 const btnPagLeft = document.querySelector('#btn-left');
-const btnPagRight = document.querySelector('#btn-right');
 const btnPagDblRight = document.querySelector('#btn-dblright');
+const btnPagRight = document.querySelector('#btn-right');
 const btnPagInfo = document.querySelector('#btn-info');
 
 // Функция добавление слушателей для кнопок слайдера.
@@ -228,11 +228,37 @@ function addPagintationBtnsHandler () {
     btnPagRight.addEventListener('click', nexPage);
 }
 
-// Создаем новый массив, состоящий из 48 элементов, используя исходный массив.
-function getNewArr (pages = 6) {
+if (pagintaion) {
+    
+}
+
+function generatePaginationTemplate (arr, page) {
+    let template = '';
+    for (let i = 0; i < 8; i++) {
+        template += createCardTemplate(arr[page - 1][i]);
+    }
+    return template;
+}
+
+// Создаем новый массив, состоящий из 6 (8, 16) перемешанных исходных массивов.
+function getNewArr () {
     const newArr = [];
-    for (let i = 0; i < pages; i++) {
-        newArr.push(getShuffleArr());
+    if (queryDesktop.matches) {
+        for (let i = 0; i < 6; i++) {
+            newArr.push(getShuffleArr());
+        }
+    }
+    
+    if (queryLaptop.matches) {
+        for (let i = 0; i < 8; i++) {
+            newArr.push(getShuffleArr());
+        }
+    }
+    
+    if (queryTablet.matches) {
+        for (let i = 0; i < 16; i++) {
+            newArr.push(getShuffleArr());
+        }
     }
     return newArr;
 }
@@ -242,40 +268,22 @@ function getShuffleArr () {
     return [1, 2, 3, 4, 5, 6, 7, 8].sort(() => Math.random() - 0.5);
 }
 
-// Переменная для текущей строки.
+let currentArr = getNewArr();
 let currentPage = 1;
-
 // Генерация новой пагинации.
 function generateNewPagination () {
-    if (queryDesktop.matches) {
-        console.log('Desktop');
-        const currentArr = getNewArr(6);
-        pagintaionList.innerHTML = '';
-        pagintaionList.innerHTML = generatePaginationTemplate(currentArr, currentPage);
-    }
-    
-    if (queryLaptop.matches) {
-        console.log('Laptop');
-        const currentArr = getNewArr(8);
-        pagintaionList.innerHTML = '';
-        pagintaionList.innerHTML = generatePaginationTemplate(currentArr, currentPage);
-    }
-    
-    if (queryTablet.matches) {
-        console.log('Tablet');
-        const currentArr = getNewArr(16);
-        pagintaionList.innerHTML = '';
-        pagintaionList.innerHTML = generatePaginationTemplate(currentArr, currentPage);
-    }
-    addCardsClickHandler();
-}
+    // Переменная для текущей строки.
+    // let currentPage = 1;
+    // let currentArr = getNewArr();
+    // console.log(currentArr);
 
-function generatePaginationTemplate (arr, page) {
-    let template = '';
-    for (let i = 0; i < 8; i++) {
-        template += createCardTemplate(arr[page - 1][i]);
-    }
-    return template;
+    pagintaionList.innerHTML = '';
+    pagintaionList.innerHTML = generatePaginationTemplate(currentArr, currentPage);
+
+    // Добавление слушателей для кнопок пагинации.
+    addPagintationBtnsHandler();
+    // Добавление слушателей для новых карточек питомцев.
+    addCardsClickHandler();
 }
 
 // Функция для смены активных кнопок.
@@ -288,7 +296,6 @@ function changeActiveBtns () {
 
 // Функции для переключения страниц.
 function nexPage () {
-    generateNewPagination();
     if (btnPagInfo.innerHTML === '5') {
         btnPagInfo.innerHTML = +btnPagInfo.innerHTML + 1;
         btnPagDblRight.classList.add('button_disabled');
@@ -297,16 +304,19 @@ function nexPage () {
         btnPagRight.removeEventListener('click', nexPage);
         btnPagDblLeft.addEventListener('click', firstPage);
         btnPagLeft.addEventListener('click', prevPage);
+        currentPage += 1;
+        generateNewPagination();
     } else {
         btnPagDblLeft.classList.remove('button_disabled');
         btnPagLeft.classList.remove('button_disabled');
         btnPagInfo.innerHTML = +btnPagInfo.innerHTML + 1;
         btnPagDblLeft.addEventListener('click', firstPage);
         btnPagLeft.addEventListener('click', prevPage);
+        currentPage += 1;
+        generateNewPagination();
     }
 }
 function lastPage () {
-    generateNewPagination();
     btnPagInfo.innerHTML = '6';
     btnPagDblRight.classList.add('button_disabled');
     btnPagRight.classList.add('button_disabled');
@@ -316,25 +326,30 @@ function lastPage () {
     btnPagRight.removeEventListener('click', nexPage);
     btnPagDblLeft.addEventListener('click', firstPage);
     btnPagLeft.addEventListener('click', prevPage);
+    currentPage = 6;
+    generateNewPagination();
 }
 function prevPage () {
-    generateNewPagination();
+    
     if (btnPagInfo.innerHTML === '2') {
         btnPagInfo.innerHTML = +btnPagInfo.innerHTML - 1;
         btnPagDblLeft.classList.add('button_disabled');
         btnPagLeft.classList.add('button_disabled');
         btnPagDblLeft.removeEventListener('click', firstPage);
         btnPagLeft.removeEventListener('click', prevPage);
+        currentPage -= 1;
+        generateNewPagination();
     } else {
         btnPagDblRight.classList.remove('button_disabled');
         btnPagRight.classList.remove('button_disabled');
         btnPagInfo.innerHTML = +btnPagInfo.innerHTML - 1;
         btnPagDblRight.addEventListener('click', lastPage);
         btnPagRight.addEventListener('click', nexPage);
+        currentPage -= 1;
+        generateNewPagination();
     }
 }
 function firstPage () {
-    generateNewPagination();
     btnPagInfo.innerHTML = '1';
     btnPagDblLeft.classList.add('button_disabled');
     btnPagLeft.classList.add('button_disabled');
@@ -344,4 +359,6 @@ function firstPage () {
     btnPagLeft.removeEventListener('click', prevPage);
     btnPagDblRight.addEventListener('click', lastPage);
     btnPagRight.addEventListener('click', nexPage);
+    currentPage = 1;
+    generateNewPagination();
 }
