@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main</title>
     <link rel="stylesheet" href="../../sass/style.css">
+    <link rel="favicon icon" href="../../assets/icons/favicon.png" type="image/png">
 </head>
 <!-- При активации меню добавлять класс body_lock тегу body. -->
 <body class="body">
@@ -22,22 +23,21 @@
                     <li class="navigation__link"><a href="#help">Help the shelter</a></li>
                     <li class="navigation__link"><a href="#footer">Contacts</a></li>
                 </ul>
+                <div class="menu">
+                    <div class="menu__icon">
+                        <span class="menu__line"></span>
+                    </div>
+                    <div class="menu__body">
+                        <div class="menu__dropout"></div>
+                        <ul class="menu__list">
+                            <li class="menu__link menu__link_active"><a href="#">About the shelter</a></li>
+                            <li class="menu__link"><a href="../pets/index.html">Our pets</a></li>
+                            <li class="menu__link"><a href="#help">Help the shelter</a></li>
+                            <li class="menu__link"><a href="#footer">Contacts</a></li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
-            <div class="menu">
-                <div class="menu__icon">
-                    <span class="menu__line"></span>
-                </div>
-                <!-- По нажатию на иконку меню добавлять класс menu__body_active. -->
-                <div class="menu__body">
-                    <div class="menu__dropout"></div>
-                    <ul class="menu__list">
-                        <li class="menu__link menu__link_active"><a href="#">About the shelter</a></li>
-                        <li class="menu__link"><a href="../pets/index.html">Our pets</a></li>
-                        <li class="menu__link"><a href="#help">Help the shelter</a></li>
-                        <li class="menu__link"><a href="#footer">Contacts</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </header>
 
@@ -73,31 +73,69 @@
         <div class="wrapper pets__wrapper">
             <h3 class="pets__title">Our friends who<br> are looking for a house</h3>
             <div class="slider pets__slider">
-                <button class="button button_round slider__button">
+                <button class="button button_round slider__button" id="btn-left">
                     <img src="../../assets/images/svg/arrow-left.svg" alt="arrow-left.svg">
                 </button>
-                <ul class="slider__list">
-                    <li class="slider__card">
-                        <img class="slider__image" src="../../assets/images/png/pets-katrine.png" width="270" height="270" alt="pets-katrine.png">
-                        <p class="slider__name">Katrine</p>
-                        <button class="button button_bordered">Learn more</button>
-                    </li>
-                    <li class="slider__card">
-                        <img class="slider__image" src="../../assets/images/png/pets-jennifer.png" width="270" height="270" alt="pets-jennifer.png">
-                        <p class="slider__name">Jennifer</p>
-                        <button class="button button_bordered">Learn more</button>
-                    </li>
-                    <li class="slider__card">
-                        <img class="slider__image" src="../../assets/images/png/pets-woody.png" width="270" height="270" alt="pets-woody.png">
-                        <p class="slider__name">Woody</p>
-                        <button class="button button_bordered">Learn more</button>
-                    </li>
-                </ul>
-                <button class="button button_round slider__button">
+                <div class="slider__wrapper">
+                    <ul class="slider__list" id="slider">
+                        <li class="slider__item" id="item-left">
+                            <div class="pet-card" data-id="2">
+                                <img class="slider__image" src="../../assets/images/png/pets-sophia.png" width="270" height="270" alt="pets-katrine.png">
+                                <p class="slider__name">Sophia</p>
+                                <button class="button button_bordered">Learn more</button>
+                            </div>
+                            <div class="pet-card" data-id="4">
+                                <img class="slider__image" src="../../assets/images/png/pets-scarlet.png" width="270" height="270" alt="pets-jennifer.png">
+                                <p class="slider__name">Scarlett</p>
+                                <button class="button button_bordered">Learn more</button>
+                            </div>
+                            <div class="pet-card" data-id="8">
+                                <img class="slider__image" src="../../assets/images/png/pets-charly.png" width="270" height="270" alt="pets-woody.png">
+                                <p class="slider__name">Charly</p>
+                                <button class="button button_bordered">Learn more</button>
+                            </div>
+                        </li>
+                        <li class="slider__item" id="item-active">
+                            <div class="pet-card" data-id="5">
+                                <img class="slider__image" src="../../assets/images/png/pets-katrine.png" width="270" height="270" alt="pet.png">
+                                <p class="slider__name">Katrine</p>
+                                <button class="button button_bordered">Learn more</button>
+                            </div>
+                            <div class="pet-card" data-id="1">
+                                <img class="slider__image" src="../../assets/images/png/pets-jennifer.png" width="270" height="270" alt="pet.png">
+                                <p class="slider__name">Jennifer</p>
+                                <button class="button button_bordered">Learn more</button>
+                            </div>
+                            <div class="pet-card" data-id="3">
+                                <img class="slider__image" src="../../assets/images/png/pets-woody.png" width="270" height="270" alt="pet.png">
+                                <p class="slider__name">Woody</p>
+                                <button class="button button_bordered">Learn more</button>
+                            </div>
+                        </li>
+                        <li class="slider__item" id="item-right">
+                            <div class="pet-card" data-id="2">
+                                <img class="slider__image" src="../../assets/images/png/pets-sophia.png" width="270" height="270" alt="pets-katrine.png">
+                                <p class="slider__name">Sophia</p>
+                                <button class="button button_bordered">Learn more</button>
+                            </div>
+                            <div class="pet-card" data-id="4">
+                                <img class="slider__image" src="../../assets/images/png/pets-scarlet.png" width="270" height="270" alt="pets-jennifer.png">
+                                <p class="slider__name">Scarlett</p>
+                                <button class="button button_bordered">Learn more</button>
+                            </div>
+                            <div class="pet-card" data-id="8">
+                                <img class="slider__image" src="../../assets/images/png/pets-charly.png" width="270" height="270" alt="pets-woody.png">
+                                <p class="slider__name">Charly</p>
+                                <button class="button button_bordered">Learn more</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <button class="button button_round slider__button" id="btn-right">
                     <img src="../../assets/images/svg/arrow-right.svg" alt="arrow-right">
                 </button>
             </div>
-            <a href="../pets/index.html#pets-pets" style="display: block;"><button class="button button_colored button_big">Get to know the rest</button></a>
+            <a href="../pets/index.html#pagination" style="display: block;"><button class="button button_colored button_big">Get to know the rest</button></a>
         </div>
     </section>
 
@@ -181,6 +219,6 @@
             </div>
         </div>
     </footer>
-    <script src="../../index.js"></script>
+    <script src="../../index.js" type="module"></script>
 </body>
 </html>

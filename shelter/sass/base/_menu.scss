@@ -49,6 +49,7 @@
 }
 
 .menu__body {
+    z-index: 5;
     position: fixed;
     padding: 248px 38px 248px 39px;
     top: 0;
@@ -61,9 +62,28 @@
     &_active {
         right: 0;
     }
+    &_light {
+        background: $color-background-light;
+    }
+}
+
+.menu__dropout {
+    z-index: 1;
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: calc(100% - 320px);
+    height: 100%;
+    background: $color-blackout;
+    transition: left .5s ease-in 0s;
+    &_active {
+        left: 0;
+    }
 }
 
 .menu__list {
+    z-index: 10;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -86,5 +106,13 @@
             color: $color-light-s;
         }
         border-bottom: solid 3px $color-primary;
+    }
+    &_dark {
+        & a {
+            color: $color-dark-l;
+            &:hover {
+                color: $color-dark-3xl;
+            }
+        }
     }
 }

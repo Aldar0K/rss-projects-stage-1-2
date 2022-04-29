@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pets</title>
     <link rel="stylesheet" href="../../sass/style.css">
+    <link rel="favicon icon" href="../../assets/icons/favicon.png" type="image/png">
 </head>
-<body>
+<body class="body">
     <header class="header-pets">
         <div class="wrapper header-pets__wrapper">
             <a class="logo logo_dark" href="../main/index.html">
@@ -21,67 +22,75 @@
                     <li class="navigation__link navigation__link_dark"><a href="../main/index.html#help">Help the shelter</a></li>
                     <li class="navigation__link navigation__link_dark"><a href="#footer">Contacts</a></li>
                 </ul>
-            </nav>
-            <div class="menu">
-                <div class="menu__icon menu__icon_dark">
-                    <span class="menu__line menu__line_dark"></span>
+                <div class="menu">
+                    <div class="menu__icon menu__icon_dark">
+                        <span class="menu__line menu__line_dark"></span>
+                    </div>
+                    <div class="menu__body menu__body_light">
+                        <div class="menu__dropout"></div>
+                        <ul class="menu__list">
+                            <li class="menu__link menu__link_dark"><a href="../main/index.html">About the shelter</a></li>
+                            <li class="menu__link menu__link_dark menu__link_active"><a href="#">Our pets</a></li>
+                            <li class="menu__link menu__link_dark"><a href="../main/index.html#help">Help the shelter</a></li>
+                            <li class="menu__link menu__link_dark"><a href="#footer">Contacts</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="menu__body"></div>
-            </div>
+            </nav>
         </div>
     </header>
 
-    <section class="pets-pets" id="pets-pets">
-        <div class="wrapper pets-pets__wrapper">
-            <h3 class="pets-pets__title">Our friends who<br> are looking for a house</h3>
-            <ul class="pets-pets__list">
-                <li class="pets-pets__card">
+    <section class="pagination" id="pagination">
+        <div class="wrapper pagination__wrapper">
+            <h3 class="pagination__title">Our friends who<br> are looking for a house</h3>
+            <ul class="pagination__list">
+                <li class="pet-card" data-id="5">
                     <img class="slider__image" src="../../assets/images/png/pets-katrine.png" alt="pets-katrine.png">
                     <p class="slider__name">Katrine</p>
                     <button class="button button_bordered">Learn more</button>
                 </li>
-                <li class="pets-pets__card">
+                <li class="pet-card">
                     <img class="slider__image" src="../../assets/images/png/pets-jennifer.png" alt="pets-jennifer.png">
-                    <p class="slider__name">Jennifer</p>
+                    <p class="slider__name" data-id="1">Jennifer</p>
                     <button class="button button_bordered">Learn more</button>
                 </li>
-                <li class="pets-pets__card">
+                <li class="pet-card" data-id="3">
                     <img class="slider__image" src="../../assets/images/png/pets-woody.png" alt="pets-woody.png">
                     <p class="slider__name">Woody</p>
                     <button class="button button_bordered">Learn more</button>
                 </li>
-                <li class="pets-pets__card">
+                <li class="pet-card" data-id="2">
                     <img class="slider__image" src="../../assets/images/png/pets-sophia.png" alt="pets-sophia.png">
                     <p class="slider__name">Sophia</p>
                     <button class="button button_bordered">Learn more</button>
                 </li>
-                <li class="pets-pets__card">
+                <li class="pet-card" data-id="6">
                     <img class="slider__image" src="../../assets/images/png/pets-timmy.png" alt="pets-timmy.png">
                     <p class="slider__name">Timmy</p>
                     <button class="button button_bordered">Learn more</button>
                 </li>
-                <li class="pets-pets__card">
+                <li class="pet-card" data-id="8">
                     <img class="slider__image" src="../../assets/images/png/pets-charly.png"alt="pets-charly.png">
                     <p class="slider__name">Charly</p>
                     <button class="button button_bordered">Learn more</button>
                 </li>
-                <li class="pets-pets__card">
+                <li class="pet-card" data-id="4">
                     <img class="slider__image" src="../../assets/images/png/pets-scarlet.png" alt="pets-scarlet.png">
                     <p class="slider__name">Scarlett</p>
                     <button class="button button_bordered">Learn more</button>
                 </li>
-                <li class="pets-pets__card">
+                <li class="pet-card" data-id="7">
                     <img class="slider__image" src="../../assets/images/png/pets-freddie.png" alt="pets-freddie.png">
                     <p class="slider__name">Freddie</p>
                     <button class="button button_bordered">Learn more</button>
                 </li>
             </ul>
-            <div class="pets-pets__buttons">
-                <button class="button button_round button_disabled"><<</button>
-                <button class="button button_round button_disabled"><</button>
-                <button class="button button_round button_colored">1</button>
-                <button class="button button_round">></button>
-                <button class="button button_round">>></button>
+            <div class="pagination__buttons">
+                <button class="button button_round button_disabled" id="btn-dblleft"><<</button>
+                <button class="button button_round button_disabled" id="btn-left"><</button>
+                <button class="button button_round button_colored" id="btn-info">1</button>
+                <button class="button button_round" id="btn-right">></button>
+                <button class="button button_round" id="btn-dblright">>></button>
             </div>
         </div>
     </section>
@@ -105,5 +114,5 @@
             </div>
         </div>
     </footer>
-    <script src="../../index.js"></script>
+    <script src="../../index.js" type="module"></script>
 </body>
