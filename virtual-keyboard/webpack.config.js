@@ -8,6 +8,7 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         static: path.resolve(__dirname, './dist'),
+        // { directory: path.join(__dirname, './dist'), },
         open: true,
         compress: true,
         hot: true,
