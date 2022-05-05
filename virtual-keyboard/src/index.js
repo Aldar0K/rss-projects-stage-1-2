@@ -1,3 +1,6 @@
+// Подключение стилей.
+import './styles/styles.css';
+
 // Создаем корневой контейнер root и помещаем его в body.
 const root = document.createElement('div');
 root.classList.add('root');
@@ -19,5 +22,3 @@ const myGame = new Game()
 const p = document.createElement('p')
 p.textContent = `I like ${myGame.game}.`
 root.append(p);
-
-import example from './images/example.jpg'
