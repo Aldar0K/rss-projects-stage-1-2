@@ -19,6 +19,11 @@ textArea.classList.add('textarea');
 container.append(textArea);
 
 // Создаем тело клавиатуры.
+const keyboard = document.createElement('div');
+keyboard.classList.add('keyboard');
+// keyboard.classList.add('keyboard_hidden');
+container.append(keyboard);
 
+// Создаем клавиши для клавиатуры.
 
 // Создаем блок с дополнительной информацией.
