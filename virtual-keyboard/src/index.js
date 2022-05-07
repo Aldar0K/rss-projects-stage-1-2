@@ -1,25 +1,24 @@
 // Подключение стилей.
-import './styles/styles.css';
+import './styles.css';
 
-// Создаем корневой контейнер root и помещаем его в body.
-const root = document.createElement('div');
-root.classList.add('root');
-root.id = 'root';
-document.body.append(root);
+// Создаем корневой контейнер container и помещаем его в body.
+const container = document.createElement('div');
+container.classList.add('container');
+container.id = 'container';
+document.body.append(container);
 
-// Создаем заголовок и помещаем его в root.
+// Создаем заголовок и помещаем его в container.
 const heading = document.createElement('h1');
 heading.textContent = 'Virtual keyboard RS School';
-root.append(heading);
+heading.classList.add('title');
+container.append(heading);
 
-// Cоздаём экземпляр класса Game без конструктора.
-class Game {
-    name = 'Violin Charades'
-};
-const myGame = new Game();
+// Создаем текстовое поле для набота текста.
+const textArea = document.createElement('textarea');
+textArea.classList.add('textarea');
+container.append(textArea);
 
-// Cоздаем параграф.
-const p = document.createElement('p');
-// Меняем контент на текст с несуществующим свойством класса.
-p.textContent = `I like ${myGame.game}.`;
-root.append(p);
+// Создаем тело клавиатуры.
+
+
+// Создаем блок с дополнительной информацией.

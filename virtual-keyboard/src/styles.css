@@ -1,0 +1,34 @@
+@import "~normalize.css";
+
+html {
+    font-size: 1em;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', 'Times', sans-serif;
+}
+
+.container {
+    padding-top: 2em;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1em;
+}
+
+.textarea {
+    min-height: 150px;
+    min-width: 200px;
+}

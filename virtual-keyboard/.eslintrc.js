@@ -1,7 +1,8 @@
 module.exports = {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
-        "es2021": true
+        "es6": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
@@ -10,6 +11,6 @@ module.exports = {
     },
     "rules": {
         "semi": ["error", "always"],
-        "quotes": ["error", "double"]
+        "quotes": ["error", "double"],
     }
 }

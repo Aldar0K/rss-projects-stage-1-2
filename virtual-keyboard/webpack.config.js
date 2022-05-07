@@ -3,6 +3,60 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
+
+const isDev = process.env.NODE_ENV === 'development';
+console.log('IS DEV:', isDev);
+const isProd = !isDev;
+
+const optimization = () => {
+    const config = {
+        splitChunks: {
+            chunks: 'all'
+        }
+    }
+
+    if (isProd) {
+        config.minimizer = [
+            new CssMinimizerWebpackPlugin(),
+            new TerserWebpackPlugin()
+        ]
+    }
+
+    return config;
+}
+
+const babelOptions = preset => {
+    const opts = {
+        presets: [
+            '@babel/preset-env'
+        ],
+        plugins: [
+            '@babel/plugin-proposal-class-properties'
+        ]
+    }
+
+    if (preset) {
+        opts.presets.push(preset);
+    }
+
+    return opts;
+}
+
+// const jsLoaders = () => {
+//     const loaders = [{
+//         loader: 'babel-loader',
+//         options: babelOptions()
+//     }];
+
+//     if (isDev) {
+//         loaders.push('eslint-loader');
+//     }
+
+//     return loaders;
+// }
 
 module.exports = {
     mode: 'development',
@@ -12,7 +66,7 @@ module.exports = {
         // { directory: path.join(__dirname, './dist'), },
         open: true,
         compress: true,
-        hot: true,
+        hot: isDev,
         port: 8080,
     },
     entry: {
@@ -25,27 +79,30 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.json'],
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
-    },
+    optimization: optimization(),
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HTMLWebpackPlugin({
             title: 'Virtual keyboard',
             template: path.resolve(__dirname, './src/template.html'),
             filename: 'index.html',
+            minify: {
+                collapseWhitespace: isProd,
+            }
         }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [
+                // Copy favicon to dist.
                 { 
                     from: path.resolve(__dirname, 'src/assets/images/favicon.ico'), 
                     to: path.resolve(__dirname, 'dist') 
                 },
             ],
           }),
+          new MiniCssExtractPlugin({
+              filename: '[name].bundle.css',
+          })
     ],
     module: {
         rules: [
@@ -53,7 +110,8 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: ['babel-loader'],
+                loader: 'babel-loader',
+                options: babelOptions()
             },
             // Изображения.
             {
@@ -67,9 +125,13 @@ module.exports = {
             },
             // Стили CSS, PostCSS, Sass.
             {
-                test: /\.(scss|css)$/,
-                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-            }
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
+            },
+            // {
+            //     test: /\.scss)$/,
+            //     use: [MiniCssExtractPlugin.loader, "css-loader", "scss-loader"],
+            // },
         ],
     },
 }
