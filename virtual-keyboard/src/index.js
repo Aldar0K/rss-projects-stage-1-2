@@ -15,10 +15,11 @@ root.append(heading);
 // Cоздаём экземпляр класса Game без конструктора.
 class Game {
     name = 'Violin Charades'
-}
-const myGame = new Game()
+};
+const myGame = new Game();
 
 // Cоздаем параграф.
-const p = document.createElement('p')
-p.textContent = `I like ${myGame.game}.`
+const p = document.createElement('p');
+// Меняем контент на текст с несуществующим свойством класса.
+p.textContent = `I like ${myGame.game}.`;
 root.append(p);

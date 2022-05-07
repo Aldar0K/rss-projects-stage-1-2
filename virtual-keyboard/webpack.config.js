@@ -21,6 +21,14 @@ module.exports = {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].bundle.js',
     },
+    resolve: {
+        extensions: ['.js', '.json'],
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HTMLWebpackPlugin({
