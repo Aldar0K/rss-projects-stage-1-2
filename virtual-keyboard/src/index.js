@@ -18,12 +18,32 @@ const textArea = document.createElement('textarea');
 textArea.classList.add('textarea');
 container.append(textArea);
 
-// Создаем тело клавиатуры.
+// Создаем блок с дополнительной информацией.
+// TODO
+
+// Создаем контейнер для клавитуры.
 const keyboard = document.createElement('div');
 keyboard.classList.add('keyboard');
 // keyboard.classList.add('keyboard_hidden');
 container.append(keyboard);
 
-// Создаем клавиши для клавиатуры.
+// Создаем тело клавиатуры.
+const keys = document.createElement('div');
+keys.classList.add('keyboard__keys');
+keyboard.append(keys);
 
-// Создаем блок с дополнительной информацией.
+// Создаем клавиши для клавиатуры.
+const symbols = ['1', '2', 'Space', '4', '5', 
+'q', 'w', 'e', 'r', 'Backspace'];
+
+for (let i = 0; i < 10; i++) {
+    const key = document.createElement('button');
+    key.classList.add('keyboard__key');
+    key.id = i + 1;
+    key.textContent = symbols[i];
+    keys.append(key);
+}
+
+document.getElementById('2').textContent = 'A';
+
+

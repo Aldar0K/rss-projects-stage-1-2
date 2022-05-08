@@ -59,7 +59,8 @@ const babelOptions = preset => {
 // }
 
 module.exports = {
-    mode: 'development',
+    mode: isProd ? 'production' : 'development',
+    devtool: false,
     devServer: {
         historyApiFallback: true,
         static: path.resolve(__dirname, './dist'),

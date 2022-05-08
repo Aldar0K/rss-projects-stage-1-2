@@ -2,6 +2,10 @@
 
 :root {
     --color-primary: rgb(22, 109, 80);
+    --color-secondary: rgb(69, 163, 132);
+    --color-active: rgb(54, 128, 103);
+    --color-background: rgba(238, 241, 243, 0.513);
+    --color-light: rgb(255, 255, 255);
 }
 
 html {
@@ -16,7 +20,7 @@ html {
 
 body {
     font-family: 'Roboto', 'Times', sans-serif;
-    background-color: rgba(0,0,0,0.05);
+    background-color: var(--color-background);
 }
 
 .container {
@@ -45,10 +49,14 @@ h1 {
     max-height: 400px;
     max-width: 100%;
 
-    border: 1px solid var(--color-primary);
+    border: 1px solid gray;
     /* border-radius: 1em; */
     outline: none;
     overflow: auto;
+}
+
+.textarea:focus {
+    border: 2px solid var(--color-primary);
 }
 
 .keyboard {
@@ -61,9 +69,84 @@ h1 {
     box-shadow: 0 0 50px rgba(0,0,0,0.5);
     user-select: none;
     transition: bottom 0.4s;
-    height: 300px;
+    height: 400px;
 }
 
 .keyboard_hidden {
     bottom: -100%;
+}
+
+.keyboard__keys {
+    text-align: center;
+}
+
+.keyboard__key {
+    height: 45px;
+    width: 6%;
+    max-width: 90px;
+    margin: 3px;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--color-secondary);
+    color: var(--color-light);
+    font-size: 1.05rem;
+    outline: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+}
+
+.keyboard__key:active {
+    background-color: var(--color-active);
+}
+
+.keyboard__key_wide {
+    width: 12%;
+}
+
+.keyboard__key_extra-wide {
+    width: 36%;
+    max-width: 500px;
+}
+
+.keyboard__key_activatable::after {
+    counter-reset: '';
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 50%;
+}
+
+.keyboard__key_active::after {
+    background-color: rgb(4, 145, 4);
+}
+
+.keyboard__key_dark {
+    background-color: rgba(0,0,0,0.25);
+}
+
+.material-icons {
+    word-wrap: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga";
+    direction: ltr;
+    display: inline-block;
+    font-family: Material Icons;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1;
+    text-transform: none;
+    white-space: nowrap;
 }
