@@ -21,29 +21,148 @@ container.append(textArea);
 // Создаем блок с дополнительной информацией.
 // TODO
 
-// Создаем контейнер для клавитуры.
-const keyboard = document.createElement('div');
-keyboard.classList.add('keyboard');
-// keyboard.classList.add('keyboard_hidden');
-container.append(keyboard);
+// Создаем объект клавитуры.
+const Keyboard = {
+    elements: {
+        main: null,
+        keysContainer: null,
+        keys: []
+    },
 
-// Создаем тело клавиатуры.
-const keys = document.createElement('div');
-keys.classList.add('keyboard__keys');
-keyboard.append(keys);
+    eventHandlers: {
+        oninput: null,
+        onclose: null
+    },
 
-// Создаем клавиши для клавиатуры.
-const symbols = ['1', '2', 'Space', '4', '5', 
-'q', 'w', 'e', 'r', 'Backspace'];
+    properties: {
+        value: '',
+        capsLock: false
+    },
 
-for (let i = 0; i < 10; i++) {
-    const key = document.createElement('button');
-    key.classList.add('keyboard__key');
-    key.id = i + 1;
-    key.textContent = symbols[i];
-    keys.append(key);
+    init() {
+        // Создание контейнеров для клавиатуры.
+        this.elements.main = document.createElement('div');
+        this.elements.keysContainer = document.createElement('div');
+
+        // Добавление классов для контейнеров
+        this.elements.main.classList.add('keyboard', '1keyboard_hidden');
+        this.elements.keysContainer.classList.add('keyboard__keys');
+        this.elements.keysContainer.appendChild(this._createKeys());
+
+        // Генерация в DOM.
+        this.elements.main.append(this.elements.keysContainer);
+        document.body.append(this.elements.main);
+    },
+
+    _createKeys() {
+        const fragment = document.createDocumentFragment();
+        const keyLayout = [
+            '`','1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
+            'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del',
+            'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'enter',
+            'lshift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'up', 'rshift', 'done',
+            'lctrl', 'win', 'lalt','space', 'ralt', 'left', 'down', 'right', 'rctrl',
+        ];
+
+        // Создание HTML иконок для некоторых клавиш.
+        const createIconHTML = icon_name => {
+            return `<i class="material-icons">${icon_name}</i>`
+        }
+
+        keyLayout.forEach(key => {
+            // Создание DOM элемента для каждой клавиши.
+            const keyElement = document.createElement('div');
+            const insertLineBreak = ['backspace', 'del', 'enter', 'done'].indexOf(key) !== -1;
+
+            // Добавление атрибутов (классов).
+            keyElement.setAttribute('type', 'button');
+            keyElement.classList.add('keyboard__key');
+
+            switch (key) {
+                case 'backspace':
+                    keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.innerHTML = createIconHTML('backspace');
+                    keyElement.addEventListener('click', () => {
+                        this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
+                case 'caps':
+                    keyElement.classList.add('keyboard__key_wide', 'keyboard__key_activatable', 'keyboard__key_dark');
+                    keyElement.innerHTML = createIconHTML('keyboard_capslock');
+                    keyElement.addEventListener('click', () => {
+                        this._toogleCapseLock();
+                        keyElement.classList.toggle('keyboard__key_activatable', this.properties.capsLock);
+                    });
+                    break;
+                    
+                case 'enter':
+                    keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.innerHTML = createIconHTML('keyboard_return');
+                    keyElement.addEventListener('click', () => {
+                        this.properties.value += '\n';
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
+                case 'space':
+                    keyElement.classList.add('keyboard__key_extra-wide');
+                    keyElement.innerHTML = createIconHTML('space_bar');
+                    keyElement.addEventListener('click', () => {
+                        this.properties.value += ' ';
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
+                // TODO Попробовать абсолютно позиционировать.
+                case 'done':
+                    keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.innerHTML = createIconHTML('check_circle');
+                    keyElement.addEventListener('click', () => {
+                        this.close();
+                        this._triggerEvent('onclose');
+                    });
+                    break;
+
+                default:
+                    keyElement.textContent = key.toLowerCase();
+                    keyElement.addEventListener('click', () => {
+                        this.properties.value += this.properties.capsLock ? key.toUpperCase() : key;
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+            }
+
+            fragment.append(keyElement);
+
+            if (insertLineBreak) {
+                fragment.append(document.createElement('br'));
+            }
+        });
+
+        return fragment;
+    },
+
+    _triggerEvent(hanlerName) {
+       console.log(`Event Triggered! Event Name: ${hanlerName}`) 
+    },
+
+    _toogleCapseLock() {
+        console.log('CapsLock Toggled!');
+    },
+
+    open(initialValue, oninput, onclose) {
+
+    },
+
+    close() {
+
+    }
 }
 
-document.getElementById('2').textContent = 'A';
+// Создание тела клавиатуры после полной загрузки DOM.
+window.addEventListener('DOMContentLoaded', Keyboard.init());
+
 
 
