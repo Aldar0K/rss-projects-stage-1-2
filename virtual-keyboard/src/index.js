@@ -20,6 +20,13 @@ textArea.classList.add('textarea', 'keyboard__textarea');
 container.append(textArea);
 
 // TODO Создаем блок с дополнительной информацией.
+const info = document.createElement('p');
+// info.textContent += 'Клавиатура создана в операционной системе Windows';
+info.textContent += 'К сожалению я не успел доделать работу до дедлайна. ';
+info.textContent += 'Буду очень признателен, если вы проверите мою работу немного позже.';
+// info.textContent += 'Для переключения языка комбинация: левыe ctrl + alt';
+info.classList.add('info');
+container.append(info);
 
 // Создаем объект клавитуры.
 const Keyboard = {
@@ -44,14 +51,14 @@ const Keyboard = {
             '`','1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
             'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del',
             'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'enter',
-            'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'up', 'shift', 'done',
+            'lshift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'up', 'rshift', 'done',
             'ctrl', 'win', 'alt','space', 'alt', 'left', 'down', 'right', 'ctrl',
         ],
         'ruLayout': [
             'ё','1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
             'tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'del',
             'caps', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'enter',
-            'shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'up', 'shift', 'done',
+            'lshift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'up', 'rshift', 'done',
             'ctrl', 'win', 'alt','space', 'alt', 'left', 'down', 'right', 'ctrl',
         ],
     },
@@ -87,7 +94,7 @@ const Keyboard = {
         });
     },
 
-    // TODO добавить параметр layout для генерации разных раскладок.
+    // Функция для генерации раскладки.
     _createKeys(layout) {
         let currentLayout = this.layouts.enLayout;
         layout === 'ru' ? currentLayout = this.layouts.ruLayout : currentLayout;
@@ -111,6 +118,7 @@ const Keyboard = {
             switch (key) {
                 case 'backspace':
                     keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.id = 'backspace';
                     keyElement.innerHTML = createIconHTML('backspace');
                     keyElement.addEventListener('click', () => {
                         this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
@@ -120,6 +128,7 @@ const Keyboard = {
 
                 case 'del':
                     keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.id = 'del';
                     keyElement.textContent = 'Del';
                     keyElement.addEventListener('click', () => {
                         this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
@@ -129,6 +138,7 @@ const Keyboard = {
 
                 case 'caps':
                     keyElement.classList.add('keyboard__key_wide', 'keyboard__key_activatable', 'keyboard__key_dark');
+                    keyElement.id = 'caps';
                     keyElement.innerHTML = createIconHTML('keyboard_capslock');
                     keyElement.addEventListener('click', () => {
                         this._toogleCapseLock();
@@ -136,8 +146,23 @@ const Keyboard = {
                     });
                     break;
 
-                case 'shift':
+                case 'lshift':
                     keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.id = 'lshift';
+                    keyElement.textContent = 'Shift';
+                    keyElement.addEventListener('mousedown', () => {
+                        this._toogleCapseLock();
+                        keyElement.classList.toggle('keyboard__key_active', this.properties.capsLock);
+                    });
+                    keyElement.addEventListener('mouseup', () => {
+                        this._toogleCapseLock();
+                        keyElement.classList.toggle('keyboard__key_active', this.properties.capsLock);
+                    });
+                    break;
+
+                case 'rshift':
+                    keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.id = 'rshift';
                     keyElement.textContent = 'Shift';
                     keyElement.addEventListener('mousedown', () => {
                         this._toogleCapseLock();
@@ -151,6 +176,7 @@ const Keyboard = {
                     
                 case 'enter':
                     keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.id = 'enter';
                     keyElement.innerHTML = createIconHTML('keyboard_return');
                     keyElement.addEventListener('click', () => {
                         this.properties.value += '\n';
@@ -160,6 +186,7 @@ const Keyboard = {
 
                 case 'space':
                     keyElement.classList.add('keyboard__key_extra-wide');
+                    keyElement.id = 'space';
                     keyElement.innerHTML = createIconHTML('space_bar');
                     keyElement.addEventListener('click', () => {
                         this.properties.value += ' ';
@@ -178,6 +205,7 @@ const Keyboard = {
 
                 case 'tab':
                     keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.id = 'tab';
                     keyElement.innerHTML = createIconHTML('keyboard_tab');
                     keyElement.addEventListener('click', () => {
                         this.properties.value += '    ';
@@ -250,6 +278,7 @@ const Keyboard = {
 
                 default:
                     keyElement.textContent = key.toLowerCase();
+                    // keyElement.id = key;
                     keyElement.addEventListener('click', () => {
                         this.properties.value += this.properties.capsLock ? key.toUpperCase() : key;
                         this._triggerEvent('oninput');
@@ -311,11 +340,57 @@ window.addEventListener('DOMContentLoaded', () => {
     Keyboard.open();
 });
 
+let ctrlFlag = false;
+
 // Добавление слушателей для клавиш клавиатуры.
 window.addEventListener('keydown', (e) => {
-    console.log(e);
-})
+    const keys = Keyboard.elements.keys;
+    for (let i = 0; i < keys.length; i++) {
+        if (e.key.toLowerCase() == keys[i].textContent.toLowerCase()) {
+            console.log(e.key);
 
-localStorage.setItem('layoutLang', 'ru');
+            Keyboard.properties.value += keys[i].textContent;
+
+            keys[i].classList.add('keyboard__key_active');
+        }
+
+        // console.log(e.code);
+        
+        if (e.code === 'CapsLock') {
+            document.querySelector('#caps').classList.toggle('keyboard__key_active');
+            Keyboard._toogleCapseLock();
+        }
+        if (e.code === 'Backspace') {
+            document.querySelector('#backspace').classList.add('keyboard__key_active');
+        }
+        if (e.code === 'Space') {
+            document.querySelector('#space').classList.add('keyboard__key_active');
+        }
+        if (e.code === 'Tab') {
+            document.querySelector('#tab').classList.add('keyboard__key_active');
+            Keyboard.properties.value += '    ';
+        }
+        if (e.code === 'ShiftLeft') {
+            // document.querySelector('#lshift').classList.add('keyboard__key_active');
+            // Keyboard._toogleCapseLock();
+        }
+        // if (e.code === 'ShiftRight') {
+        //     document.querySelector('#rshift').classList.add('keyboard__key_active');
+        //     Keyboard._toogleCapseLock();
+        // }
+    }
+});
+
+window.addEventListener('keyup', (e) => {
+    const keys = Keyboard.elements.keys;
+    for (let i = 0; i < keys.length; i++) {
+        if (e.key.toLowerCase() == keys[i].textContent.toLowerCase()) {
+            keys[i].classList.remove('keyboard__key_active');
+        }
+    }
+
+    document.querySelector('#space').classList.remove('keyboard__key_active');
+    // document.querySelector('#tab').classList.remove('keyboard__key_active');
+});
 
 
