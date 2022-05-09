@@ -44,16 +44,18 @@ h1 {
     color: var(--color-primary);
 }
 
+textarea {
+    overflow: auto;
+}
+
 .textarea {
     min-height: 200px;
     min-width: 600px;
     max-height: 400px;
     max-width: 100%;
-
+    padding: 10px;
     border: 1px solid gray;
-    /* border-radius: 1em; */
     outline: none;
-    overflow: auto;
 }
 
 .textarea:focus {
@@ -65,7 +67,7 @@ h1 {
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 5px 0;
+    padding: 20px 0;
     background-color: var(--color-primary);
     box-shadow: 0 0 50px rgba(0,0,0,0.5);
     user-select: none;
@@ -78,7 +80,6 @@ h1 {
 }
 
 .keyboard__keys {
-    padding: 20px 0;
     text-align: center;
 }
 
@@ -128,7 +129,7 @@ h1 {
 }
 
 .keyboard__key_active::after {
-    background-color: rgb(4, 145, 4);
+    background-color: rgb(21, 197, 21);
 }
 
 .keyboard__key_dark {

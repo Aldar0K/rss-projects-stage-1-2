@@ -1,5 +1,6 @@
 // Подключение стилей.
 import './styles.css';
+// TODO создать и импортировать русскую раскладку ruLayout.
 
 // Создаем корневой контейнер container и помещаем его в body.
 const container = document.createElement('div');
@@ -15,11 +16,10 @@ container.append(heading);
 
 // Создаем текстовое поле для набота текста.
 const textArea = document.createElement('textarea');
-textArea.classList.add('textarea');
+textArea.classList.add('textarea', 'keyboard__textarea');
 container.append(textArea);
 
-// Создаем блок с дополнительной информацией.
-// TODO
+// TODO Создаем блок с дополнительной информацией.
 
 // Создаем объект клавитуры.
 const Keyboard = {
@@ -45,13 +45,24 @@ const Keyboard = {
         this.elements.keysContainer = document.createElement('div');
 
         // Добавление классов для контейнеров
-        this.elements.main.classList.add('keyboard', '1keyboard_hidden');
+        this.elements.main.classList.add('keyboard', 'keyboard_hidden');
         this.elements.keysContainer.classList.add('keyboard__keys');
         this.elements.keysContainer.appendChild(this._createKeys());
+
+        this.elements.keys = this.elements.keysContainer.querySelectorAll('.keyboard__key');
 
         // Генерация в DOM.
         this.elements.main.append(this.elements.keysContainer);
         document.body.append(this.elements.main);
+
+        // Отслеживание всех полей ввода, связанных классом с клавиатурой.
+        document.querySelectorAll('.keyboard__textarea').forEach(element => {
+            element.addEventListener('focus', () => {
+                this.open(element.value, currentValue => {
+                    element.value = currentValue;
+                });
+            });
+        });
     },
 
     _createKeys() {
@@ -93,7 +104,8 @@ const Keyboard = {
                     keyElement.innerHTML = createIconHTML('keyboard_capslock');
                     keyElement.addEventListener('click', () => {
                         this._toogleCapseLock();
-                        keyElement.classList.toggle('keyboard__key_activatable', this.properties.capsLock);
+                        keyElement.classList.toggle('keyboard__key_active');
+                        keyElement.classList.toggle(this.properties.capsLock);
                     });
                     break;
                     
@@ -115,13 +127,21 @@ const Keyboard = {
                     });
                     break;
 
-                // TODO Попробовать абсолютно позиционировать.
                 case 'done':
                     keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
                     keyElement.innerHTML = createIconHTML('check_circle');
                     keyElement.addEventListener('click', () => {
                         this.close();
                         this._triggerEvent('onclose');
+                    });
+                    break;
+
+                case 'tab':
+                    keyElement.classList.add('keyboard__key_dark');
+                    keyElement.innerHTML = createIconHTML('keyboard_tab');
+                    keyElement.addEventListener('click', () => {
+                        this.properties.value += '    ';
+                        this._triggerEvent('oninput');
                     });
                     break;
 
@@ -144,25 +164,49 @@ const Keyboard = {
         return fragment;
     },
 
-    _triggerEvent(hanlerName) {
-       console.log(`Event Triggered! Event Name: ${hanlerName}`) 
+    _triggerEvent(handlerName) {
+       if (typeof this.eventHandlers[handlerName] === 'function') {
+           this.eventHandlers[handlerName](this.properties.value);
+       }
     },
 
     _toogleCapseLock() {
-        console.log('CapsLock Toggled!');
+        this.properties.capsLock = !this.properties.capsLock;
+
+        for (const key of this.elements.keys) {
+            if (key.childElementCount === 0) {
+                key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+            }
+        }
+    },
+
+    // TODO Метод для смены языка
+    _switchLang() {
+
     },
 
     open(initialValue, oninput, onclose) {
-
+        this.properties.value = initialValue || '';
+        this.eventHandlers.oninput = oninput;
+        this.eventHandlers.onclose = onclose;
+        this.elements.main.classList.remove('keyboard_hidden');
     },
 
     close() {
-
+        this.properties.value = '';
+        this.eventHandlers.oninput = oninput;
+        this.eventHandlers.onclose = onclose;
+        this.elements.main.classList.add('keyboard_hidden');
     }
 }
 
 // Создание тела клавиатуры после полной загрузки DOM.
-window.addEventListener('DOMContentLoaded', Keyboard.init());
+window.addEventListener('DOMContentLoaded', () => {
+    Keyboard.init();
+
+    // TODO убрать открытие по умолчанию.
+    Keyboard.open();
+});
 
 
 
