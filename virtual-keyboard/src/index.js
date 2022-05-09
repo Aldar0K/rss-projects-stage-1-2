@@ -39,6 +39,27 @@ const Keyboard = {
         capsLock: false
     },
 
+    layouts: {
+        'enLayout': [
+            '`','1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
+            'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del',
+            'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'enter',
+            'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'up', 'shift', 'done',
+            'ctrl', 'win', 'alt','space', 'alt', 'left', 'down', 'right', 'ctrl',
+        ],
+        'ruLayout': [
+            'ё','1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
+            'tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'del',
+            'caps', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'enter',
+            'shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'up', 'shift', 'done',
+            'ctrl', 'win', 'alt','space', 'alt', 'left', 'down', 'right', 'ctrl',
+        ],
+    },
+
+    _getCurrentLayout() {
+        return localStorage.getItem('layoutLang');
+    },
+
     init() {
         // Создание контейнеров для клавиатуры.
         this.elements.main = document.createElement('div');
@@ -47,7 +68,8 @@ const Keyboard = {
         // Добавление классов для контейнеров
         this.elements.main.classList.add('keyboard', 'keyboard_hidden');
         this.elements.keysContainer.classList.add('keyboard__keys');
-        this.elements.keysContainer.appendChild(this._createKeys());
+        // this.elements.keysContainer.appendChild(this._createKeys(this.layouts.enLayout));
+        this.elements.keysContainer.appendChild(this._createKeys(this._getCurrentLayout()));
 
         this.elements.keys = this.elements.keysContainer.querySelectorAll('.keyboard__key');
 
@@ -65,22 +87,19 @@ const Keyboard = {
         });
     },
 
-    _createKeys() {
+    // TODO добавить параметр layout для генерации разных раскладок.
+    _createKeys(layout) {
+        let currentLayout = this.layouts.enLayout;
+        layout === 'ru' ? currentLayout = this.layouts.ruLayout : currentLayout;
+
         const fragment = document.createDocumentFragment();
-        const keyLayout = [
-            '`','1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
-            'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del',
-            'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'enter',
-            'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'up', 'shift', 'done',
-            'lctrl', 'win', 'lalt','space', 'ralt', 'left', 'down', 'right', 'rctrl',
-        ];
 
         // Создание HTML иконок для некоторых клавиш.
         const createIconHTML = icon_name => {
             return `<i class="material-icons">${icon_name}</i>`
         }
 
-        keyLayout.forEach(key => {
+        currentLayout.forEach(key => {
             // Создание DOM элемента для каждой клавиши.
             const keyElement = document.createElement('div');
             const insertLineBreak = ['backspace', 'del', 'enter', 'done'].indexOf(key) !== -1;
@@ -158,10 +177,73 @@ const Keyboard = {
                     break;
 
                 case 'tab':
-                    keyElement.classList.add('keyboard__key_dark');
+                    keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
                     keyElement.innerHTML = createIconHTML('keyboard_tab');
                     keyElement.addEventListener('click', () => {
                         this.properties.value += '    ';
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
+                case 'ctrl':
+                    keyElement.classList.add('keyboard__key_dark');
+                    keyElement.textContent = 'Ctrl';
+                    keyElement.addEventListener('click', () => {
+                        // this.properties.value += '';
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
+                case 'alt':
+                    keyElement.classList.add('keyboard__key_dark');
+                    keyElement.textContent = 'Alt';
+                    keyElement.addEventListener('click', () => {
+                        // this.properties.value += '';
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
+                case 'win':
+                    keyElement.classList.add('keyboard__key_dark');
+                    keyElement.textContent = 'Win';
+                    keyElement.addEventListener('click', () => {
+                        // this.properties.value += '';
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
+                case 'up':
+                    keyElement.classList.add('keyboard__key_dark');
+                    keyElement.innerHTML = createIconHTML('keyboard_arrow_up');
+                    keyElement.addEventListener('click', () => {
+                        this.properties.value += '↑';
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
+                case 'down':
+                    keyElement.classList.add('keyboard__key_dark');
+                    keyElement.innerHTML = createIconHTML('keyboard_arrow_down');
+                    keyElement.addEventListener('click', () => {
+                        this.properties.value += '↓';
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
+                case 'left':
+                    keyElement.classList.add('keyboard__key_dark');
+                    keyElement.innerHTML = createIconHTML('keyboard_arrow_left');
+                    keyElement.addEventListener('click', () => {
+                        this.properties.value += '←';
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
+                case 'right':
+                    keyElement.classList.add('keyboard__key_dark');
+                    keyElement.innerHTML = createIconHTML('keyboard_arrow_right');
+                    keyElement.addEventListener('click', () => {
+                        this.properties.value += '→';
                         this._triggerEvent('oninput');
                     });
                     break;
@@ -229,5 +311,11 @@ window.addEventListener('DOMContentLoaded', () => {
     Keyboard.open();
 });
 
+// Добавление слушателей для клавиш клавиатуры.
+window.addEventListener('keydown', (e) => {
+    console.log(e);
+})
+
+localStorage.setItem('layoutLang', 'ru');
 
 

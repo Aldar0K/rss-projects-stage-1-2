@@ -113,7 +113,7 @@ textarea {
 
 .keyboard__key_active {
     background-color: var(--color-active);
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .keyboard__key:active {
