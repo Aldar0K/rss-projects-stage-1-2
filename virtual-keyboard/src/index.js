@@ -71,7 +71,7 @@ const Keyboard = {
             '`','1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
             'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'del',
             'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'enter',
-            'lshift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'up', 'rshift', 'done',
+            'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'up', 'shift', 'done',
             'lctrl', 'win', 'lalt','space', 'ralt', 'left', 'down', 'right', 'rctrl',
         ];
 
@@ -99,13 +99,34 @@ const Keyboard = {
                     });
                     break;
 
+                case 'del':
+                    keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.innerHTML = createIconHTML('backspace');
+                    keyElement.addEventListener('click', () => {
+                        this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
+                        this._triggerEvent('oninput');
+                    });
+                    break;
+
                 case 'caps':
                     keyElement.classList.add('keyboard__key_wide', 'keyboard__key_activatable', 'keyboard__key_dark');
                     keyElement.innerHTML = createIconHTML('keyboard_capslock');
                     keyElement.addEventListener('click', () => {
                         this._toogleCapseLock();
-                        keyElement.classList.toggle('keyboard__key_active');
-                        keyElement.classList.toggle(this.properties.capsLock);
+                        keyElement.classList.toggle('keyboard__key_active', this.properties.capsLock);
+                    });
+                    break;
+
+                case 'shift':
+                    keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
+                    keyElement.textContent = 'Shift';
+                    keyElement.addEventListener('mousedown', () => {
+                        this._toogleCapseLock();
+                        keyElement.classList.toggle('keyboard__key_active', this.properties.capsLock);
+                    });
+                    keyElement.addEventListener('mouseup', () => {
+                        this._toogleCapseLock();
+                        keyElement.classList.toggle('keyboard__key_active', this.properties.capsLock);
                     });
                     break;
                     
@@ -174,14 +195,14 @@ const Keyboard = {
         this.properties.capsLock = !this.properties.capsLock;
 
         for (const key of this.elements.keys) {
-            if (key.childElementCount === 0) {
+            if (key.innerHTML.length === 1) {
                 key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
             }
         }
     },
 
     // TODO Метод для смены языка
-    _switchLang() {
+    _switchLang(layout) {
 
     },
 
