@@ -3,7 +3,8 @@
 :root {
     --color-primary: rgb(22, 109, 80);
     --color-secondary: rgb(69, 163, 132);
-    --color-active: rgb(54, 128, 103);
+    --color-hover: rgb(54, 128, 103);
+    --color-active: rgba(0, 0, 0, 0.5);
     --color-background: rgba(238, 241, 243, 0.513);
     --color-light: rgb(255, 255, 255);
 }
@@ -102,10 +103,22 @@ textarea {
     padding: 0;
     -webkit-tap-highlight-color: transparent;
     position: relative;
+    transition: all .1s ease-out;
+}
+
+.keyboard__key:hover {
+    background-color: var(--color-hover);
+    
+}
+
+.keyboard__key_active {
+    background-color: var(--color-active);
+    border-radius: 10px;
 }
 
 .keyboard__key:active {
     background-color: var(--color-active);
+    border-radius: 10px;
 }
 
 .keyboard__key_wide {
@@ -133,7 +146,7 @@ textarea {
 }
 
 .keyboard__key_dark {
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .material-icons {

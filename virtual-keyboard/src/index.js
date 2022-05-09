@@ -101,7 +101,7 @@ const Keyboard = {
 
                 case 'del':
                     keyElement.classList.add('keyboard__key_wide', 'keyboard__key_dark');
-                    keyElement.innerHTML = createIconHTML('backspace');
+                    keyElement.textContent = 'Del';
                     keyElement.addEventListener('click', () => {
                         this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
                         this._triggerEvent('oninput');
