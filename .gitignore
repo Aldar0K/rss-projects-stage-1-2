@@ -1,3 +1,6 @@
+# gitignore itself
+.gitignore
+
 # Logs
 logs
 *.log
@@ -101,6 +104,3 @@ typings/
 
 # TernJS port file
 .tern-port
-
-# virtual-keyboard
-virtual-keyboard

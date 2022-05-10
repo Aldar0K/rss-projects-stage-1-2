@@ -74,7 +74,7 @@ module.exports = {
         main: path.resolve(__dirname, './src/index.js'),
     },
     output: {
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, './dist'),
         filename: '[name].bundle.js',
     },
     resolve: {
@@ -97,7 +97,7 @@ module.exports = {
                 // Copy favicon to dist.
                 { 
                     from: path.resolve(__dirname, 'src/assets/images/favicon.ico'), 
-                    to: path.resolve(__dirname, '../dist') 
+                    to: path.resolve(__dirname, './dist') 
                 },
             ],
           }),
