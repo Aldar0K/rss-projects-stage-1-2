@@ -97,7 +97,7 @@ module.exports = {
                 // Copy favicon to dist.
                 { 
                     from: path.resolve(__dirname, 'src/assets/images/favicon.ico'), 
-                    to: path.resolve(__dirname, 'dist') 
+                    to: path.resolve(__dirname, '../dist') 
                 },
             ],
           }),
