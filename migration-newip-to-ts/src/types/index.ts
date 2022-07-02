@@ -25,11 +25,7 @@ export interface IEverything {
     articles: article[],
 }
 
-export interface ITopHeadlines {
-    status: string,
-    totalResults: number,
-    articles: article[],
-}
+export interface ITopHeadlines extends IEverything {}
 
 
 export interface ISources {
