@@ -1,5 +1,15 @@
-interface IArticle {
-    source: object,
+export type source = {
+    id: string,
+    name: string,
+    description: string,
+    url: string,
+    category: string,
+    language: string,
+    country: string,
+}
+
+export type article = {
+    source: source,
     author: string,
     title: string,
     description: string,
@@ -12,26 +22,17 @@ interface IArticle {
 export interface IEverything {
     status: string,
     totalResults: number,
-    articles: IArticle[],
+    articles: article[],
 }
 
 export interface ITopHeadlines {
     status: string,
     totalResults: number,
-    articles: IArticle[],
+    articles: article[],
 }
 
-interface ISource {
-    id: string,
-    name: string,
-    description: string,
-    url: string,
-    category: string,
-    language: string,
-    country: string,
-}
 
 export interface ISources {
     status: string,
-    sources: ISource[],
+    sources: source[],
 }
