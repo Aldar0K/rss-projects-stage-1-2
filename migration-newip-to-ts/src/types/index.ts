@@ -1,3 +1,7 @@
+export type apiKey = {
+    apiKey: string,
+}
+
 export type source = {
     id: string,
     name: string,
