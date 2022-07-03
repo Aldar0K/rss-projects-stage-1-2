@@ -1,0 +1,56 @@
+.menu {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.menu__icon {
+    display: none;
+    z-index: 10;
+    position: relative;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.menu__icon_active {
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+    .menu__icon {
+        display: block;
+    }
+}
+
+.menu__icon::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    background-color: #fff;
+    height: 2px;
+    width: 100%;
+    top: 0;
+}
+.menu__icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    background-color: #fff;
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+}
+
+.menu__line {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    background-color: #fff;
+    height: 2px;
+    width: 100%;
+    top: calc(50% - 1px);
+}

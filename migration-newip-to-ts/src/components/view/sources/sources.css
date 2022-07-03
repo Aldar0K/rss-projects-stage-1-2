@@ -8,6 +8,17 @@
     font: 300 1em 'Fira Sans', sans-serif;
 }
 
+@media (max-width: 768px) {
+    .sources {
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+    }
+    .sources_disable {
+        display: none;
+    }
+}
+
 .source__item {
     background: none;
     border: 2px solid #30c5ff;
