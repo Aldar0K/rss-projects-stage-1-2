@@ -1,10 +1,9 @@
 import { apiKey } from '../../types/index';
+import { voidGenericCallback } from '../../types/index';
 
 type endpointType = 'everything' | 'sources';
 
 type appRequest = { sources: string } | Record<string, never>;
-
-export type Callback<T> = (data: T) => void;
 
 export default class Loader {
     baseLink: string;
@@ -15,17 +14,9 @@ export default class Loader {
         this.options = options;
     }
 
-    // getResp(
-    //     { endpoint, options = {} }: { endpoint: endpointType, options?: appRequest },
-    //     callback = (): void => {
-    //         console.error('No callback for GET response');
-    //     }
-    // ) {
-    //     this.load('GET', endpoint, callback, options);
-    // }
     getResp<T>(
         { endpoint, options = {} }: { endpoint: endpointType, options?: appRequest },
-        callback: Callback<T>,
+        callback: voidGenericCallback<T>,
     ) {
         this.load('GET', endpoint, callback, options);
     }
@@ -51,7 +42,7 @@ export default class Loader {
         return url.slice(0, -1);
     }
 
-    load<U>(method: string, endpoint: endpointType, callback: Callback<U>, options: appRequest) {
+    load<U>(method: string, endpoint: endpointType, callback: voidGenericCallback<U>, options: appRequest) {
         fetch(this.makeUrl(endpoint, options), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

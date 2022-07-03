@@ -36,3 +36,5 @@ export interface ISources {
     status: string,
     sources: source[],
 }
+
+export type voidGenericCallback<T> = (data: T) => void;
