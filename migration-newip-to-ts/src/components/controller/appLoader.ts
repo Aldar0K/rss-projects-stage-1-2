@@ -3,7 +3,7 @@ import Loader from './loader';
 class AppLoader extends Loader {
     constructor() {
         super('https://nodenews.herokuapp.com/', {
-            apiKey: '1751169aae08467b81e4892121501fd2', // получите свой ключ https://newsapi.org/
+            apiKey: 'aa98da32b3864c3b932b532528bd2542', // получите свой ключ https://newsapi.org/
         });
     }
 }
