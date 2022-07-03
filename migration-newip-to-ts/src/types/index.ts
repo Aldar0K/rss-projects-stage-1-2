@@ -29,9 +29,6 @@ export interface IEverything {
     articles: article[],
 }
 
-export interface ITopHeadlines extends IEverything {}
-
-
 export interface ISources {
     status: string,
     sources: source[],
