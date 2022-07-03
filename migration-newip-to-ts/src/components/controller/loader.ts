@@ -4,6 +4,8 @@ type endpointType = 'everything' | 'sources';
 
 type appRequest = { sources: string } | Record<string, never>;
 
+export type Callback<T> = (data: T) => void;
+
 export default class Loader {
     baseLink: string;
     options: apiKey;
@@ -13,11 +15,17 @@ export default class Loader {
         this.options = options;
     }
 
-    getResp(
+    // getResp(
+    //     { endpoint, options = {} }: { endpoint: endpointType, options?: appRequest },
+    //     callback = (): void => {
+    //         console.error('No callback for GET response');
+    //     }
+    // ) {
+    //     this.load('GET', endpoint, callback, options);
+    // }
+    getResp<T>(
         { endpoint, options = {} }: { endpoint: endpointType, options?: appRequest },
-        callback = (): void => {
-            console.error('No callback for GET response');
-        }
+        callback: Callback<T>,
     ) {
         this.load('GET', endpoint, callback, options);
     }
@@ -43,11 +51,11 @@ export default class Loader {
         return url.slice(0, -1);
     }
 
-    load<T>(method: string, endpoint: endpointType, callback: (data: T) => void, options: appRequest) {
+    load<U>(method: string, endpoint: endpointType, callback: Callback<U>, options: appRequest) {
         fetch(this.makeUrl(endpoint, options), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data: T) => callback(data))
+            .then((data: U) => callback(data))
             .catch((err: Error) => console.error(err));
     }
 }
