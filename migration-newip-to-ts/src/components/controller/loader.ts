@@ -7,15 +7,15 @@ type AppRequest = { sources: string } | Record<string, never>;
 export default class Loader {
     private baseLink: string;
     private options: ApiKey;
-    
+
     constructor(baseLink: string, options: ApiKey) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     getResp<T>(
-        { endpoint, options = {} }: { endpoint: EndpointType, options?: AppRequest },
-        callback: VoidGenericCallback<T>,
+        { endpoint, options = {} }: { endpoint: EndpointType; options?: AppRequest },
+        callback: VoidGenericCallback<T>
     ) {
         this.load('GET', endpoint, callback, options);
     }

@@ -1,5 +1,5 @@
 import AppLoader from './appLoader';
-import { VoidGenericCallback } from '../../types/types'
+import { VoidGenericCallback } from '../../types/types';
 
 class AppController extends AppLoader {
     getSources<T>(callback: VoidGenericCallback<T>) {

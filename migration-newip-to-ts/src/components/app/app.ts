@@ -1,10 +1,10 @@
 import AppController from '../controller/controller';
 import AppView from '../view/appView';
-import { IEverything, ISources } from  '../../types/types';
+import { IEverything, ISources } from '../../types/types';
 
 class App {
     private controller: AppController;
-    private view: AppView
+    private view: AppView;
 
     constructor() {
         this.controller = new AppController();
@@ -12,8 +12,9 @@ class App {
     }
 
     start() {
-        (document.querySelector('.sources') as HTMLDivElement)
-            .addEventListener('click', (e) => this.controller.getNews(e, (data: IEverything) => this.view.drawNews(data)));
+        (document.querySelector('.sources') as HTMLDivElement).addEventListener('click', (e) =>
+            this.controller.getNews(e, (data: IEverything) => this.view.drawNews(data))
+        );
         this.controller.getSources((data: ISources) => this.view.drawSources(data));
     }
 }
