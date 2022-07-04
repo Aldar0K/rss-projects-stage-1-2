@@ -18,6 +18,9 @@ body {
 
 .header {
     padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header h1 {
@@ -25,12 +28,17 @@ body {
     font-weight: 800;
 }
 
+@media (max-width: 500px) {
+    .header h1 {
+        font-size: 30px;
+    }
+}
+
 .main {
     flex: 1 1 auto;
 }
 
 .footer {
-    /* padding: 0 10px; */
     height: 80px;
     display: flex;
     align-items: center;
@@ -72,7 +80,7 @@ body {
         padding: 0 10px;
     }
     .header h1 {
-        font-size: 30px;
+        font-size: 26px;
     }
     .footer {
         flex-direction: column;

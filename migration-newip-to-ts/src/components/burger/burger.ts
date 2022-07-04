@@ -12,5 +12,5 @@ iconMenu.addEventListener('click', toogleMenu);
 
 // Закрытие меню при изменении разрешения.
 window.addEventListener('resize', () => {
-    if (iconMenu.classList.contains('menu__icon_active')) toogleMenu();
+    if (!iconMenu.classList.contains('menu__icon_active')) toogleMenu();
 });
