@@ -1,5 +1,5 @@
-import { apiKey } from '../../types/index';
-import { voidGenericCallback } from '../../types/index';
+import { apiKey } from '../../types/types';
+import { voidGenericCallback } from '../../types/types';
 
 type endpointType = 'everything' | 'sources';
 

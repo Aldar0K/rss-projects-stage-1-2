@@ -1,6 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import { IEverything, ISources } from  '../../types/index';
+import { IEverything, ISources } from  '../../types/types';
 
 class App {
     controller: AppController;
