@@ -1,22 +1,21 @@
-import { apiKey } from '../../types/types';
-import { voidGenericCallback } from '../../types/types';
+import { ApiKey, VoidGenericCallback } from '../../types/types';
 
-type endpointType = 'everything' | 'sources';
+type EndpointType = 'everything' | 'sources';
 
-type appRequest = { sources: string } | Record<string, never>;
+type AppRequest = { sources: string } | Record<string, never>;
 
 export default class Loader {
-    baseLink: string;
-    options: apiKey;
+    private baseLink: string;
+    private options: ApiKey;
     
-    constructor(baseLink: string, options: apiKey) {
+    constructor(baseLink: string, options: ApiKey) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     getResp<T>(
-        { endpoint, options = {} }: { endpoint: endpointType, options?: appRequest },
-        callback: voidGenericCallback<T>,
+        { endpoint, options = {} }: { endpoint: EndpointType, options?: AppRequest },
+        callback: VoidGenericCallback<T>,
     ) {
         this.load('GET', endpoint, callback, options);
     }
@@ -31,7 +30,7 @@ export default class Loader {
         return res;
     }
 
-    private makeUrl(endpoint: endpointType, options?: appRequest) {
+    private makeUrl(endpoint: EndpointType, options?: AppRequest) {
         const urlOptions: { [index: string]: string } = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -42,7 +41,7 @@ export default class Loader {
         return url.slice(0, -1);
     }
 
-    load<U>(method: string, endpoint: endpointType, callback: voidGenericCallback<U>, options: appRequest) {
+    load<U>(method: string, endpoint: EndpointType, callback: VoidGenericCallback<U>, options: AppRequest) {
         fetch(this.makeUrl(endpoint, options), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

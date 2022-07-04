@@ -2,11 +2,9 @@
     "plugins": ["prettier", "import", "@typescript-eslint"],
     "extends": [
         "eslint:recommended",
-        // "plugin:prettier/recommended",
         "plugin:@typescript-eslint/recommended",
         "prettier"
     ],
-    // Не уверен, что это 'корень'.
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": 2020,

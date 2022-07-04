@@ -6,7 +6,6 @@ const sources = document.querySelector('.sources') as HTMLDivElement;
 function toogleMenu () {
     iconMenu.classList.toggle('menu__icon_active');
     sources.classList.toggle('sources_disable');
-
 }
 
 iconMenu.addEventListener('click', toogleMenu);

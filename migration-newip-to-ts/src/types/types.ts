@@ -1,8 +1,8 @@
-export type apiKey = {
+export type ApiKey = {
     apiKey: string,
 }
 
-export type source = {
+export type Source = {
     id: string,
     name: string,
     description: string,
@@ -12,8 +12,8 @@ export type source = {
     country: string,
 }
 
-export type article = {
-    source: source,
+export type Article = {
+    source: Source,
     author: string,
     title: string,
     description: string,
@@ -26,12 +26,12 @@ export type article = {
 export interface IEverything {
     status: string,
     totalResults: number,
-    articles: article[],
+    articles: Article[],
 }
 
 export interface ISources {
     status: string,
-    sources: source[],
+    sources: Source[],
 }
 
-export type voidGenericCallback<T> = (data: T) => void;
+export type VoidGenericCallback<T> = (data: T) => void;

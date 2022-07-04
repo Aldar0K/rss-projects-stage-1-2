@@ -2,9 +2,9 @@ import News from './news/news';
 import Sources from './sources/sources';
 import { IEverything, ISources } from '../../types/types';
 
-export class AppView {
-    news: News;
-    sources: Sources;
+export default class AppView {
+    private news: News;
+    private sources: Sources;
 
     constructor() {
         this.news = new News();
@@ -21,5 +21,3 @@ export class AppView {
         this.sources.draw(values);
     }
 }
-
-// export default AppView;

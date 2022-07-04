@@ -1,8 +1,8 @@
 import AppLoader from './appLoader';
-import { voidGenericCallback } from '../../types/types'
+import { VoidGenericCallback } from '../../types/types'
 
 class AppController extends AppLoader {
-    getSources<T>(callback: voidGenericCallback<T>) {
+    getSources<T>(callback: VoidGenericCallback<T>) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -11,7 +11,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews<U>(e: Event, callback: voidGenericCallback<U>) {
+    getNews<U>(e: Event, callback: VoidGenericCallback<U>) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 
