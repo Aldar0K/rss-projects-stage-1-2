@@ -56,22 +56,22 @@ body {
     color: rgb(139, 77, 225);
 }
 
-.footer .copyright {
+.copyright {
     padding: 0 10px;
     font-size: 14px;
     color: #333;
     text-align: center;
 }
 
-.footer .copyright a {
+.copyright a {
     color: #444;
 }
 
-.footer .copyright a:hover {
+.copyright a:hover {
     color: #555;
 }
 
-.footer .copyright:before {
+.copyright:before {
     content: '©';
 }
 
