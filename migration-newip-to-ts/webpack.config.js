@@ -17,6 +17,20 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.(jpg|png)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'img/',
+                            publicPath: 'img/',
+                            postTransformPublicPath: (p) => `__webpack_public_path__ + ${p}`,
+                        }
+                    }
+                ]
+            },
         ],
     },
     resolve: {
