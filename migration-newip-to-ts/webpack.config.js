@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const EslingPlugin = require('eslint-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index'),
@@ -26,7 +27,6 @@ const baseConfig = {
                             name: '[name].[ext]',
                             outputPath: 'img/',
                             publicPath: 'img/',
-                            postTransformPublicPath: (p) => `__webpack_public_path__ + ${p}`,
                         }
                     }
                 ]
@@ -54,6 +54,15 @@ const baseConfig = {
                 '!.git',
             ],
         }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'src', 'img', 'news_placeholder.jpg'),
+                    to: path.resolve(__dirname, '../dist', 'img', 'news_placeholder.jpg'),
+                },
+            ],
+        }),
+
     ],
 };
 
