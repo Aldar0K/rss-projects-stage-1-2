@@ -12,11 +12,12 @@ export class Key extends Control {
         this.node.textContent = data;
 
         this.node.onmousedown = () => {
-
+            this.down();
         }
 
         this.node.onmouseup = () => {
             this.input();
+            this.up();
         }
         
         this.node.onmouseenter = () => {
@@ -30,10 +31,11 @@ export class Key extends Control {
 
     handleDown() {
         this.input(); 
+        this.down();
     }
 
     handleUp() {
-        
+        this.up();
     }
 
     protected input() {
@@ -41,6 +43,10 @@ export class Key extends Control {
         const state = this.state;
         state.data = {...state.data, content: state.data.content + this.data}
     }
+
+    protected up() {}
+
+    protected down() {}
 
     setData(data: string) {
         this.data = data;
