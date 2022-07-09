@@ -1,0 +1,39 @@
+.alpha {
+    margin: 0 auto;
+    padding: 10px 0;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.alpha_disable {
+    display: none;
+}
+
+.alpha__char {
+    padding: 5px 10px;
+    font-size: 22px;
+    width: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: .3s;
+    user-select: none;
+}
+
+.alpha__char_active {
+    color: #299ecc;
+}
+
+.alpha__char:hover {
+    color: #30c5ff;
+}
+
+@media (max-width: 768px) {
+    .alpha {
+        padding: 0;
+        width: 100%;
+        font-size: 20px;
+    }
+}

@@ -1,17 +1,11 @@
 .menu__icon {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .menu__icon {
-        display: block;
-        z-index: 5;
-        display: block;
-        position: relative;
-        width: 30px;
-        height: 25px;
-        cursor: pointer;
-    }
+    display: block;
+    z-index: 5;
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
 }
 
 .menu__icon span,
