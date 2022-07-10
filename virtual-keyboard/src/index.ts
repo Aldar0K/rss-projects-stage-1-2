@@ -1,5 +1,6 @@
 import { Keyboard } from './keyboard';
 import { KeyboardState } from './keyboardState';
+import './style.css';
 
 console.log("Hello World!");
 
