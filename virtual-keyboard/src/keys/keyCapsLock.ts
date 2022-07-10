@@ -8,5 +8,14 @@ export class KeyCapsLock extends Key {
             ...state.data, 
             caps: !state.data.caps,
         }
+        if (state.data.caps) {
+            this.node.classList.add('keyboar_key__down');
+        } else {
+            this.node.classList.remove('keyboar_key__down');
+        }
     }
+
+    protected down() {}
+
+    protected up() {}
 }

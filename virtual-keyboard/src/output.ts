@@ -13,6 +13,6 @@ export class Output extends Control {
     // }
 
     constructor(parentNode: HTMLElement) {
-        super(parentNode);
+        super(parentNode, 'div', 'keyboar_output');
     }
 }

@@ -82,7 +82,7 @@ const base = {
     'ShiftRight': '',
     'ControlLeft': '',
     'AltLeft': '',
-    'Space': '',
+    'Space': ' ',
     'AltRight': '',
     'ControlRight': '',
     'ArrowlLeft': '',

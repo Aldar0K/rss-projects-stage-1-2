@@ -9,6 +9,7 @@ export class KeyShift extends Key {
             ...state.data, 
             shift: true,
         }
+        super.down();
     }
 
     protected up() {
@@ -17,5 +18,6 @@ export class KeyShift extends Key {
             ...state.data, 
             shift: false,
         }
+        super.up();
     }
 }

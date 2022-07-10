@@ -35,9 +35,10 @@ export class Board extends Control {
             //         key = new Key(this.node, boardConfig[keyCode], state);
             // }
             layoutConfig.forEach((row) => {
+                const rowView = new Control(this.node, 'div', 'keyboar_row');
                 row.forEach((keyCode) => {
                     const KeyConstructor = classMap[keyCode] || Key;
-                    const key = new KeyConstructor(this.node, /*boardConfig[keyCode]*/keyCode, state);
+                    const key = new KeyConstructor(rowView.node, /*boardConfig[keyCode]*/keyCode, state);
                     this.keyMap[keyCode] = key;
                 })
             });
