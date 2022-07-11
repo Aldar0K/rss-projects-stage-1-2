@@ -4,10 +4,10 @@ const alpha = document.querySelector('.alpha') as HTMLDivElement;
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 alphabet.split('').forEach((char) => {
-    getCharTemplate(char);
+    generateCharTemplate(char);
 });
 
-function getCharTemplate(char: string) {
+function generateCharTemplate(char: string): void {
     const charEl = document.createElement('span');
     charEl.textContent = char;
     charEl.classList.add('alpha__char');
@@ -18,7 +18,7 @@ function getCharTemplate(char: string) {
     alpha.append(charEl);
 }
 
-function selectButton(el: HTMLElement) {
+function selectButton(el: HTMLElement): void {
     const chars = document.querySelectorAll('.alpha__char');
     chars.forEach((char) => {
         char.classList.remove('alpha__char_active');
