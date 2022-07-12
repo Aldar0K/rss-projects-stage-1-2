@@ -1,4 +1,4 @@
-import { ProductsList } from './Components/ProductsList';
+import { ProductsList } from './Components/ProductsList/ProductsList';
 
 export class App {
     private productsList: ProductsList;
