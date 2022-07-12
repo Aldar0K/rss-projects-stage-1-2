@@ -1,0 +1,15 @@
+// tags only.
+html {
+    font-size: 10px;
+}
+
+body {
+    @include font($size: 1.6rem, $height: 2.6rem);
+    font-family: 'Roboto', sans-serif;
+
+    background-color: #345;
+}
+
+h1 {
+    @include font($size: 4.4rem, $height: 5.4rem);
+}
