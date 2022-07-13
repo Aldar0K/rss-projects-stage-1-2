@@ -5,8 +5,8 @@ console.log('Hello World!');
 
 const app = new App();
 
-const heading = document.querySelector('h1');
+const main = document.querySelector('.main');
 
-if (heading) {
-    heading.innerHTML = app.render();
+if (main) {
+    main.innerHTML = app.render();
 }

@@ -1,4 +1,4 @@
-import { Product } from "../Styles/Product";
+import { Product } from '../Styles/Product';
 
 const Products: Product[] = [
     {
@@ -11,7 +11,7 @@ const Products: Product[] = [
         release: 2020,
         price: 34999,
         amount: 20,
-        inCart: false
+        inCart: false,
     },
     {
         id: 2,
@@ -23,7 +23,7 @@ const Products: Product[] = [
         release: 2019,
         price: 59999,
         amount: 8,
-        inCart: false
+        inCart: false,
     },
     {
         id: 3,
@@ -35,7 +35,7 @@ const Products: Product[] = [
         release: 2018,
         price: 52999,
         amount: 11,
-        inCart: false
+        inCart: false,
     },
     {
         id: 4,
@@ -47,7 +47,7 @@ const Products: Product[] = [
         release: 2018,
         price: 79999,
         amount: 4,
-        inCart: false
+        inCart: false,
     },
     {
         id: 5,
@@ -59,7 +59,7 @@ const Products: Product[] = [
         release: 2020,
         price: 69999,
         amount: 5,
-        inCart: false
+        inCart: false,
     },
     {
         id: 6,
@@ -71,7 +71,7 @@ const Products: Product[] = [
         release: 2016,
         price: 28999,
         amount: 14,
-        inCart: false
+        inCart: false,
     },
     {
         id: 7,
@@ -83,7 +83,7 @@ const Products: Product[] = [
         release: 2021,
         price: 28999,
         amount: 17,
-        inCart: false
+        inCart: false,
     },
     {
         id: 8,
@@ -95,7 +95,7 @@ const Products: Product[] = [
         release: 2021,
         price: 29999,
         amount: 12,
-        inCart: false
+        inCart: false,
     },
     {
         id: 9,
@@ -107,7 +107,7 @@ const Products: Product[] = [
         release: 2020,
         price: 7999,
         amount: 35,
-        inCart: false
+        inCart: false,
     },
     {
         id: 10,
@@ -119,7 +119,7 @@ const Products: Product[] = [
         release: 2022,
         price: 33999,
         amount: 16,
-        inCart: false
+        inCart: false,
     },
     {
         id: 11,
@@ -131,7 +131,7 @@ const Products: Product[] = [
         release: 2020,
         price: 9999,
         amount: 26,
-        inCart: false
+        inCart: false,
     },
     {
         id: 12,
@@ -143,7 +143,7 @@ const Products: Product[] = [
         release: 2022,
         price: 38999,
         amount: 7,
-        inCart: false
+        inCart: false,
     },
     {
         id: 13,
@@ -155,7 +155,7 @@ const Products: Product[] = [
         release: 2020,
         price: 44999,
         amount: 6,
-        inCart: false
+        inCart: false,
     },
     {
         id: 14,
@@ -167,7 +167,7 @@ const Products: Product[] = [
         release: 2021,
         price: 8999,
         amount: 17,
-        inCart: false
+        inCart: false,
     },
     {
         id: 15,
@@ -179,7 +179,7 @@ const Products: Product[] = [
         release: 2021,
         price: 10999,
         amount: 12,
-        inCart: false
+        inCart: false,
     },
     {
         id: 16,
@@ -191,7 +191,7 @@ const Products: Product[] = [
         release: 2022,
         price: 15999,
         amount: 8,
-        inCart: false
+        inCart: false,
     },
     {
         id: 17,
@@ -203,7 +203,7 @@ const Products: Product[] = [
         release: 2021,
         price: 19999,
         amount: 4,
-        inCart: false
+        inCart: false,
     },
     {
         id: 18,
@@ -215,7 +215,7 @@ const Products: Product[] = [
         release: 2021,
         price: 21499,
         amount: 3,
-        inCart: false
+        inCart: false,
     },
     {
         id: 19,
@@ -227,7 +227,7 @@ const Products: Product[] = [
         release: 2020,
         price: 8999,
         amount: 5,
-        inCart: false
+        inCart: false,
     },
     {
         id: 20,
@@ -239,7 +239,7 @@ const Products: Product[] = [
         release: 2020,
         price: 17999,
         amount: 8,
-        inCart: false
+        inCart: false,
     },
     {
         id: 21,
@@ -251,7 +251,7 @@ const Products: Product[] = [
         release: 2022,
         price: 18999,
         amount: 9,
-        inCart: false
+        inCart: false,
     },
     {
         id: 22,
@@ -263,7 +263,7 @@ const Products: Product[] = [
         release: 2022,
         price: 89999,
         amount: 2,
-        inCart: false
+        inCart: false,
     },
     {
         id: 23,
@@ -275,7 +275,7 @@ const Products: Product[] = [
         release: 2022,
         price: 129999,
         amount: 1,
-        inCart: false
+        inCart: false,
     },
     {
         id: 24,
@@ -287,9 +287,9 @@ const Products: Product[] = [
         release: 2022,
         price: 24999,
         amount: 8,
-        inCart: false
+        inCart: false,
     },
-]
+];
 
 export const getProducts = (): Promise<Product[]> => {
     return new Promise<Product[]>((resolve) => {
@@ -297,4 +297,4 @@ export const getProducts = (): Promise<Product[]> => {
             resolve(Products);
         }, 2000);
     });
-}
+};

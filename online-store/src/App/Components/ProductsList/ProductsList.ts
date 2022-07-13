@@ -1,16 +1,37 @@
 import { ProductsItem } from '../ProductsItem/ProductsItem';
+import { productsModel } from '../../Models/ProductsModel';
+import { Product } from '../../Styles/Product';
 
 export class ProductsList {
-    private products: ProductsItem[];
+    private loading = false;
+    private error: Error | null = null;
+    private products: Product[] = [];
 
     constructor() {
-        this.products = [new ProductsItem(), new ProductsItem(), new ProductsItem(), new ProductsItem()];
+        this.fetchProducts();
+    }
+
+    fetchProducts() {
+        this.loading = true;
+        productsModel
+            .getProducts()
+            .then((products) => {
+                this.products = products;
+            })
+            .catch((error) => {
+                this.error = error;
+            });
     }
 
     render() {
         return `
         <h2>Products List</h2>
-        ${this.products.map((product: ProductsItem) => product.render()).join('')}
+        ${this.products
+            .map((product: Product) => new ProductsItem(product))
+            .map((product: ProductsItem) => product.render())
+            .join('')}
+        ${this.loading ? '<p>Loading...</p>' : ''}
+        ${this.error ? `<p>${this.error.message}</p>` : ''}
         `;
     }
 }

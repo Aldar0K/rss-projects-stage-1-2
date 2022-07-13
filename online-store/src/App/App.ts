@@ -9,7 +9,6 @@ export class App {
 
     render() {
         return `
-        <h1>App Online Store</h1>
         <div>${this.productsList.render()}</div>
         `;
     }
