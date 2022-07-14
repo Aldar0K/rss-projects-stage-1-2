@@ -5,8 +5,6 @@ console.log('Hello World!');
 
 const app = new App();
 
-const main = document.querySelector('.main');
+const productsContainer = document.querySelector('.main__products') as HTMLDivElement;
 
-if (main) {
-    main.innerHTML = app.render();
-}
+productsContainer.innerHTML = app.render();
