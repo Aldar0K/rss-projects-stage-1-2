@@ -1,0 +1,15 @@
+.main__products {
+    flex: 1 1 69%;
+
+    // background-color: $color-light;
+
+    // @extend %border;
+    // @extend %shadow;
+}
+
+.main__product {
+    background-color: $color-light;
+
+    @extend %border;
+    @extend %shadow;
+}

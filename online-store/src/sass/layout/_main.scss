@@ -1,0 +1,11 @@
+.main {
+    flex: 1 1 auto;
+}
+
+.main__conteiner {
+    padding: 1.2rem;
+
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+}

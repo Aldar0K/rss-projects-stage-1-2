@@ -1,0 +1,12 @@
+.main__sidebar {
+    flex: 1 1 30%;
+
+    background-color: $color-light;
+
+    @extend %border;
+    @extend %shadow;
+}
+
+.main__cart{}
+
+.main__controls{}

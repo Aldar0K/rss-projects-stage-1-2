@@ -6,11 +6,17 @@
 // base.
 @import 'base/reset';
 @import 'base/base';
+@import 'base/icons';
 @import 'base/logo';
-@import 'base/buttons';
 
-// layouts.
-@import 'layouts/wrapper';
-@import 'layouts/header';
+// layout.
+@import 'layout/wrapper';
+@import 'layout/conteiner';
+@import 'layout/header';
+@import 'layout/main';
+@import 'layout/footer';
+@import 'layout/products';
+@import 'layout/sidebar';
 
 // components.
+@import 'components/buttons';

@@ -1,0 +1,20 @@
+.footer {
+    background-color: $color-additional;
+}
+
+.footer__conteiner {
+    padding: 1.2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__data {
+    color: $color-light;
+    font-size: 2rem;
+}
+
+.footer__data a {
+    color: $color-primary;
+}

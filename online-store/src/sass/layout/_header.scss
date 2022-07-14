@@ -1,0 +1,12 @@
+.header {
+    background-color: $color-primary;
+    @extend %shadow;
+}
+
+.header__conteiner {
+    padding: 1.2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
