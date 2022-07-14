@@ -23,6 +23,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "index.html",
+      favicon: "./src/img/png/favicon.png",
     }),
     new EslingPlugin({
       extensions: 'ts'
