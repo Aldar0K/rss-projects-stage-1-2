@@ -9,7 +9,9 @@ export class App {
 
     render() {
         return `
-        <div>${this.productsList.render()}</div>
+            ${this.productsList.render()}
         `;
     }
 }
+
+export const app = new App();

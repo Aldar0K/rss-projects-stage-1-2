@@ -1,12 +1,21 @@
 .main__sidebar {
     flex: 1 1 30%;
 
-    background-color: $color-light;
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
 
+    background-color: $color-light;
     @extend %border;
     @extend %shadow;
+
+    // @include media-laptop {
+    //     flex: 1 1 40%;   
+    // }
 }
 
-.main__cart{}
+.main__cart{
+    position: sticky;
+}
 
 .main__controls{}

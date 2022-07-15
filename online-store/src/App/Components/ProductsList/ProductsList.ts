@@ -1,6 +1,9 @@
 import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { productsModel } from '../../Models/ProductsModel';
-import { Product } from '../../Styles/Product';
+import { Product } from '../../Interfaces/Product';
+import { app } from '../../App';
+
+const productsContainer = document.querySelector('.main__products') as HTMLDivElement;
 
 export class ProductsList {
     private loading = false;
@@ -20,12 +23,15 @@ export class ProductsList {
             })
             .catch((error) => {
                 this.error = error;
+            })
+            .finally(() => {
+                this.loading = false;
+                productsContainer.innerHTML = app.render();
             });
     }
 
     render() {
         return `
-        <h2>Products List</h2>
         ${this.products
             .map((product: Product) => new ProductsItem(product))
             .map((product: ProductsItem) => product.render())

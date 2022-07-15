@@ -1,5 +1,5 @@
 import { getProducts } from '../DB/Products.DB';
-import { Product } from '../Styles/Product';
+import { Product } from '../Interfaces/Product';
 
 export class ProductsModel {
     static isExist = false;

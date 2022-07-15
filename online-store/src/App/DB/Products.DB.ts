@@ -1,4 +1,4 @@
-import { Product } from '../Styles/Product';
+import { Product } from '../Interfaces/Product';
 
 const Products: Product[] = [
     {
@@ -295,6 +295,6 @@ export const getProducts = (): Promise<Product[]> => {
     return new Promise<Product[]>((resolve) => {
         setTimeout(() => {
             resolve(Products);
-        }, 2000);
+        }, 1000);
     });
 };
