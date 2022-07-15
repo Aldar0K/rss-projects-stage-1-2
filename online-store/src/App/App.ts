@@ -8,10 +8,6 @@ export class App {
     }
 
     render() {
-        return `
-            ${this.productsList.render()}
-        `;
+        return this.productsList.render();
     }
 }
-
-export const app = new App();

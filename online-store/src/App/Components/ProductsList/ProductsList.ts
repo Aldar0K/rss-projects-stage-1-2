@@ -1,7 +1,6 @@
 import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { productsModel } from '../../Models/ProductsModel';
 import { Product } from '../../Interfaces/Product';
-import { app } from '../../App';
 
 const productsContainer = document.querySelector('.main__products') as HTMLDivElement;
 
@@ -26,7 +25,7 @@ export class ProductsList {
             })
             .finally(() => {
                 this.loading = false;
-                productsContainer.innerHTML = app.render();
+                productsContainer.innerHTML = this.render();
             });
     }
 
