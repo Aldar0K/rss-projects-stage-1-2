@@ -1,5 +1,9 @@
 .header__logo {
     width: 6rem;
+
+    @include media-tablet {
+        width: 4rem;
+    }
 }
 
 .header__logo img {

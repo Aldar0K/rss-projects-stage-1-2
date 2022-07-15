@@ -8,10 +8,6 @@
     background-color: $color-light;
     @extend %border;
     @extend %shadow;
-
-    // @include media-laptop {
-    //     flex: 1 1 40%;   
-    // }
 }
 
 .main__cart{

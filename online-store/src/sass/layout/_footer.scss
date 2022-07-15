@@ -13,8 +13,18 @@
 .footer__data {
     color: $color-light;
     font-size: 2rem;
+
+    @include media-tablet {
+        font-size: 1.8rem;
+    }
 }
 
 .footer__data a {
     color: $color-primary;
+}
+
+.footer__rss img {
+    @include media-tablet {
+        width: 10rem;
+    }
 }

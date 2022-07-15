@@ -12,6 +12,10 @@ body {
 
 h1 {
     @include font($size: 4rem, $height: 5rem);
+
+    @include media-tablet {
+        font-size: 3rem;
+    }
 }
 
 h2 {
