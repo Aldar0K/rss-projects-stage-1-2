@@ -1,9 +1,8 @@
-.noUi-connects .noUi-connect {
-    background-color: $color-primary;
+#slider-amount,
+#slider-year {
+    width: 80%;
 }
 
-.main__range-slider .noUi-horizontal .noUi-tooltip {
-    // transform: none;
-    // left: 120%;
-    // bottom: 0;
+.noUi-connects .noUi-connect {
+    background-color: $color-primary;
 }

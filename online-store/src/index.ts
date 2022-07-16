@@ -1,6 +1,6 @@
 import './sass/style.scss';
 import { App } from './App/App';
-import './App/Components/Controls/Slider';
+import './App/Components/Controls/Filters/Slider';
 
 console.log('Hello World!');
 

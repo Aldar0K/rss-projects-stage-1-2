@@ -11,16 +11,24 @@ function generateSlider(element: HTMLElement, [start, end]: number[]) {
         },
         step: 1,
         tooltips: true,
+        format: {
+            to: (value) => Number(value),
+            from: (value) => Number(value),
+        },
     });
 }
 
 const sliderAmount = document.getElementById('slider-amount') as HTMLDivElement;
+const sliderYear = document.getElementById('slider-year') as HTMLDivElement;
 
 generateSlider(sliderAmount, [0, 50]);
-
-sliderAmount.style.width = '30rem';
-
-(sliderAmount as noUiSlider.target).noUiSlider?.on('change', () => {
+(sliderAmount as noUiSlider.target).noUiSlider?.on('update', () => {
     const data = (sliderAmount as noUiSlider.target).noUiSlider?.get();
+    console.log(data);
+});
+
+generateSlider(sliderYear, [2016, 2022]);
+(sliderYear as noUiSlider.target).noUiSlider?.on('update', () => {
+    const data = (sliderYear as noUiSlider.target).noUiSlider?.get();
     console.log(data);
 });
