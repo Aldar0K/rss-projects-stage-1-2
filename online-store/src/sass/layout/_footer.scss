@@ -24,6 +24,8 @@
 }
 
 .footer__rss img {
+    width: 12rem;
+
     @include media-tablet {
         width: 10rem;
     }

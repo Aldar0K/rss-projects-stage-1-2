@@ -1,9 +1,11 @@
 import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { productsModel } from '../../Models/ProductsModel';
 import { Product } from '../../Interfaces/Product';
+// import { AppComponent } from '../../Interfaces/AppComponent';
 
 const productsContainer = document.querySelector('.main__products') as HTMLDivElement;
 
+// export class ProductsList implements AppComponent {
 export class ProductsList {
     private loading = false;
     private error: Error | null = null;
@@ -30,6 +32,7 @@ export class ProductsList {
     }
 
     render() {
+        console.log(this.products);
         return `
         ${this.products
             .map((product: Product) => new ProductsItem(product))

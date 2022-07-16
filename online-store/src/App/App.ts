@@ -1,5 +1,7 @@
 import { ProductsList } from './Components/ProductsList/ProductsList';
+// import { AppComponent } from './Interfaces/AppComponent';
 
+// export class App implements AppComponent {
 export class App {
     private productsList: ProductsList;
 
