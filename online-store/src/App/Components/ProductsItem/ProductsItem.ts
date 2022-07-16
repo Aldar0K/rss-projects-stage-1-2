@@ -5,7 +5,7 @@ export class ProductsItem {
 
     render() {
         return `
-            <div class="main__product">
+            <div class="main__product${this.product.inCart ? ' main__product_active' : ''}">
                 <h3>${this.product.name}</h3>
                 <img src = "${this.product.image}" alt = "${this.product.name}"/>
                 <span>Количество: ${this.product.amount}</span>

@@ -9,6 +9,7 @@
 }
 
 .main__product {
+    position: relative;
     padding: .8rem;
 
     flex: 1 1 32%;
@@ -27,6 +28,19 @@
     }
     @include media-mobile {
         flex: 1 1 100%;
+    }
+
+    &_active {
+        &::after {
+            position: absolute;
+            right: .5rem;
+            bottom: -.5rem;
+
+            content: "In cart";
+            color: $color-primary;
+        }
+
+        border: 1px solid $color-primary;
     }
 }
 
