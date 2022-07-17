@@ -10,7 +10,7 @@ export class AppStore {
     static isExist = false;
     static instance: AppStore;
 
-    private state = defaultState;
+    public state = defaultState;
 
     constructor() {
         if (AppStore.isExist) {

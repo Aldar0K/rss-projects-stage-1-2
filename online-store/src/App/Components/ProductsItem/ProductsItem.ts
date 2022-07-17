@@ -5,11 +5,9 @@ import { Product } from '../../Interfaces/Product';
 export class ProductsItem {
     constructor(private product: Product) {}
 
-    private getHtmlId = () => `product__${this.product.id}`;
-
     render() {
         return `
-            <div class="main__product${this.product.inCart ? ' main__product_active' : ''}" id="${this.getHtmlId()}">
+            <div class="main__product${this.product.inCart ? ' main__product_active' : ''}" id="${this.product.id}">
                 <h3>${this.product.name}</h3>
                 <img src = "${this.product.image}" alt = "${this.product.name}"/>
                 <span>Количество: ${this.product.amount}</span>
