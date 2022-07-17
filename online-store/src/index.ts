@@ -1,7 +1,6 @@
 import './sass/style.scss';
-import { App } from './App/App';
-import './App/Components/Controls/Filters/sliders';
+import { app } from './App/App';
+import './App/Components/Controls/sliders';
+import './App/Components/Controls/sorter';
 
-const productsContainer = document.querySelector('.main__products') as HTMLDivElement;
-const app = new App();
-productsContainer.innerHTML = app.render();
+app.start();

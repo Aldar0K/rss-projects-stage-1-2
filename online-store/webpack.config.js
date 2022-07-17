@@ -14,7 +14,7 @@ const stylesHandler = isProduction
 const config = {
   entry: "./src/index",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
   },
   devServer: {
     open: true,

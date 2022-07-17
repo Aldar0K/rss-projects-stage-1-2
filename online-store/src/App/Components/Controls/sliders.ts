@@ -22,13 +22,13 @@ const sliderAmount = document.getElementById('slider-amount') as HTMLDivElement;
 const sliderYear = document.getElementById('slider-year') as HTMLDivElement;
 
 generateSlider(sliderAmount, [0, 50]);
-(sliderAmount as noUiSlider.target).noUiSlider?.on('update', () => {
+(sliderAmount as noUiSlider.target).noUiSlider?.on('change', () => {
     const data = (sliderAmount as noUiSlider.target).noUiSlider?.get();
     console.log(data);
 });
 
 generateSlider(sliderYear, [2016, 2022]);
-(sliderYear as noUiSlider.target).noUiSlider?.on('update', () => {
+(sliderYear as noUiSlider.target).noUiSlider?.on('change', () => {
     const data = (sliderYear as noUiSlider.target).noUiSlider?.get();
     console.log(data);
 });
