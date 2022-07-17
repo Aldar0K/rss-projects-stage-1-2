@@ -41,7 +41,6 @@ export class ProductsList {
         // console.log(this.products);
         return `
         ${this.products
-            // .filter((product: Product) => product.brand === 'Apple')
             .map((product: Product) => new ProductsItem(product))
             .map((product: ProductsItem) => product.render())
             .join('')}
@@ -61,5 +60,65 @@ export class ProductsList {
                 app.cartUpdate(false);
             }
         });
+    }
+
+    sortByNameAToZ() {
+        productsContainer.innerHTML = `
+        ${this.products
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((product: Product) => new ProductsItem(product))
+            .map((product: ProductsItem) => product.render())
+            .join('')}
+        `;
+    }
+
+    sortByNameZToA() {
+        productsContainer.innerHTML = `
+        ${this.products
+            .sort((a, b) => b.name.localeCompare(a.name))
+            .map((product: Product) => new ProductsItem(product))
+            .map((product: ProductsItem) => product.render())
+            .join('')}
+        `;
+    }
+
+    sortByYearMinMax() {
+        productsContainer.innerHTML = `
+        ${this.products
+            .sort((a, b) => a.release - b.release)
+            .map((product: Product) => new ProductsItem(product))
+            .map((product: ProductsItem) => product.render())
+            .join('')}
+        `;
+    }
+
+    sortByYearMaxMin() {
+        productsContainer.innerHTML = `
+        ${this.products
+            .sort((a, b) => b.release - a.release)
+            .map((product: Product) => new ProductsItem(product))
+            .map((product: ProductsItem) => product.render())
+            .join('')}
+        `;
+    }
+
+    sortByPriceMaxMin() {
+        productsContainer.innerHTML = `
+        ${this.products
+            .sort((a, b) => b.price - a.price)
+            .map((product: Product) => new ProductsItem(product))
+            .map((product: ProductsItem) => product.render())
+            .join('')}
+        `;
+    }
+
+    sortByPriceMinMax() {
+        productsContainer.innerHTML = `
+        ${this.products
+            .sort((a, b) => a.price - b.price)
+            .map((product: Product) => new ProductsItem(product))
+            .map((product: ProductsItem) => product.render())
+            .join('')}
+        `;
     }
 }

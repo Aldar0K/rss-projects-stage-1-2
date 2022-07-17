@@ -4,7 +4,7 @@ import { Cart } from './Components/Cart/Cart';
 
 // export class App implements AppComponent {
 export class App {
-    private productsList: ProductsList;
+    public productsList: ProductsList;
     private cart: Cart;
 
     constructor() {
