@@ -1,6 +1,6 @@
 import './sass/style.scss';
 import { app } from './App/App';
-import './App/Components/Controls/sliders';
-import './App/Components/Controls/sorter';
+import './App/Components/Controls/filters';
+import './App/Components/Controls/sorters';
 
 app.start();

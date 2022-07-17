@@ -30,15 +30,11 @@ export class ProductsList {
             .finally(() => {
                 this.loading = false;
                 productsContainer.innerHTML = this.render();
-
-                (document.querySelectorAll('.main__product') as NodeListOf<HTMLDivElement>).forEach((el) =>
-                    this.addEvents(el)
-                );
+                this.addEvents();
             });
     }
 
     render() {
-        // console.log(this.products);
         return `
         ${this.products
             .map((product: Product) => new ProductsItem(product))
@@ -49,16 +45,18 @@ export class ProductsList {
         `;
     }
 
-    addEvents(el: HTMLDivElement) {
-        el.addEventListener('click', () => {
-            console.log('click on card');
-            if (el.classList.contains('main__product_active')) {
-                el.classList.remove('main__product_active');
-                app.cartUpdate(true);
-            } else {
-                el.classList.add('main__product_active');
-                app.cartUpdate(false);
-            }
+    addEvents() {
+        (document.querySelectorAll('.main__product') as NodeListOf<HTMLDivElement>).forEach((el) => {
+            el.addEventListener('click', () => {
+                console.log('click on card');
+                if (el.classList.contains('main__product_active')) {
+                    el.classList.remove('main__product_active');
+                    app.cartUpdate(true);
+                } else {
+                    el.classList.add('main__product_active');
+                    app.cartUpdate(false);
+                }
+            });
         });
     }
 
@@ -70,6 +68,7 @@ export class ProductsList {
             .map((product: ProductsItem) => product.render())
             .join('')}
         `;
+        this.addEvents();
     }
 
     sortByNameZToA() {
@@ -80,6 +79,7 @@ export class ProductsList {
             .map((product: ProductsItem) => product.render())
             .join('')}
         `;
+        this.addEvents();
     }
 
     sortByYearMinMax() {
@@ -90,6 +90,7 @@ export class ProductsList {
             .map((product: ProductsItem) => product.render())
             .join('')}
         `;
+        this.addEvents();
     }
 
     sortByYearMaxMin() {
@@ -100,6 +101,7 @@ export class ProductsList {
             .map((product: ProductsItem) => product.render())
             .join('')}
         `;
+        this.addEvents();
     }
 
     sortByPriceMaxMin() {
@@ -110,6 +112,7 @@ export class ProductsList {
             .map((product: ProductsItem) => product.render())
             .join('')}
         `;
+        this.addEvents();
     }
 
     sortByPriceMinMax() {
@@ -120,5 +123,28 @@ export class ProductsList {
             .map((product: ProductsItem) => product.render())
             .join('')}
         `;
+        this.addEvents();
+    }
+
+    filterAmount([from, to]: Array<number>) {
+        productsContainer.innerHTML = `
+        ${this.products
+            .filter((a) => a.amount >= from && a.amount <= to)
+            .map((product: Product) => new ProductsItem(product))
+            .map((product: ProductsItem) => product.render())
+            .join('')}
+        `;
+        this.addEvents();
+    }
+
+    filterYear([from, to]: Array<number>) {
+        productsContainer.innerHTML = `
+        ${this.products
+            .filter((a) => a.release >= from && a.release <= to)
+            .map((product: Product) => new ProductsItem(product))
+            .map((product: ProductsItem) => product.render())
+            .join('')}
+        `;
+        this.addEvents();
     }
 }
