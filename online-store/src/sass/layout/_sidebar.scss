@@ -74,7 +74,7 @@
     @extend %shadow;
 
     @include media-laptop {
-        flex: 1 1 33%;
+        flex: 1 1 30%;
     }
 }
 
@@ -89,12 +89,12 @@
     @extend %shadow;
 
     @include media-laptop {
-        flex: 1 1 33%;
+        flex: 1 1 30%;
     }
 }
 
 .main__range-slider {
-    padding: 1.5rem;
+    padding: 1rem;
     width: 100%;
 
     display: flex;
@@ -104,9 +104,11 @@
 }
 
 .main__value-filters {
+    padding: 1rem;
+
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
     gap: 1.5rem;
 
     background-color: $color-light;
@@ -114,6 +116,6 @@
     @extend %shadow;
 
     @include media-laptop {
-        flex: 1 1 33%;
+        flex: 1 1 30%;
     }
 }

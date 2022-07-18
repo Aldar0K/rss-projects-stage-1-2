@@ -25,3 +25,7 @@ h2 {
 h3 {
     @include font($size: 2rem);
 }
+
+.hidden {
+    display: none;
+}

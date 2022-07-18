@@ -69,114 +69,93 @@ export class ProductsList {
         });
     }
 
-    sortByNameAToZ() {
+    updateHtml() {
         productsContainer.innerHTML = `
         ${appStore.state.products
-            .sort((a, b) => a.name.localeCompare(b.name))
             .map((product: Product) => new ProductsItem(product))
             .map((product: ProductsItem) => product.render())
             .join('')}
         `;
         this.addEvents();
+    }
 
+    // Сортировка.
+    sortByNameAToZ() {
         this.updateAppStore(appStore.state.products.sort((a, b) => a.name.localeCompare(b.name)));
         console.log(appStore);
+
+        this.updateHtml();
     }
 
     sortByNameZToA() {
-        productsContainer.innerHTML = `
-        ${appStore.state.products
-            .sort((a, b) => b.name.localeCompare(a.name))
-            .map((product: Product) => new ProductsItem(product))
-            .map((product: ProductsItem) => product.render())
-            .join('')}
-        `;
-        this.addEvents();
-
         this.updateAppStore(appStore.state.products.sort((a, b) => b.name.localeCompare(a.name)));
         console.log(appStore);
+
+        this.updateHtml();
     }
 
     sortByYearMinMax() {
-        productsContainer.innerHTML = `
-        ${appStore.state.products
-            .sort((a, b) => a.release - b.release)
-            .map((product: Product) => new ProductsItem(product))
-            .map((product: ProductsItem) => product.render())
-            .join('')}
-        `;
-        this.addEvents();
-
         this.updateAppStore(appStore.state.products.sort((a, b) => a.release - b.release));
         console.log(appStore);
+
+        this.updateHtml();
     }
 
     sortByYearMaxMin() {
-        productsContainer.innerHTML = `
-        ${appStore.state.products
-            .sort((a, b) => b.release - a.release)
-            .map((product: Product) => new ProductsItem(product))
-            .map((product: ProductsItem) => product.render())
-            .join('')}
-        `;
-        this.addEvents();
-
         this.updateAppStore(appStore.state.products.sort((a, b) => b.release - a.release));
         console.log(appStore);
-    }
 
-    sortByPriceMaxMin() {
-        productsContainer.innerHTML = `
-        ${appStore.state.products
-            .sort((a, b) => b.price - a.price)
-            .map((product: Product) => new ProductsItem(product))
-            .map((product: ProductsItem) => product.render())
-            .join('')}
-        `;
-        this.addEvents();
-
-        this.updateAppStore(appStore.state.products.sort((a, b) => b.price - a.price));
-        console.log(appStore);
+        this.updateHtml();
     }
 
     sortByPriceMinMax() {
-        productsContainer.innerHTML = `
-        ${appStore.state.products
-            .sort((a, b) => a.price - b.price)
-            .map((product: Product) => new ProductsItem(product))
-            .map((product: ProductsItem) => product.render())
-            .join('')}
-        `;
-        this.addEvents();
-
         this.updateAppStore(appStore.state.products.sort((a, b) => a.price - b.price));
         console.log(appStore);
+
+        this.updateHtml();
     }
 
+    sortByPriceMaxMin() {
+        this.updateAppStore(appStore.state.products.sort((a, b) => b.price - a.price));
+        console.log(appStore);
+
+        this.updateHtml();
+    }
+
+    // Фильтры по диапазону.
     filterAmount([from, to]: Array<number>) {
         this.updateAppStore(this.products.filter((a) => a.amount >= from && a.amount <= to));
         console.log(appStore);
 
-        productsContainer.innerHTML = `
-        ${appStore.state.products
-            .map((product: Product) => new ProductsItem(product))
-            .map((product: ProductsItem) => product.render())
-            .join('')}
-        `;
-        this.addEvents();
+        this.updateHtml();
     }
 
     filterYear([from, to]: Array<number>) {
         this.updateAppStore(this.products.filter((a) => a.release >= from && a.release <= to));
         console.log(appStore);
 
-        productsContainer.innerHTML = `
-        ${appStore.state.products
-            .filter((a) => a.release >= from && a.release <= to)
-            .map((product: Product) => new ProductsItem(product))
-            .map((product: ProductsItem) => product.render())
-            .join('')}
-        `;
-        this.addEvents();
+        this.updateHtml();
+    }
+
+    // Фильтры по значению.
+    filterBrand(brand: string) {
+        this.updateAppStore(this.products.filter((a) => a.brand.toLowerCase() === brand.toLowerCase()));
+        console.log(appStore);
+
+        this.updateHtml();
+    }
+
+    filterCameras(cameras: number) {
+        this.updateAppStore(this.products.filter((a) => a.cameras === cameras));
+        console.log(appStore);
+
+        this.updateHtml();
+    }
+
+    filterColor(color: string) {
+        this.updateAppStore(this.products.filter((a) => a.color === color));
+        console.log(appStore);
+
+        this.updateHtml();
     }
 }
