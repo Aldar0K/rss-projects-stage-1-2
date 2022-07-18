@@ -108,6 +108,13 @@ export class ProductsList {
             this.updateAppStore(appStore.state.products.filter((a) => a.inCart));
         }
 
+        // Проверка на поисковую строку.
+        if (configStore.state.search) {
+            const value = configStore.state.search;
+            const regExp = new RegExp(value, 'i');
+            this.updateAppStore(appStore.state.products.filter((a) => a.name.match(regExp)));
+        }
+
         // Проверка сортировки.
         if (configStore.state.sort) {
             switch (configStore.state.sort) {
@@ -144,9 +151,9 @@ export class ProductsList {
             this.addEvents();
         }
 
-        // console.clear();
-        // console.log(configStore.state);
-        // console.log(appStore.state);
+        console.clear();
+        console.log(configStore.state);
+        console.log(appStore.state);
     }
 
     // Сортировка.
@@ -252,6 +259,11 @@ export class ProductsList {
         }
 
         // this.updateConfigStore({ filterInCart: true });
+        this.updateHtml();
+    }
+
+    filterSearch(value: string) {
+        configStore.state.search = value;
         this.updateHtml();
     }
 
