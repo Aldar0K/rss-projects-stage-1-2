@@ -63,16 +63,13 @@ export class ProductsList {
         });
     }
 
-    updateAppStore() {
+    updateAppStore(prod = this.products) {
         appStore.update({
-            products: this.products,
+            products: prod,
         });
     }
 
     sortByNameAToZ() {
-        this.updateAppStore();
-        console.log(appStore);
-
         productsContainer.innerHTML = `
         ${appStore.state.products
             .sort((a, b) => a.name.localeCompare(b.name))
@@ -81,16 +78,12 @@ export class ProductsList {
             .join('')}
         `;
         this.addEvents();
-        appStore.update({
-            products: this.products,
-        });
+
+        this.updateAppStore(appStore.state.products.sort((a, b) => a.name.localeCompare(b.name)));
         console.log(appStore);
     }
 
     sortByNameZToA() {
-        this.updateAppStore();
-        console.log(appStore);
-
         productsContainer.innerHTML = `
         ${appStore.state.products
             .sort((a, b) => b.name.localeCompare(a.name))
@@ -99,12 +92,12 @@ export class ProductsList {
             .join('')}
         `;
         this.addEvents();
+
+        this.updateAppStore(appStore.state.products.sort((a, b) => b.name.localeCompare(a.name)));
+        console.log(appStore);
     }
 
     sortByYearMinMax() {
-        this.updateAppStore();
-        console.log(appStore);
-
         productsContainer.innerHTML = `
         ${appStore.state.products
             .sort((a, b) => a.release - b.release)
@@ -113,12 +106,12 @@ export class ProductsList {
             .join('')}
         `;
         this.addEvents();
+
+        this.updateAppStore(appStore.state.products.sort((a, b) => a.release - b.release));
+        console.log(appStore);
     }
 
     sortByYearMaxMin() {
-        this.updateAppStore();
-        console.log(appStore);
-
         productsContainer.innerHTML = `
         ${appStore.state.products
             .sort((a, b) => b.release - a.release)
@@ -127,12 +120,12 @@ export class ProductsList {
             .join('')}
         `;
         this.addEvents();
+
+        this.updateAppStore(appStore.state.products.sort((a, b) => b.release - a.release));
+        console.log(appStore);
     }
 
     sortByPriceMaxMin() {
-        this.updateAppStore();
-        console.log(appStore);
-
         productsContainer.innerHTML = `
         ${appStore.state.products
             .sort((a, b) => b.price - a.price)
@@ -141,12 +134,12 @@ export class ProductsList {
             .join('')}
         `;
         this.addEvents();
+
+        this.updateAppStore(appStore.state.products.sort((a, b) => b.price - a.price));
+        console.log(appStore);
     }
 
     sortByPriceMinMax() {
-        this.updateAppStore();
-        console.log(appStore);
-
         productsContainer.innerHTML = `
         ${appStore.state.products
             .sort((a, b) => a.price - b.price)
@@ -155,15 +148,17 @@ export class ProductsList {
             .join('')}
         `;
         this.addEvents();
+
+        this.updateAppStore(appStore.state.products.sort((a, b) => a.price - b.price));
+        console.log(appStore);
     }
 
     filterAmount([from, to]: Array<number>) {
-        this.updateAppStore();
+        this.updateAppStore(this.products.filter((a) => a.amount >= from && a.amount <= to));
         console.log(appStore);
 
         productsContainer.innerHTML = `
         ${appStore.state.products
-            .filter((a) => a.amount >= from && a.amount <= to)
             .map((product: Product) => new ProductsItem(product))
             .map((product: ProductsItem) => product.render())
             .join('')}
@@ -172,7 +167,7 @@ export class ProductsList {
     }
 
     filterYear([from, to]: Array<number>) {
-        this.updateAppStore();
+        this.updateAppStore(this.products.filter((a) => a.release >= from && a.release <= to));
         console.log(appStore);
 
         productsContainer.innerHTML = `
