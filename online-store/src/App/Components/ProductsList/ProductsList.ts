@@ -144,9 +144,9 @@ export class ProductsList {
             this.addEvents();
         }
 
-        console.clear();
-        console.log(configStore.state);
-        console.log(appStore.state);
+        // console.clear();
+        // console.log(configStore.state);
+        // console.log(appStore.state);
     }
 
     // Сортировка.
@@ -252,6 +252,20 @@ export class ProductsList {
         }
 
         // this.updateConfigStore({ filterInCart: true });
+        this.updateHtml();
+    }
+
+    resetFilters() {
+        this.updateConfigStore({
+            search: '',
+            sort: '',
+            filterAmount: [0, 50],
+            filterYear: [2016, 2022],
+            filterBrand: [''],
+            filterCameras: [''],
+            filterColor: [''],
+            filterInCart: false,
+        });
         this.updateHtml();
     }
 }

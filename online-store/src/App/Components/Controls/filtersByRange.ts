@@ -33,3 +33,8 @@ generateSlider(sliderYear, [2016, 2022]);
     const data = (sliderYear as noUiSlider.target).noUiSlider?.get() as Array<number>;
     app.productsList.filterYear(data);
 });
+
+export const resetFiltersByRange = () => {
+    (sliderAmount as noUiSlider.target).noUiSlider?.set([0, 50]);
+    (sliderYear as noUiSlider.target).noUiSlider?.set([2016, 2022]);
+};

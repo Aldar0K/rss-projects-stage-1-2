@@ -50,3 +50,16 @@ const cartCheckBox = document.querySelector('.input-cart') as HTMLInputElement;
 cartCheckBox.addEventListener('change', () => {
     app.productsList.filterInCart();
 });
+
+export const resetFiltersByValue = () => {
+    brandButtons.forEach((button) => {
+        button.classList.remove('button_active');
+    });
+    colorButtons.forEach((button) => {
+        button.classList.remove('button_active');
+    });
+    camerasButtons.forEach((button) => {
+        button.classList.remove('button_active');
+    });
+    cartCheckBox.checked = false;
+};

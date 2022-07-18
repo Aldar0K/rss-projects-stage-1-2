@@ -12,3 +12,10 @@
         flex-direction: column;
     }
 }
+
+.main__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
