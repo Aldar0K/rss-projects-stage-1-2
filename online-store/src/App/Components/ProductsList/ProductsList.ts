@@ -4,6 +4,7 @@ import { Product } from '../../Interfaces/Product';
 import { appStore } from '../../Store/AppStore';
 import { ConfigStore, configStore } from '../../Store/ConfigStore';
 import { app } from '../../App';
+import * as noUiSlider from 'nouislider';
 // import { AppComponent } from '../../Interfaces/AppComponent';
 
 const productsContainer = document.querySelector('.main__products') as HTMLDivElement;
@@ -32,15 +33,56 @@ export class ProductsList {
                 this.loading = false;
                 productsContainer.innerHTML = this.render();
 
-                console.clear();
-
                 if (localStorage.getItem('configStore')) {
                     const loaded = localStorage.getItem('configStore') as string;
                     const loadedConfig = JSON.parse(loaded) as ConfigStore;
                     this.updateConfigStore(loadedConfig.state);
                     this.updateHtml();
 
-                    console.log(loadedConfig);
+                    (document.querySelector('.main__sorter-select') as HTMLSelectElement).value = [
+                        'sortByNameAToZ',
+                        'sortByNameZToA',
+                        'sortByYearMinMax',
+                        'sortByYearMaxMin',
+                        'sortByPriceMinMax',
+                        'sortByPriceMaxMin',
+                    ]
+                        .indexOf(loadedConfig.state.sort)
+                        .toString();
+
+                    const sliderAmount = document.getElementById('slider-amount') as HTMLDivElement;
+                    const sliderYear = document.getElementById('slider-year') as HTMLDivElement;
+                    (sliderAmount as noUiSlider.target).noUiSlider?.set(loadedConfig.state.filterAmount);
+                    (sliderYear as noUiSlider.target).noUiSlider?.set(loadedConfig.state.filterYear);
+
+                    const searchBar = document.querySelector('.search-bar-input') as HTMLInputElement;
+                    searchBar.value = loadedConfig.state.search;
+
+                    const brandButtons = document.querySelectorAll('.button_brand') as NodeListOf<HTMLButtonElement>;
+                    const camerasButtons = document.querySelectorAll(
+                        '.button_cameras'
+                    ) as NodeListOf<HTMLButtonElement>;
+                    const colorButtons = document.querySelectorAll('.button_color') as NodeListOf<HTMLButtonElement>;
+                    const cartCheckBox = document.querySelector('.input-cart') as HTMLInputElement;
+                    brandButtons.forEach((button) => {
+                        const brand = button.dataset.brand as string;
+                        if (loadedConfig.state.filterBrand.includes(brand)) {
+                            button.classList.add('button_active');
+                        }
+                    });
+                    camerasButtons.forEach((button) => {
+                        const cameras = button.dataset.cameras as string;
+                        if (loadedConfig.state.filterCameras.includes(cameras)) {
+                            button.classList.add('button_active');
+                        }
+                    });
+                    colorButtons.forEach((button) => {
+                        const color = button.dataset.color as string;
+                        if (loadedConfig.state.filterColor.includes(color)) {
+                            button.classList.add('button_active');
+                        }
+                    });
+                    cartCheckBox.checked = loadedConfig.state.filterInCart;
                 }
 
                 this.addEvents();
@@ -84,7 +126,6 @@ export class ProductsList {
 
     updateConfigStore(config: object) {
         configStore.update(config);
-        console.log('configStore updated', configStore);
     }
 
     updateHtml() {
