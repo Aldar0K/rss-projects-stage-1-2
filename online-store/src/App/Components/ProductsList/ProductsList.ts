@@ -35,8 +35,10 @@ export class ProductsList {
     }
 
     render() {
+        console.log(appStore.state.products);
+
         return `
-        ${this.products
+        ${appStore.state.products
             .map((product: Product) => new ProductsItem(product))
             .map((product: ProductsItem) => product.render())
             .join('')}
@@ -70,13 +72,18 @@ export class ProductsList {
     }
 
     updateHtml() {
-        productsContainer.innerHTML = `
-        ${appStore.state.products
-            .map((product: Product) => new ProductsItem(product))
-            .map((product: ProductsItem) => product.render())
-            .join('')}
-        `;
-        this.addEvents();
+        if (appStore.state.products.length === 0) {
+            console.log('nothing');
+            productsContainer.innerHTML = '<h3>Извините, совпадений не обнаружено</h3>';
+        } else {
+            productsContainer.innerHTML = `
+                ${appStore.state.products
+                    .map((product: Product) => new ProductsItem(product))
+                    .map((product: ProductsItem) => product.render())
+                    .join('')}
+            `;
+            this.addEvents();
+        }
     }
 
     // Сортировка.
@@ -159,7 +166,7 @@ export class ProductsList {
         this.updateHtml();
     }
 
-    filterCart() {
+    filterInCart() {
         this.updateAppStore(this.products.filter((a) => a.inCart));
         console.log(appStore);
 

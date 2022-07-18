@@ -49,10 +49,8 @@ const cartCheckBox = document.querySelector('.input-cart') as HTMLInputElement;
 
 cartCheckBox.addEventListener('change', () => {
     if (cartCheckBox.checked) {
-        console.log('checked');
-        app.productsList.filterCart();
+        app.productsList.filterInCart();
     } else {
-        console.log('unchecked');
         app.productsList.updateAppStore();
         app.productsList.updateHtml();
     }

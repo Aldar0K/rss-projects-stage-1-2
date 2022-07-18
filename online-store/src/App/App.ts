@@ -13,7 +13,7 @@ export class App {
     }
 
     start() {
-        (document.querySelector('.main__products') as HTMLDivElement).innerHTML = this.productsList.render();
+        // (document.querySelector('.main__products') as HTMLDivElement).innerHTML = this.productsList.render();
         (document.querySelector('.main__cart') as HTMLDListElement).innerHTML = this.cart.render();
 
         // this.cart.addEvents();
