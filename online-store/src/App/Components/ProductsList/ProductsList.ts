@@ -158,4 +158,11 @@ export class ProductsList {
 
         this.updateHtml();
     }
+
+    filterCart() {
+        this.updateAppStore(this.products.filter((a) => a.inCart));
+        console.log(appStore);
+
+        this.updateHtml();
+    }
 }
