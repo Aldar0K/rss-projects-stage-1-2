@@ -3,7 +3,9 @@ import { State } from '../Interfaces/State';
 
 const defaultState: State = {
     products: [],
-    cart: { amount: 0 },
+    cart: {
+        amount: 0,
+    },
 };
 
 export class AppStore {

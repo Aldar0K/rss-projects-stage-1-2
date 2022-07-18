@@ -2,6 +2,7 @@ import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { productsModel } from '../../Models/ProductsModel';
 import { Product } from '../../Interfaces/Product';
 import { appStore } from '../../Store/AppStore';
+import { configStore } from '../../Store/ConfigStore';
 import { app } from '../../App';
 // import { AppComponent } from '../../Interfaces/AppComponent';
 
@@ -35,8 +36,6 @@ export class ProductsList {
     }
 
     render() {
-        console.log(appStore.state.products);
-
         return `
         ${appStore.state.products
             .map((product: Product) => new ProductsItem(product))
@@ -69,11 +68,18 @@ export class ProductsList {
         appStore.update({
             products: prod,
         });
+
+        console.log(appStore.state);
+    }
+
+    updateConfigStore(config: object) {
+        configStore.update(config);
+
+        console.log(configStore.state);
     }
 
     updateHtml() {
         if (appStore.state.products.length === 0) {
-            console.log('nothing');
             productsContainer.innerHTML = '<h3>Извините, совпадений не обнаружено</h3>';
         } else {
             productsContainer.innerHTML = `
@@ -89,57 +95,46 @@ export class ProductsList {
     // Сортировка.
     sortByNameAToZ() {
         this.updateAppStore(appStore.state.products.sort((a, b) => a.name.localeCompare(b.name)));
-        console.log(appStore);
-
+        this.updateConfigStore({ sort: 'sortByNameAToZ' });
         this.updateHtml();
     }
 
     sortByNameZToA() {
         this.updateAppStore(appStore.state.products.sort((a, b) => b.name.localeCompare(a.name)));
-        console.log(appStore);
-
+        this.updateConfigStore({ sort: 'sortByNameZToA' });
         this.updateHtml();
     }
 
     sortByYearMinMax() {
         this.updateAppStore(appStore.state.products.sort((a, b) => a.release - b.release));
-        console.log(appStore);
-
+        this.updateConfigStore({ sort: 'sortByYearMinMax' });
         this.updateHtml();
     }
 
     sortByYearMaxMin() {
         this.updateAppStore(appStore.state.products.sort((a, b) => b.release - a.release));
-        console.log(appStore);
-
         this.updateHtml();
     }
 
     sortByPriceMinMax() {
         this.updateAppStore(appStore.state.products.sort((a, b) => a.price - b.price));
-        console.log(appStore);
-
         this.updateHtml();
     }
 
     sortByPriceMaxMin() {
         this.updateAppStore(appStore.state.products.sort((a, b) => b.price - a.price));
-        console.log(appStore);
-
         this.updateHtml();
     }
 
     // Фильтры по диапазону.
     filterAmount([from, to]: Array<number>) {
         this.updateAppStore(this.products.filter((a) => a.amount >= from && a.amount <= to));
-        console.log(appStore);
-
+        this.updateConfigStore({ filterAmount: [from, to] });
         this.updateHtml();
     }
 
     filterYear([from, to]: Array<number>) {
         this.updateAppStore(this.products.filter((a) => a.release >= from && a.release <= to));
-        console.log(appStore);
 
         this.updateHtml();
     }
@@ -147,28 +142,24 @@ export class ProductsList {
     // Фильтры по значению.
     filterBrand(brand: string) {
         this.updateAppStore(this.products.filter((a) => a.brand.toLowerCase() === brand.toLowerCase()));
-        console.log(appStore);
 
         this.updateHtml();
     }
 
     filterCameras(cameras: number) {
         this.updateAppStore(this.products.filter((a) => a.cameras === cameras));
-        console.log(appStore);
 
         this.updateHtml();
     }
 
     filterColor(color: string) {
         this.updateAppStore(this.products.filter((a) => a.color === color));
-        console.log(appStore);
 
         this.updateHtml();
     }
 
     filterInCart() {
         this.updateAppStore(this.products.filter((a) => a.inCart));
-        console.log(appStore);
 
         this.updateHtml();
     }
