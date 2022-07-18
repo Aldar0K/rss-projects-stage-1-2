@@ -3,8 +3,8 @@ export interface ConfigState {
     sort: string;
     filterAmount: Array<number>;
     filterYear: Array<number>;
-    filterBrand: string;
-    filterCameras: number;
-    filterColor: string;
+    filterBrand: Array<string>;
+    filterCameras: Array<string>;
+    filterColor: Array<string>;
     filterInCart: boolean;
 }

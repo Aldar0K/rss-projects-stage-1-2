@@ -5,9 +5,9 @@ const defaultConfigState: ConfigState = {
     sort: '',
     filterAmount: [0, 50],
     filterYear: [2016, 2022],
-    filterBrand: '',
-    filterCameras: NaN,
-    filterColor: '',
+    filterBrand: [''],
+    filterCameras: [''],
+    filterColor: [''],
     filterInCart: false,
 };
 

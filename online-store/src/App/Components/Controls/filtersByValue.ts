@@ -4,10 +4,10 @@ const brandButtons = document.querySelectorAll('.button_brand') as NodeListOf<HT
 
 brandButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        brandButtons.forEach((button) => button.classList.remove('button_active'));
-
         if (!button.classList.contains('button_active')) {
             button.classList.add('button_active');
+        } else {
+            button.classList.remove('button_active');
         }
 
         const brand = button.dataset.brand as string;
@@ -19,13 +19,13 @@ const camerasButtons = document.querySelectorAll('.button_cameras') as NodeListO
 
 camerasButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        camerasButtons.forEach((button) => button.classList.remove('button_active'));
-
         if (!button.classList.contains('button_active')) {
             button.classList.add('button_active');
+        } else {
+            button.classList.remove('button_active');
         }
 
-        const cameras = Number(button.dataset.cameras);
+        const cameras = button.dataset.cameras as string;
         app.productsList.filterCameras(cameras);
     });
 });
@@ -34,10 +34,10 @@ const colorButtons = document.querySelectorAll('.button_color') as NodeListOf<HT
 
 colorButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        colorButtons.forEach((button) => button.classList.remove('button_active'));
-
         if (!button.classList.contains('button_active')) {
             button.classList.add('button_active');
+        } else {
+            button.classList.remove('button_active');
         }
 
         const color = button.dataset.color as string;
@@ -48,10 +48,5 @@ colorButtons.forEach((button) => {
 const cartCheckBox = document.querySelector('.input-cart') as HTMLInputElement;
 
 cartCheckBox.addEventListener('change', () => {
-    if (cartCheckBox.checked) {
-        app.productsList.filterInCart();
-    } else {
-        app.productsList.updateAppStore();
-        app.productsList.updateHtml();
-    }
+    app.productsList.filterInCart();
 });
