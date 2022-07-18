@@ -2,7 +2,7 @@ import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { productsModel } from '../../Models/ProductsModel';
 import { Product } from '../../Interfaces/Product';
 import { appStore } from '../../Store/AppStore';
-import { configStore } from '../../Store/ConfigStore';
+import { ConfigStore, configStore } from '../../Store/ConfigStore';
 import { app } from '../../App';
 // import { AppComponent } from '../../Interfaces/AppComponent';
 
@@ -31,6 +31,18 @@ export class ProductsList {
             .finally(() => {
                 this.loading = false;
                 productsContainer.innerHTML = this.render();
+
+                console.clear();
+
+                if (localStorage.getItem('configStore')) {
+                    const loaded = localStorage.getItem('configStore') as string;
+                    const loadedConfig = JSON.parse(loaded) as ConfigStore;
+                    this.updateConfigStore(loadedConfig.state);
+                    this.updateHtml();
+
+                    console.log(loadedConfig);
+                }
+
                 this.addEvents();
             });
     }
@@ -72,6 +84,7 @@ export class ProductsList {
 
     updateConfigStore(config: object) {
         configStore.update(config);
+        console.log('configStore updated', configStore);
     }
 
     updateHtml() {
@@ -151,9 +164,9 @@ export class ProductsList {
             this.addEvents();
         }
 
-        console.clear();
-        console.log(configStore.state);
-        console.log(appStore.state);
+        // console.clear();
+        // console.log(configStore.state);
+        // console.log(appStore.state);
     }
 
     // Сортировка.
@@ -270,7 +283,6 @@ export class ProductsList {
     resetFilters() {
         this.updateConfigStore({
             search: '',
-            sort: '',
             filterAmount: [0, 50],
             filterYear: [2016, 2022],
             filterBrand: [''],
