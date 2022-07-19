@@ -39,7 +39,9 @@ export class ProductsList {
                     this.updateConfigStore(loadedConfig.state);
                     this.updateHtml();
 
+                    console.log(loadedConfig.state.sort);
                     (document.querySelector('.main__sorter-select') as HTMLSelectElement).value = [
+                        '',
                         'sortByNameAToZ',
                         'sortByNameZToA',
                         'sortByYearMinMax',
@@ -83,6 +85,8 @@ export class ProductsList {
                         }
                     });
                     cartCheckBox.checked = loadedConfig.state.filterInCart;
+
+                    this.addEvents();
                 }
 
                 this.addEvents();

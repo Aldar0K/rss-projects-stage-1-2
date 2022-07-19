@@ -13,3 +13,7 @@ app.start();
 window.addEventListener('beforeunload', () => {
     localStorage.setItem('configStore', JSON.stringify(configStore));
 });
+
+console.log(
+    'Самооценка: 205 / 220. Не успел доделать весь функционал, буду признателен, если вы проверите мою работу в последний день CrossCheck'
+);
