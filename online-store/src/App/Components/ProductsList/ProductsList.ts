@@ -31,7 +31,6 @@ export class ProductsList {
             })
             .finally(() => {
                 this.loading = false;
-                productsContainer.innerHTML = this.render();
 
                 if (localStorage.getItem('configStore')) {
                     const loaded = localStorage.getItem('configStore') as string;
@@ -39,7 +38,6 @@ export class ProductsList {
                     this.updateConfigStore(loadedConfig.state);
                     this.updateHtml();
 
-                    console.log(loadedConfig.state.sort);
                     (document.querySelector('.main__sorter-select') as HTMLSelectElement).value = [
                         '',
                         'sortByNameAToZ',
@@ -87,6 +85,8 @@ export class ProductsList {
                     cartCheckBox.checked = loadedConfig.state.filterInCart;
 
                     this.addEvents();
+                } else {
+                    productsContainer.innerHTML = this.render();
                 }
 
                 this.addEvents();
@@ -200,12 +200,7 @@ export class ProductsList {
         if (appStore.state.products.length === 0) {
             productsContainer.innerHTML = '<h3>Извините, совпадений не обнаружено</h3>';
         } else {
-            productsContainer.innerHTML = `
-                ${appStore.state.products
-                    .map((product: Product) => new ProductsItem(product))
-                    .map((product: ProductsItem) => product.render())
-                    .join('')}
-            `;
+            productsContainer.innerHTML = this.render();
             this.addEvents();
         }
 

@@ -1,17 +1,15 @@
 import { configStore } from '../../Store/ConfigStore';
 
+const saveToLocalStorage = () => {
+    localStorage.setItem('configStore', JSON.stringify(configStore));
+};
+
+window.addEventListener('beforeunload', saveToLocalStorage);
+
 const storageResetButton = document.querySelector('.reset-storage-button') as HTMLButtonElement;
 
 storageResetButton.addEventListener('click', () => {
-    configStore.update({
-        search: '',
-        sort: '',
-        filterAmount: [0, 50],
-        filterYear: [2016, 2022],
-        filterBrand: [''],
-        filterCameras: [''],
-        filterColor: [''],
-        filterInCart: false,
-    });
+    window.removeEventListener('beforeunload', saveToLocalStorage);
+    localStorage.clear();
     location.reload();
 });
