@@ -1,7 +1,5 @@
 import { Product } from '../../Interfaces/Product';
-// import { AppComponent } from '../../Interfaces/AppComponent';
 
-// export class ProductsItem implements AppComponent {
 export class ProductsItem {
     constructor(private product: Product) {}
 
@@ -19,6 +17,4 @@ export class ProductsItem {
             </div>
         `;
     }
-
-    // addEvents() {}
 }

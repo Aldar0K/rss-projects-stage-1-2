@@ -3,7 +3,7 @@ import { appStore } from '../../Store/AppStore';
 export class Cart {
     private amount: number;
 
-    constructor(amount = 0) {
+    constructor(amount: number) {
         this.amount = amount;
     }
 

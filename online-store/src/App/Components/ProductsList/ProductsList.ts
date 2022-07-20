@@ -1,19 +1,17 @@
 import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { productsModel } from '../../Models/ProductsModel';
 import { Product } from '../../Interfaces/Product';
-import { appStore } from '../../Store/AppStore';
+import { AppStore, appStore } from '../../Store/AppStore';
 import { ConfigStore, configStore } from '../../Store/ConfigStore';
 import { app } from '../../App';
 import * as noUiSlider from 'nouislider';
-// import { AppComponent } from '../../Interfaces/AppComponent';
 
-const productsContainer = document.querySelector('.main__products') as HTMLDivElement;
-
-// export class ProductsList implements AppComponent {
 export class ProductsList {
     private loading = false;
     private error: Error | null = null;
     private products: Product[] = [];
+
+    public productsContainer = document.querySelector('.main__products') as HTMLDivElement;
 
     constructor() {
         this.fetchProducts();
@@ -33,6 +31,10 @@ export class ProductsList {
                 this.loading = false;
 
                 if (localStorage.getItem('configStore')) {
+                    const loadedAppStore = localStorage.getItem('appStore') as string;
+                    const parsedAppStore = JSON.parse(loadedAppStore) as AppStore;
+                    appStore.state = parsedAppStore.state;
+
                     const loaded = localStorage.getItem('configStore') as string;
                     const loadedConfig = JSON.parse(loaded) as ConfigStore;
                     this.updateConfigStore(loadedConfig.state);
@@ -86,7 +88,7 @@ export class ProductsList {
 
                     this.addEvents();
                 } else {
-                    productsContainer.innerHTML = this.render();
+                    this.productsContainer.innerHTML = this.render();
                 }
 
                 this.addEvents();
@@ -133,6 +135,7 @@ export class ProductsList {
     }
 
     updateHtml() {
+        // TODO Обновляет хранилище продуктов!
         appStore.update({
             products: this.products,
         });
@@ -198,71 +201,57 @@ export class ProductsList {
         }
 
         if (appStore.state.products.length === 0) {
-            productsContainer.innerHTML = '<h3>Извините, совпадений не обнаружено</h3>';
+            this.productsContainer.innerHTML = '<h3>Извините, совпадений не обнаружено</h3>';
         } else {
-            productsContainer.innerHTML = this.render();
+            this.productsContainer.innerHTML = this.render();
             this.addEvents();
         }
-
-        // console.clear();
-        // console.log(configStore.state);
-        // console.log(appStore.state);
     }
 
     // Сортировка.
     sortByNameAToZ() {
-        // this.updateAppStore(appStore.state.products.sort((a, b) => a.name.localeCompare(b.name)));
         this.updateConfigStore({ sort: 'sortByNameAToZ' });
         this.updateHtml();
     }
 
     sortByNameZToA() {
-        // this.updateAppStore(appStore.state.products.sort((a, b) => b.name.localeCompare(a.name)));
         this.updateConfigStore({ sort: 'sortByNameZToA' });
         this.updateHtml();
     }
 
     sortByYearMinMax() {
-        // this.updateAppStore(appStore.state.products.sort((a, b) => a.release - b.release));
         this.updateConfigStore({ sort: 'sortByYearMinMax' });
         this.updateHtml();
     }
 
     sortByYearMaxMin() {
-        // this.updateAppStore(appStore.state.products.sort((a, b) => b.release - a.release));
         this.updateConfigStore({ sort: 'sortByYearMaxMin' });
         this.updateHtml();
     }
 
     sortByPriceMinMax() {
-        // this.updateAppStore(appStore.state.products.sort((a, b) => a.price - b.price));
         this.updateConfigStore({ sort: 'sortByPriceMinMax' });
         this.updateHtml();
     }
 
     sortByPriceMaxMin() {
-        // this.updateAppStore(appStore.state.products.sort((a, b) => b.price - a.price));
         this.updateConfigStore({ sort: 'sortByPriceMaxMin' });
         this.updateHtml();
     }
 
     // Фильтры по диапазону.
     filterAmount([from, to]: Array<number>) {
-        // this.updateAppStore(this.products.filter((a) => a.amount >= from && a.amount <= to));
         this.updateConfigStore({ filterAmount: [from, to] });
         this.updateHtml();
     }
 
     filterYear([from, to]: Array<number>) {
-        // this.updateAppStore(appStore.state.products.filter((a) => a.release >= from && a.release <= to));
         this.updateConfigStore({ filterYear: [from, to] });
         this.updateHtml();
     }
 
     // Фильтры по значению.
     filterBrand(brand: string) {
-        // this.updateAppStore(this.products.filter((a) => a.brand.toLowerCase() === brand.toLowerCase()));
-
         const arrOfBrands = configStore.state.filterBrand;
         if (arrOfBrands.includes(brand)) {
             arrOfBrands.splice(arrOfBrands.indexOf(brand), 1);
@@ -275,8 +264,6 @@ export class ProductsList {
     }
 
     filterCameras(cameras: string) {
-        // this.updateAppStore(appStore.state.products.filter((a) => a.cameras === cameras));
-
         const arrOfCameras = configStore.state.filterCameras;
         if (arrOfCameras.includes(cameras)) {
             arrOfCameras.splice(arrOfCameras.indexOf(cameras), 1);
@@ -289,8 +276,6 @@ export class ProductsList {
     }
 
     filterColor(color: string) {
-        // this.updateAppStore(appStore.state.products.filter((a) => a.color === color));
-
         const arrOfColors = configStore.state.filterColor;
         if (arrOfColors.includes(color)) {
             arrOfColors.splice(arrOfColors.indexOf(color), 1);
@@ -303,8 +288,6 @@ export class ProductsList {
     }
 
     filterInCart() {
-        // this.updateAppStore(appStore.state.products.filter((a) => a.inCart));
-
         if (configStore.state.filterInCart) {
             configStore.state.filterInCart = false;
         } else {

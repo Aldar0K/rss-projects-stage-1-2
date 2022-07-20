@@ -1,7 +1,9 @@
+import { appStore } from '../../Store/AppStore';
 import { configStore } from '../../Store/ConfigStore';
 
 const saveToLocalStorage = () => {
     localStorage.setItem('configStore', JSON.stringify(configStore));
+    localStorage.setItem('appStore', JSON.stringify(appStore));
 };
 
 window.addEventListener('beforeunload', saveToLocalStorage);

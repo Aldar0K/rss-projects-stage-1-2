@@ -21,8 +21,6 @@ export class AppStore {
 
         AppStore.isExist = true;
         AppStore.instance = this;
-
-        // this.state = localStorage.getItem('state')? localStorage.getItem('state') : defaultState;
     }
 
     update(state: Partial<State>) {
