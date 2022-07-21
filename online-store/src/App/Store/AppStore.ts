@@ -4,6 +4,7 @@ import { State } from '../Interfaces/State';
 const defaultState: State = {
     products: [],
     cart: {
+        productsIds: [],
         amount: 0,
     },
 };

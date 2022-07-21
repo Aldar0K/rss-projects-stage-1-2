@@ -30,15 +30,11 @@ export class ProductsList {
             .finally(() => {
                 this.loading = false;
 
-                if (localStorage.getItem('configStore')) {
-                    const loadedAppStore = localStorage.getItem('appStore') as string;
-                    const parsedAppStore = JSON.parse(loadedAppStore) as AppStore;
-                    appStore.state = parsedAppStore.state;
-
-                    const loaded = localStorage.getItem('configStore') as string;
-                    const loadedConfig = JSON.parse(loaded) as ConfigStore;
-                    this.updateConfigStore(loadedConfig.state);
-                    this.updateHtml();
+                if (localStorage.getItem('configStore') && localStorage.getItem('appStore')) {
+                    // Загрузка настроек сортировки и фильтров.
+                    const loadedConfig = localStorage.getItem('configStore') as string;
+                    const parsedConfig = JSON.parse(loadedConfig) as ConfigStore;
+                    this.updateConfigStore(parsedConfig.state);
 
                     (document.querySelector('.main__sorter-select') as HTMLSelectElement).value = [
                         '',
@@ -49,16 +45,16 @@ export class ProductsList {
                         'sortByPriceMinMax',
                         'sortByPriceMaxMin',
                     ]
-                        .indexOf(loadedConfig.state.sort)
+                        .indexOf(parsedConfig.state.sort)
                         .toString();
 
                     const sliderAmount = document.getElementById('slider-amount') as HTMLDivElement;
                     const sliderYear = document.getElementById('slider-year') as HTMLDivElement;
-                    (sliderAmount as noUiSlider.target).noUiSlider?.set(loadedConfig.state.filterAmount);
-                    (sliderYear as noUiSlider.target).noUiSlider?.set(loadedConfig.state.filterYear);
+                    (sliderAmount as noUiSlider.target).noUiSlider?.set(parsedConfig.state.filterAmount);
+                    (sliderYear as noUiSlider.target).noUiSlider?.set(parsedConfig.state.filterYear);
 
                     const searchBar = document.querySelector('.search-bar-input') as HTMLInputElement;
-                    searchBar.value = loadedConfig.state.search;
+                    searchBar.value = parsedConfig.state.search;
 
                     const brandButtons = document.querySelectorAll('.button_brand') as NodeListOf<HTMLButtonElement>;
                     const camerasButtons = document.querySelectorAll(
@@ -68,29 +64,37 @@ export class ProductsList {
                     const cartCheckBox = document.querySelector('.input-cart') as HTMLInputElement;
                     brandButtons.forEach((button) => {
                         const brand = button.dataset.brand as string;
-                        if (loadedConfig.state.filterBrand.includes(brand)) {
+                        if (parsedConfig.state.filterBrand.includes(brand)) {
                             button.classList.add('button_active');
                         }
                     });
                     camerasButtons.forEach((button) => {
                         const cameras = button.dataset.cameras as string;
-                        if (loadedConfig.state.filterCameras.includes(cameras)) {
+                        if (parsedConfig.state.filterCameras.includes(cameras)) {
                             button.classList.add('button_active');
                         }
                     });
                     colorButtons.forEach((button) => {
                         const color = button.dataset.color as string;
-                        if (loadedConfig.state.filterColor.includes(color)) {
+                        if (parsedConfig.state.filterColor.includes(color)) {
                             button.classList.add('button_active');
                         }
                     });
-                    cartCheckBox.checked = loadedConfig.state.filterInCart;
+                    cartCheckBox.checked = parsedConfig.state.filterInCart;
 
-                    this.addEvents();
-                } else {
-                    this.productsContainer.innerHTML = this.render();
+                    // Загрузка продуктов и товаров в корзине.
+                    const loadedAppStore = localStorage.getItem('appStore') as string;
+                    const parsedAppStore = JSON.parse(loadedAppStore) as AppStore;
+                    appStore.state = parsedAppStore.state;
+                    this.products.forEach((product) => {
+                        if (parsedAppStore.state.cart.productsIds.includes(product.id)) {
+                            product.inCart = true;
+                        }
+                    });
                 }
 
+                this.updateHtml();
+                this.productsContainer.innerHTML = this.render();
                 this.addEvents();
             });
     }
@@ -113,20 +117,20 @@ export class ProductsList {
                     el.classList.remove('main__product_active');
                     this.products[Number(el.id) - 1].inCart = false;
                     this.updateAppStore();
-                    app.cartUpdate(true);
+                    app.cartUpdate(Number(el.id));
                 } else {
                     el.classList.add('main__product_active');
                     this.products[Number(el.id) - 1].inCart = true;
                     this.updateAppStore();
-                    app.cartUpdate(false);
+                    app.cartUpdate(Number(el.id));
                 }
             });
         });
     }
 
-    updateAppStore(prod = this.products) {
+    updateAppStore(products = this.products) {
         appStore.update({
-            products: prod,
+            products: products,
         });
     }
 
@@ -136,9 +140,7 @@ export class ProductsList {
 
     updateHtml() {
         // TODO Обновляет хранилище продуктов!
-        appStore.update({
-            products: this.products,
-        });
+        this.updateAppStore();
 
         // Поверка на фильтры по диапазону.
         if (configStore.state.filterAmount) {

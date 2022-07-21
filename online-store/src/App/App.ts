@@ -7,15 +7,17 @@ export class App {
     private cart: Cart;
 
     constructor() {
-        const load = localStorage.getItem('appStore');
         let amount = 0;
+        let productsIds: number[] = [];
+        const load = localStorage.getItem('appStore');
         if (load) {
             const parsedLoad: AppStore = JSON.parse(load);
             amount = parsedLoad.state.cart.amount;
+            productsIds = parsedLoad.state.cart.productsIds;
         }
 
+        this.cart = new Cart(amount, productsIds);
         this.productsList = new ProductsList();
-        this.cart = new Cart(amount);
     }
 
     start() {
@@ -26,8 +28,8 @@ export class App {
         cartContainer.innerHTML = this.cart.render();
     }
 
-    cartUpdate(value: boolean) {
-        this.cart.update(value);
+    cartUpdate(id: number) {
+        this.cart.update(id);
     }
 }
 
