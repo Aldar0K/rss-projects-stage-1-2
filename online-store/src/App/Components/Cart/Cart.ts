@@ -1,7 +1,7 @@
 import { appStore } from '../../Store/AppStore';
 
 export class Cart {
-    private amount: number;
+    public amount: number;
     private productsIds: number[] = [];
 
     constructor(amount: number, productsIds: number[]) {

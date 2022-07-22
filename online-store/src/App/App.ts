@@ -4,7 +4,7 @@ import { AppStore } from './Store/AppStore';
 
 export class App {
     public productsList: ProductsList;
-    private cart: Cart;
+    public cart: Cart;
 
     constructor() {
         let amount = 0;

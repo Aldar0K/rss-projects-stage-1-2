@@ -119,10 +119,14 @@ export class ProductsList {
                     this.updateAppStore();
                     app.cartUpdate(Number(el.id));
                 } else {
-                    el.classList.add('main__product_active');
-                    this.products[Number(el.id) - 1].inCart = true;
-                    this.updateAppStore();
-                    app.cartUpdate(Number(el.id));
+                    if (app.cart.amount === 20) {
+                        alert('Извините, все слоты заполнены');
+                    } else {
+                        el.classList.add('main__product_active');
+                        this.products[Number(el.id) - 1].inCart = true;
+                        this.updateAppStore();
+                        app.cartUpdate(Number(el.id));
+                    }
                 }
             });
         });
