@@ -264,7 +264,6 @@ export class ProductsList {
             arrOfBrands.push(brand);
         }
 
-        // this.updateConfigStore({ filterBrand: brand });
         this.updateHtml();
     }
 
@@ -276,7 +275,6 @@ export class ProductsList {
             arrOfCameras.push(cameras);
         }
 
-        // this.updateConfigStore({ filterCameras: cameras });
         this.updateHtml();
     }
 
@@ -288,7 +286,6 @@ export class ProductsList {
             arrOfColors.push(color);
         }
 
-        // this.updateConfigStore({ filterColor: color });
         this.updateHtml();
     }
 
@@ -299,7 +296,6 @@ export class ProductsList {
             configStore.state.filterInCart = true;
         }
 
-        // this.updateConfigStore({ filterInCart: true });
         this.updateHtml();
     }
 

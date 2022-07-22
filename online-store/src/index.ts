@@ -8,7 +8,3 @@ import './App/Components/Controls/searchBar';
 import { app } from './App/App';
 
 app.start();
-
-console.log(
-    'Самооценка: 205 / 220. Не успел доделать весь функционал, буду признателен, если вы проверите мою работу в последний день CrossCheck'
-);
