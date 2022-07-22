@@ -20,7 +20,7 @@ export class App {
         this.productsList = new ProductsList();
     }
 
-    start() {
+    start(): void {
         const productsContainer = document.querySelector('.main__products') as HTMLDivElement;
         productsContainer.innerHTML = this.productsList.render();
 
@@ -28,7 +28,7 @@ export class App {
         cartContainer.innerHTML = this.cart.render();
     }
 
-    cartUpdate(id: number) {
+    cartUpdate(id: number): void {
         this.cart.update(id);
     }
 }

@@ -17,7 +17,7 @@ export class ProductsList {
         this.fetchProducts();
     }
 
-    fetchProducts() {
+    fetchProducts(): void {
         this.loading = true;
         productsModel
             .getProducts()
@@ -99,7 +99,7 @@ export class ProductsList {
             });
     }
 
-    render() {
+    render(): string {
         return `
         ${appStore.state.products
             .map((product: Product) => new ProductsItem(product))
@@ -110,7 +110,7 @@ export class ProductsList {
         `;
     }
 
-    addEvents() {
+    addEvents(): void {
         (document.querySelectorAll('.main__product') as NodeListOf<HTMLDivElement>).forEach((el) => {
             el.addEventListener('click', () => {
                 if (el.classList.contains('main__product_active')) {
@@ -128,18 +128,17 @@ export class ProductsList {
         });
     }
 
-    updateAppStore(products = this.products) {
+    updateAppStore(products = this.products): void {
         appStore.update({
             products: products,
         });
     }
 
-    updateConfigStore(config: object) {
+    updateConfigStore(config: object): void {
         configStore.update(config);
     }
 
-    updateHtml() {
-        // TODO Обновляет хранилище продуктов!
+    updateHtml(): void {
         this.updateAppStore();
 
         // Поверка на фильтры по диапазону.
@@ -211,49 +210,49 @@ export class ProductsList {
     }
 
     // Сортировка.
-    sortByNameAToZ() {
+    sortByNameAToZ(): void {
         this.updateConfigStore({ sort: 'sortByNameAToZ' });
         this.updateHtml();
     }
 
-    sortByNameZToA() {
+    sortByNameZToA(): void {
         this.updateConfigStore({ sort: 'sortByNameZToA' });
         this.updateHtml();
     }
 
-    sortByYearMinMax() {
+    sortByYearMinMax(): void {
         this.updateConfigStore({ sort: 'sortByYearMinMax' });
         this.updateHtml();
     }
 
-    sortByYearMaxMin() {
+    sortByYearMaxMin(): void {
         this.updateConfigStore({ sort: 'sortByYearMaxMin' });
         this.updateHtml();
     }
 
-    sortByPriceMinMax() {
+    sortByPriceMinMax(): void {
         this.updateConfigStore({ sort: 'sortByPriceMinMax' });
         this.updateHtml();
     }
 
-    sortByPriceMaxMin() {
+    sortByPriceMaxMin(): void {
         this.updateConfigStore({ sort: 'sortByPriceMaxMin' });
         this.updateHtml();
     }
 
     // Фильтры по диапазону.
-    filterAmount([from, to]: Array<number>) {
+    filterAmount([from, to]: Array<number>): void {
         this.updateConfigStore({ filterAmount: [from, to] });
         this.updateHtml();
     }
 
-    filterYear([from, to]: Array<number>) {
+    filterYear([from, to]: Array<number>): void {
         this.updateConfigStore({ filterYear: [from, to] });
         this.updateHtml();
     }
 
     // Фильтры по значению.
-    filterBrand(brand: string) {
+    filterBrand(brand: string): void {
         const arrOfBrands = configStore.state.filterBrand;
         if (arrOfBrands.includes(brand)) {
             arrOfBrands.splice(arrOfBrands.indexOf(brand), 1);
@@ -265,7 +264,7 @@ export class ProductsList {
         this.updateHtml();
     }
 
-    filterCameras(cameras: string) {
+    filterCameras(cameras: string): void {
         const arrOfCameras = configStore.state.filterCameras;
         if (arrOfCameras.includes(cameras)) {
             arrOfCameras.splice(arrOfCameras.indexOf(cameras), 1);
@@ -277,7 +276,7 @@ export class ProductsList {
         this.updateHtml();
     }
 
-    filterColor(color: string) {
+    filterColor(color: string): void {
         const arrOfColors = configStore.state.filterColor;
         if (arrOfColors.includes(color)) {
             arrOfColors.splice(arrOfColors.indexOf(color), 1);
@@ -289,7 +288,7 @@ export class ProductsList {
         this.updateHtml();
     }
 
-    filterInCart() {
+    filterInCart(): void {
         if (configStore.state.filterInCart) {
             configStore.state.filterInCart = false;
         } else {
@@ -300,12 +299,12 @@ export class ProductsList {
         this.updateHtml();
     }
 
-    filterSearch(value: string) {
+    filterSearch(value: string): void {
         configStore.state.search = value;
         this.updateHtml();
     }
 
-    resetFilters() {
+    resetFilters(): void {
         this.updateConfigStore({
             search: '',
             filterAmount: [0, 50],

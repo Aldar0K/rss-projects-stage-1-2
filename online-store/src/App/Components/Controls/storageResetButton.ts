@@ -1,7 +1,7 @@
 import { appStore } from '../../Store/AppStore';
 import { configStore } from '../../Store/ConfigStore';
 
-const saveToLocalStorage = () => {
+const saveToLocalStorage = (): void => {
     localStorage.setItem('configStore', JSON.stringify(configStore));
     localStorage.setItem('appStore', JSON.stringify(appStore));
 };

@@ -9,14 +9,14 @@ export class Cart {
         this.productsIds = productsIds;
     }
 
-    render() {
+    render(): string {
         return `
             <img src="https://www.svgrepo.com/show/80543/shopping-cart-outline.svg" alt="cart">
             <span>${this.amount}</span>
         `;
     }
 
-    update(id: number) {
+    update(id: number): void {
         if (this.productsIds.includes(id)) {
             this.productsIds.splice(this.productsIds.indexOf(id), 1);
             this.amount--;

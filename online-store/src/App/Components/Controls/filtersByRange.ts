@@ -2,7 +2,7 @@ import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import { app } from '../../App';
 
-function generateSlider(element: HTMLElement, [start, end]: number[]) {
+function generateSlider(element: HTMLElement, [start, end]: number[]): void {
     noUiSlider.create(element, {
         start: [start, end],
         connect: true,
@@ -34,7 +34,7 @@ generateSlider(sliderYear, [2016, 2022]);
     app.productsList.filterYear(data);
 });
 
-export const resetFiltersByRange = () => {
+export const resetFiltersByRange = (): void => {
     (sliderAmount as noUiSlider.target).noUiSlider?.set([0, 50]);
     (sliderYear as noUiSlider.target).noUiSlider?.set([2016, 2022]);
 };

@@ -51,7 +51,7 @@ cartCheckBox.addEventListener('change', () => {
     app.productsList.filterInCart();
 });
 
-export const resetFiltersByValue = () => {
+export const resetFiltersByValue = (): void => {
     brandButtons.forEach((button) => {
         button.classList.remove('button_active');
     });

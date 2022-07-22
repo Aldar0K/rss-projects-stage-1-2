@@ -1,4 +1,3 @@
-// import { app } from '../App';
 import { State } from '../Interfaces/State';
 
 const defaultState: State = {
@@ -24,7 +23,7 @@ export class AppStore {
         AppStore.instance = this;
     }
 
-    update(state: Partial<State>) {
+    update(state: Partial<State>): void {
         this.state = {
             ...this.state,
             ...state,

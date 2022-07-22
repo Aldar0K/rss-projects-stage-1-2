@@ -3,7 +3,7 @@ import { Product } from '../../Interfaces/Product';
 export class ProductsItem {
     constructor(private product: Product) {}
 
-    render() {
+    render(): string {
         return `
             <div class="main__product${this.product.inCart ? ' main__product_active' : ''}" id="${this.product.id}">
                 <h3>${this.product.name}</h3>

@@ -7,6 +7,6 @@ searchBar.addEventListener('input', () => {
     app.productsList.filterSearch(value);
 });
 
-export const resetFilterBySearch = () => {
+export const resetFilterBySearch = (): void => {
     searchBar.value = '';
 };

@@ -26,7 +26,7 @@ export class ConfigStore {
         ConfigStore.instance = this;
     }
 
-    update(state: Partial<ConfigState>) {
+    update(state: Partial<ConfigState>): void {
         this.state = {
             ...this.state,
             ...state,
