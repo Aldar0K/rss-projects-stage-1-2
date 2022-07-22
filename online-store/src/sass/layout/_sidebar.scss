@@ -14,7 +14,7 @@
 }
 
 .main__cart {
-    padding: 2rem 1rem;
+    padding: 1.5rem;
 
     display: flex;
     gap: 1rem;
@@ -26,12 +26,18 @@
     @extend %shadow;
 
     @include media-laptop {
-        flex: 1 1 10%;
+        flex-direction: column-reverse;
+    }
+    @include media-tablet {
+        flex-direction: row;
     }
 
     & img {
         width: 7rem;
         @include media-laptop {
+            width: 5rem;
+        }
+        @include media-tablet {
             width: 6rem;
         }
     }
@@ -74,27 +80,29 @@
     @extend %shadow;
 
     @include media-laptop {
-        flex: 1 1 30%;
+        flex: 1 1 25%;
     }
 }
 
 .main__range-filters {
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: center;
+    gap: 3rem;
 
     background-color: $color-light;
     @extend %border;
     @extend %shadow;
 
     @include media-laptop {
-        flex: 1 1 30%;
+        flex: 1 1 25%;
     }
 }
 
 .main__range-slider {
-    padding: 1rem;
+    // padding: 1rem;
     width: 100%;
 
     display: flex;
@@ -108,7 +116,6 @@
 
     display: flex;
     flex-direction: column;
-    // align-items: center;
     gap: 1.5rem;
 
     background-color: $color-light;
@@ -116,6 +123,6 @@
     @extend %shadow;
 
     @include media-laptop {
-        flex: 1 1 30%;
+        flex: 1 1 40%;
     }
 }

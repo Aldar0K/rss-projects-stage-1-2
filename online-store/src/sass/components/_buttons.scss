@@ -1,5 +1,14 @@
 .button {
-    // background-color: $color-light;
+    padding: .3rem;
+
+    font-size: 1.4rem;
+
+    @extend %transition;
+    @extend %border;
+
+    &:hover {
+        background-color: $color-primary;
+    }
 
     &_active {
         background-color: $color-primary;
