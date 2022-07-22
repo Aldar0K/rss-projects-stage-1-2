@@ -1,10 +1,12 @@
-import { ProductsList } from './Components/ProductsList/ProductsList';
 import { Cart } from './Components/Cart/Cart';
+import { Controls } from './Components/Controls/Controls';
+import { ProductsList } from './Components/ProductsList/ProductsList';
 import { AppStore } from './Store/AppStore';
 
 export class App {
-    public productsList: ProductsList;
     public cart: Cart;
+    private controls: Controls;
+    public productsList: ProductsList;
 
     constructor() {
         let amount = 0;
@@ -17,6 +19,7 @@ export class App {
         }
 
         this.cart = new Cart(amount, productsIds);
+        this.controls = new Controls();
         this.productsList = new ProductsList();
     }
 
