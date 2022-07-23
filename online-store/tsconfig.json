@@ -6,6 +6,8 @@
     "target": "es5",
     "allowJs": true,
     "strict": true,
+    "types": ["jest", "node"]
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts"],
+  // "types": ["jest", "node"]
 }
