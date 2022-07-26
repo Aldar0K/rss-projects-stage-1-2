@@ -5,7 +5,7 @@ import { AppStore } from './Store/AppStore';
 
 export class App {
     public cart: Cart;
-    private controls: Controls;
+    public controls: Controls;
     public productsList: ProductsList;
 
     constructor() {

@@ -1,6 +1,7 @@
 import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import { app } from '../../App';
+import { Product } from '../../Interfaces/Product';
 import { appStore } from '../../Store/AppStore';
 import { configStore } from '../../Store/ConfigStore';
 
@@ -172,4 +173,72 @@ export class Controls {
 
         window.addEventListener('beforeunload', this.saveToLocalStorage);
     };
+
+    updateAppStore(products: Product[]): void {
+        appStore.update({
+            products: products,
+        });
+    }
+
+    update() {
+        // Поверка на фильтры по диапазону.
+        if (configStore.state.filterAmount) {
+            const from = configStore.state.filterAmount[0];
+            const to = configStore.state.filterAmount[1];
+            this.updateAppStore(appStore.state.products.filter((a) => a.amount >= from && a.amount <= to));
+        }
+        if (configStore.state.filterYear) {
+            const from = configStore.state.filterYear[0];
+            const to = configStore.state.filterYear[1];
+            this.updateAppStore(appStore.state.products.filter((a) => a.release >= from && a.release <= to));
+        }
+
+        // Поверка на фильтры по значению.
+        if (configStore.state.filterBrand.length > 1) {
+            const brandsArr = configStore.state.filterBrand;
+            this.updateAppStore(appStore.state.products.filter((a) => brandsArr.includes(a.brand.toLowerCase())));
+        }
+        if (configStore.state.filterCameras.length > 1) {
+            const camerasArr = configStore.state.filterCameras;
+            this.updateAppStore(appStore.state.products.filter((a) => camerasArr.includes(a.cameras)));
+        }
+        if (configStore.state.filterColor.length > 1) {
+            const colorsArr = configStore.state.filterColor;
+            this.updateAppStore(appStore.state.products.filter((a) => colorsArr.includes(a.color)));
+        }
+        if (configStore.state.filterInCart) {
+            this.updateAppStore(appStore.state.products.filter((a) => a.inCart));
+        }
+
+        // Проверка на поисковую строку.
+        if (configStore.state.search) {
+            const value = configStore.state.search;
+            const regExp = new RegExp(value, 'i');
+            this.updateAppStore(appStore.state.products.filter((a) => a.name.match(regExp)));
+        }
+
+        // Проверка сортировки.
+        if (configStore.state.sort) {
+            switch (configStore.state.sort) {
+                case 'sortByNameAToZ':
+                    this.updateAppStore(appStore.state.products.sort((a, b) => a.name.localeCompare(b.name)));
+                    break;
+                case 'sortByNameZToA':
+                    this.updateAppStore(appStore.state.products.sort((a, b) => b.name.localeCompare(a.name)));
+                    break;
+                case 'sortByYearMinMax':
+                    this.updateAppStore(appStore.state.products.sort((a, b) => a.release - b.release));
+                    break;
+                case 'sortByYearMaxMin':
+                    this.updateAppStore(appStore.state.products.sort((a, b) => b.release - a.release));
+                    break;
+                case 'sortByPriceMinMax':
+                    this.updateAppStore(appStore.state.products.sort((a, b) => a.price - b.price));
+                    break;
+                case 'sortByPriceMaxMin':
+                    this.updateAppStore(appStore.state.products.sort((a, b) => b.price - a.price));
+                    break;
+            }
+        }
+    }
 }
