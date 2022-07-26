@@ -86,15 +86,15 @@ export class Controls {
     addEvents = (): void => {
         (this.sliderAmount as noUiSlider.target).noUiSlider?.on('change', () => {
             const data = (this.sliderAmount as noUiSlider.target).noUiSlider?.get() as Array<number>;
-            app.productsList.filterAmount(data);
+            this.filterAmount(data);
         });
         (this.sliderYear as noUiSlider.target).noUiSlider?.on('change', () => {
             const data = (this.sliderYear as noUiSlider.target).noUiSlider?.get() as Array<number>;
-            app.productsList.filterYear(data);
+            this.filterYear(data);
         });
 
         this.filterResetButton.addEventListener('click', () => {
-            app.productsList.resetFilters();
+            this.resetFilters();
             this.resetFiltersByRange();
             this.resetFiltersByValue();
             this.resetFilterBySearch();
@@ -108,7 +108,7 @@ export class Controls {
                     button.classList.remove('button_active');
                 }
                 const brand = button.dataset.brand as string;
-                app.productsList.filterBrand(brand);
+                this.filterBrand(brand);
             });
         });
         this.camerasButtons.forEach((button) => {
@@ -120,7 +120,7 @@ export class Controls {
                 }
 
                 const cameras = button.dataset.cameras as string;
-                app.productsList.filterCameras(cameras);
+                this.filterCameras(cameras);
             });
         });
         this.colorButtons.forEach((button) => {
@@ -132,35 +132,35 @@ export class Controls {
                 }
 
                 const color = button.dataset.color as string;
-                app.productsList.filterColor(color);
+                this.filterColor(color);
             });
         });
         this.cartCheckBox.addEventListener('change', () => {
-            app.productsList.filterInCart();
+            this.filterInCart();
         });
         this.searchBar.addEventListener('input', () => {
             const value = this.searchBar.value;
-            app.productsList.filterSearch(value);
+            this.filterSearch(value);
         });
         this.sorterSelect.addEventListener('change', () => {
             switch (this.sorterSelect.selectedIndex) {
                 case 1:
-                    app.productsList.sortByNameAToZ();
+                    this.sortByNameAToZ();
                     break;
                 case 2:
-                    app.productsList.sortByNameZToA();
+                    this.sortByNameZToA();
                     break;
                 case 3:
-                    app.productsList.sortByYearMinMax();
+                    this.sortByYearMinMax();
                     break;
                 case 4:
-                    app.productsList.sortByYearMaxMin();
+                    this.sortByYearMaxMin();
                     break;
                 case 5:
-                    app.productsList.sortByPriceMinMax();
+                    this.sortByPriceMinMax();
                     break;
                 case 6:
-                    app.productsList.sortByPriceMaxMin();
+                    this.sortByPriceMaxMin();
                     break;
             }
         });
@@ -173,6 +173,110 @@ export class Controls {
 
         window.addEventListener('beforeunload', this.saveToLocalStorage);
     };
+
+    // Сортировка.
+    sortByNameAToZ(): void {
+        configStore.update({ sort: 'sortByNameAToZ' });
+        app.productsList.updateHtml();
+    }
+
+    sortByNameZToA(): void {
+        configStore.update({ sort: 'sortByNameZToA' });
+        app.productsList.updateHtml();
+    }
+
+    sortByYearMinMax(): void {
+        configStore.update({ sort: 'sortByYearMinMax' });
+        app.productsList.updateHtml();
+    }
+
+    sortByYearMaxMin(): void {
+        configStore.update({ sort: 'sortByYearMaxMin' });
+        app.productsList.updateHtml();
+    }
+
+    sortByPriceMinMax(): void {
+        configStore.update({ sort: 'sortByPriceMinMax' });
+        app.productsList.updateHtml();
+    }
+
+    sortByPriceMaxMin(): void {
+        configStore.update({ sort: 'sortByPriceMaxMin' });
+        app.productsList.updateHtml();
+    }
+
+    // Фильтры по диапазону.
+    filterAmount([from, to]: Array<number>): void {
+        configStore.update({ filterAmount: [from, to] });
+        app.productsList.updateHtml();
+    }
+
+    filterYear([from, to]: Array<number>): void {
+        configStore.update({ filterYear: [from, to] });
+        app.productsList.updateHtml();
+    }
+
+    // Фильтры по значению.
+    filterBrand(brand: string): void {
+        const arrOfBrands = configStore.state.filterBrand;
+        if (arrOfBrands.includes(brand)) {
+            arrOfBrands.splice(arrOfBrands.indexOf(brand), 1);
+        } else {
+            arrOfBrands.push(brand);
+        }
+
+        app.productsList.updateHtml();
+    }
+
+    filterCameras(cameras: string): void {
+        const arrOfCameras = configStore.state.filterCameras;
+        if (arrOfCameras.includes(cameras)) {
+            arrOfCameras.splice(arrOfCameras.indexOf(cameras), 1);
+        } else {
+            arrOfCameras.push(cameras);
+        }
+
+        app.productsList.updateHtml();
+    }
+
+    filterColor(color: string): void {
+        const arrOfColors = configStore.state.filterColor;
+        if (arrOfColors.includes(color)) {
+            arrOfColors.splice(arrOfColors.indexOf(color), 1);
+        } else {
+            arrOfColors.push(color);
+        }
+
+        app.productsList.updateHtml();
+    }
+
+    filterInCart(): void {
+        if (configStore.state.filterInCart) {
+            configStore.state.filterInCart = false;
+        } else {
+            configStore.state.filterInCart = true;
+        }
+
+        app.productsList.updateHtml();
+    }
+
+    filterSearch(value: string): void {
+        configStore.state.search = value;
+        app.productsList.updateHtml();
+    }
+
+    resetFilters(): void {
+        configStore.update({
+            search: '',
+            filterAmount: [0, 50],
+            filterYear: [2016, 2022],
+            filterBrand: [''],
+            filterCameras: [''],
+            filterColor: [''],
+            filterInCart: false,
+        });
+        app.productsList.updateHtml();
+    }
 
     updateAppStore(products: Product[]): void {
         appStore.update({

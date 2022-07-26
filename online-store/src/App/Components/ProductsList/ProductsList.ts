@@ -37,7 +37,7 @@ export class ProductsList {
                         }
                     });
                 }
-                this.updateHtml();
+                app.productsList.updateHtml();
                 this.productsContainer.innerHTML = this.render();
                 this.addEvents();
             });
@@ -93,109 +93,5 @@ export class ProductsList {
             this.productsContainer.innerHTML = this.render();
             this.addEvents();
         }
-    }
-
-    // Сортировка.
-    sortByNameAToZ(): void {
-        configStore.update({ sort: 'sortByNameAToZ' });
-        this.updateHtml();
-    }
-
-    sortByNameZToA(): void {
-        configStore.update({ sort: 'sortByNameZToA' });
-        this.updateHtml();
-    }
-
-    sortByYearMinMax(): void {
-        configStore.update({ sort: 'sortByYearMinMax' });
-        this.updateHtml();
-    }
-
-    sortByYearMaxMin(): void {
-        configStore.update({ sort: 'sortByYearMaxMin' });
-        this.updateHtml();
-    }
-
-    sortByPriceMinMax(): void {
-        configStore.update({ sort: 'sortByPriceMinMax' });
-        this.updateHtml();
-    }
-
-    sortByPriceMaxMin(): void {
-        configStore.update({ sort: 'sortByPriceMaxMin' });
-        this.updateHtml();
-    }
-
-    // Фильтры по диапазону.
-    filterAmount([from, to]: Array<number>): void {
-        configStore.update({ filterAmount: [from, to] });
-        this.updateHtml();
-    }
-
-    filterYear([from, to]: Array<number>): void {
-        configStore.update({ filterYear: [from, to] });
-        this.updateHtml();
-    }
-
-    // Фильтры по значению.
-    filterBrand(brand: string): void {
-        const arrOfBrands = configStore.state.filterBrand;
-        if (arrOfBrands.includes(brand)) {
-            arrOfBrands.splice(arrOfBrands.indexOf(brand), 1);
-        } else {
-            arrOfBrands.push(brand);
-        }
-
-        this.updateHtml();
-    }
-
-    filterCameras(cameras: string): void {
-        const arrOfCameras = configStore.state.filterCameras;
-        if (arrOfCameras.includes(cameras)) {
-            arrOfCameras.splice(arrOfCameras.indexOf(cameras), 1);
-        } else {
-            arrOfCameras.push(cameras);
-        }
-
-        this.updateHtml();
-    }
-
-    filterColor(color: string): void {
-        const arrOfColors = configStore.state.filterColor;
-        if (arrOfColors.includes(color)) {
-            arrOfColors.splice(arrOfColors.indexOf(color), 1);
-        } else {
-            arrOfColors.push(color);
-        }
-
-        this.updateHtml();
-    }
-
-    filterInCart(): void {
-        if (configStore.state.filterInCart) {
-            configStore.state.filterInCart = false;
-        } else {
-            configStore.state.filterInCart = true;
-        }
-
-        this.updateHtml();
-    }
-
-    filterSearch(value: string): void {
-        configStore.state.search = value;
-        this.updateHtml();
-    }
-
-    resetFilters(): void {
-        configStore.update({
-            search: '',
-            filterAmount: [0, 50],
-            filterYear: [2016, 2022],
-            filterBrand: [''],
-            filterCameras: [''],
-            filterColor: [''],
-            filterInCart: false,
-        });
-        this.updateHtml();
     }
 }
