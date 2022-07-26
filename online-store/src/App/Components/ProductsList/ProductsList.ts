@@ -1,10 +1,9 @@
 import { ProductsItem } from '../ProductsItem/ProductsItem';
 import { productsModel } from '../../Models/ProductsModel';
 import { Product } from '../../Interfaces/Product';
-import { AppStore, appStore } from '../../Store/AppStore';
-import { ConfigStore, configStore } from '../../Store/ConfigStore';
+import { appStore } from '../../Store/AppStore';
+import { configStore } from '../../Store/ConfigStore';
 import { app } from '../../App';
-import * as noUiSlider from 'nouislider';
 
 export class ProductsList {
     private loading = false;
@@ -29,70 +28,15 @@ export class ProductsList {
             })
             .finally(() => {
                 this.loading = false;
-
                 if (localStorage.getItem('configStore') && localStorage.getItem('appStore')) {
-                    // Загрузка настроек сортировки и фильтров.
-                    const loadedConfig = localStorage.getItem('configStore') as string;
-                    const parsedConfig = JSON.parse(loadedConfig) as ConfigStore;
-                    configStore.update(parsedConfig.state);
-
-                    (document.querySelector('.main__sorter-select') as HTMLSelectElement).value = [
-                        '',
-                        'sortByNameAToZ',
-                        'sortByNameZToA',
-                        'sortByYearMinMax',
-                        'sortByYearMaxMin',
-                        'sortByPriceMinMax',
-                        'sortByPriceMaxMin',
-                    ]
-                        .indexOf(parsedConfig.state.sort)
-                        .toString();
-
-                    const sliderAmount = document.getElementById('slider-amount') as HTMLDivElement;
-                    const sliderYear = document.getElementById('slider-year') as HTMLDivElement;
-                    (sliderAmount as noUiSlider.target).noUiSlider?.set(parsedConfig.state.filterAmount);
-                    (sliderYear as noUiSlider.target).noUiSlider?.set(parsedConfig.state.filterYear);
-
-                    const searchBar = document.querySelector('.search-bar-input') as HTMLInputElement;
-                    searchBar.value = parsedConfig.state.search;
-
-                    const brandButtons = document.querySelectorAll('.button_brand') as NodeListOf<HTMLButtonElement>;
-                    const camerasButtons = document.querySelectorAll(
-                        '.button_cameras'
-                    ) as NodeListOf<HTMLButtonElement>;
-                    const colorButtons = document.querySelectorAll('.button_color') as NodeListOf<HTMLButtonElement>;
-                    const cartCheckBox = document.querySelector('.input-cart') as HTMLInputElement;
-                    brandButtons.forEach((button) => {
-                        const brand = button.dataset.brand as string;
-                        if (parsedConfig.state.filterBrand.includes(brand)) {
-                            button.classList.add('button_active');
-                        }
-                    });
-                    camerasButtons.forEach((button) => {
-                        const cameras = button.dataset.cameras as string;
-                        if (parsedConfig.state.filterCameras.includes(cameras)) {
-                            button.classList.add('button_active');
-                        }
-                    });
-                    colorButtons.forEach((button) => {
-                        const color = button.dataset.color as string;
-                        if (parsedConfig.state.filterColor.includes(color)) {
-                            button.classList.add('button_active');
-                        }
-                    });
-                    cartCheckBox.checked = parsedConfig.state.filterInCart;
-
-                    // Загрузка продуктов и товаров в корзине.
-                    const loadedAppStore = localStorage.getItem('appStore') as string;
-                    const parsedAppStore = JSON.parse(loadedAppStore) as AppStore;
-                    appStore.state = parsedAppStore.state;
+                    configStore.load();
+                    appStore.load();
                     this.products.forEach((product) => {
-                        if (parsedAppStore.state.cart.productsIds.includes(product.id)) {
+                        if (appStore.state.cart.productsIds.includes(product.id)) {
                             product.inCart = true;
                         }
                     });
                 }
-
                 this.updateHtml();
                 this.productsContainer.innerHTML = this.render();
                 this.addEvents();

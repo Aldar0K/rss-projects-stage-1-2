@@ -29,6 +29,12 @@ export class AppStore {
             ...state,
         };
     }
+
+    load() {
+        const loadedAppStore = localStorage.getItem('appStore') as string;
+        const parsedAppStore = JSON.parse(loadedAppStore) as AppStore;
+        appStore.state = parsedAppStore.state;
+    }
 }
 
 export const appStore = new AppStore();
