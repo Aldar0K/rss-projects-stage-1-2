@@ -34,7 +34,7 @@ export class ProductsList {
                     // Загрузка настроек сортировки и фильтров.
                     const loadedConfig = localStorage.getItem('configStore') as string;
                     const parsedConfig = JSON.parse(loadedConfig) as ConfigStore;
-                    this.updateConfigStore(parsedConfig.state);
+                    configStore.update(parsedConfig.state);
 
                     (document.querySelector('.main__sorter-select') as HTMLSelectElement).value = [
                         '',
@@ -138,10 +138,6 @@ export class ProductsList {
         });
     }
 
-    updateConfigStore(config: object): void {
-        configStore.update(config);
-    }
-
     updateHtml(): void {
         this.updateAppStore();
 
@@ -215,43 +211,43 @@ export class ProductsList {
 
     // Сортировка.
     sortByNameAToZ(): void {
-        this.updateConfigStore({ sort: 'sortByNameAToZ' });
+        configStore.update({ sort: 'sortByNameAToZ' });
         this.updateHtml();
     }
 
     sortByNameZToA(): void {
-        this.updateConfigStore({ sort: 'sortByNameZToA' });
+        configStore.update({ sort: 'sortByNameZToA' });
         this.updateHtml();
     }
 
     sortByYearMinMax(): void {
-        this.updateConfigStore({ sort: 'sortByYearMinMax' });
+        configStore.update({ sort: 'sortByYearMinMax' });
         this.updateHtml();
     }
 
     sortByYearMaxMin(): void {
-        this.updateConfigStore({ sort: 'sortByYearMaxMin' });
+        configStore.update({ sort: 'sortByYearMaxMin' });
         this.updateHtml();
     }
 
     sortByPriceMinMax(): void {
-        this.updateConfigStore({ sort: 'sortByPriceMinMax' });
+        configStore.update({ sort: 'sortByPriceMinMax' });
         this.updateHtml();
     }
 
     sortByPriceMaxMin(): void {
-        this.updateConfigStore({ sort: 'sortByPriceMaxMin' });
+        configStore.update({ sort: 'sortByPriceMaxMin' });
         this.updateHtml();
     }
 
     // Фильтры по диапазону.
     filterAmount([from, to]: Array<number>): void {
-        this.updateConfigStore({ filterAmount: [from, to] });
+        configStore.update({ filterAmount: [from, to] });
         this.updateHtml();
     }
 
     filterYear([from, to]: Array<number>): void {
-        this.updateConfigStore({ filterYear: [from, to] });
+        configStore.update({ filterYear: [from, to] });
         this.updateHtml();
     }
 
@@ -305,7 +301,7 @@ export class ProductsList {
     }
 
     resetFilters(): void {
-        this.updateConfigStore({
+        configStore.update({
             search: '',
             filterAmount: [0, 50],
             filterYear: [2016, 2022],
