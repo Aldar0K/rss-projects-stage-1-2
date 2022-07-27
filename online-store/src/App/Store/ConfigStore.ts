@@ -13,7 +13,7 @@ const defaultConfigState: ConfigState = {
 };
 
 export class ConfigStore {
-    static isExist = false;
+    static isExist: boolean;
     static instance: ConfigStore;
 
     public state = defaultConfigState;

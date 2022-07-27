@@ -63,7 +63,7 @@ export class ProductsList {
                     this.updateAppStore();
                     app.cart.update(+el.id);
                 } else {
-                    if (app.cart.amount === 20) {
+                    if (app.cart.amount >= 20) {
                         alert('Извините, все слоты заполнены');
                     } else {
                         el.classList.add('main__product_active');

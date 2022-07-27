@@ -9,7 +9,7 @@ const defaultState: State = {
 };
 
 export class AppStore {
-    static isExist = false;
+    static isExist: boolean;
     static instance: AppStore;
 
     public state = defaultState;
@@ -30,7 +30,7 @@ export class AppStore {
         };
     }
 
-    load() {
+    load(): void {
         const loadedAppStore = localStorage.getItem('appStore') as string;
         const parsedAppStore = JSON.parse(loadedAppStore) as AppStore;
         appStore.state = parsedAppStore.state;
