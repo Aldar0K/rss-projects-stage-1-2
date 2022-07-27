@@ -16,7 +16,7 @@ export class ConfigStore {
     static isExist: boolean;
     static instance: ConfigStore;
 
-    public state = defaultConfigState;
+    public state: ConfigState = defaultConfigState;
 
     constructor() {
         if (ConfigStore.isExist) {
