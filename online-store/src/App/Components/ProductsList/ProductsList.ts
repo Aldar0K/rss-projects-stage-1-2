@@ -61,7 +61,7 @@ export class ProductsList {
                     el.classList.remove('main__product_active');
                     this.products[Number(el.id) - 1].inCart = false;
                     this.updateAppStore();
-                    app.cartUpdate(Number(el.id));
+                    app.cart.update(+el.id);
                 } else {
                     if (app.cart.amount === 20) {
                         alert('Извините, все слоты заполнены');
@@ -69,7 +69,7 @@ export class ProductsList {
                         el.classList.add('main__product_active');
                         this.products[Number(el.id) - 1].inCart = true;
                         this.updateAppStore();
-                        app.cartUpdate(Number(el.id));
+                        app.cart.update(+el.id);
                     }
                 }
             });

@@ -30,10 +30,6 @@ export class App {
         const cartContainer = document.querySelector('.main__cart') as HTMLDListElement;
         cartContainer.innerHTML = this.cart.render();
     }
-
-    cartUpdate(id: number): void {
-        this.cart.update(id);
-    }
 }
 
 export const app = new App();
