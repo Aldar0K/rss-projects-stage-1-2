@@ -1,4 +1,5 @@
 import { Cart } from '../src/App/Components/Cart/Cart';
+import { AppStore } from '../src/App/Store/AppStore';
 
 describe('Cart', () => {
     let cart: Cart;
@@ -11,6 +12,7 @@ describe('Cart', () => {
         it('should be defined', () => {
             expect(cart.render).toBeDefined;
         });
+
         it('should return the string of dom elements with span attr contains amount', () => {
             const amount = 1;
             cart.amount = amount;
@@ -23,20 +25,32 @@ describe('Cart', () => {
     });
 
     describe('update', () => {
+        beforeEach(() => {
+            document.body.innerHTML = `
+            <div class="main__cart">
+                <span>0</span>
+            </div>
+            `;
+            const id = 5;
+            cart.update(id);
+        });
+
         it('should be defined', () => {
             expect(cart.update).toBeDefined;
         });
+
+        it('should change amount value in the cart instance', () => {
+            expect(cart.amount).not.toBe(0);
+        });
+
         it('should change amount value in the DOM', () => {
-            document.body.innerHTML = `
-                <div class="main__cart">
-                    <span>0</span>
-                </div>
-            `;
+            expect((document.querySelector('.main__cart span') as HTMLSpanElement).textContent).not.toBe('0');
+        });
 
-            const id = 5;
-            cart.update(id);
-
-            expect((document.querySelector('.main__cart span') as HTMLSpanElement).textContent).toBe('1');
+        it('should change appStore cart amount and productsIds', () => {
+            const appStore = new AppStore();
+            expect(appStore.state.cart.amount).not.toBe(0);
+            expect(appStore.state.cart.productsIds).not.toEqual([]);
         });
     });
 });
