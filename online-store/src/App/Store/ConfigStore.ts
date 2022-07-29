@@ -34,7 +34,7 @@ export class ConfigStore {
         };
     }
 
-    load() {
+    load(): void {
         const loadedConfig = localStorage.getItem('configStore') as string;
         const parsedConfig = JSON.parse(loadedConfig) as ConfigStore;
         this.update(parsedConfig.state);

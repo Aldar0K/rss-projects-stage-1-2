@@ -20,4 +20,10 @@ describe('AppStore', () => {
             expect(appStore.state).not.toEqual({});
         });
     });
+
+    describe('load', () => {
+        it('should get configStore from the localStorage if there is one', () => {
+            window.localStorage.setItem('configStore', )
+        });
+    });
 });
