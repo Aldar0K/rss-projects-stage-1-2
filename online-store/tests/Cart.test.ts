@@ -13,7 +13,7 @@ describe('Cart', () => {
             expect(cart.render).toBeDefined;
         });
 
-        it('should return the string of dom elements with span attr contains amount', () => {
+        it('should return the string of dom elements with span attribute contains amount', () => {
             const amount = 1;
             cart.amount = amount;
             const expectedString = `
@@ -49,6 +49,7 @@ describe('Cart', () => {
 
         it('should change appStore cart amount and productsIds', () => {
             const appStore = new AppStore();
+
             expect(appStore.state.cart.amount).not.toBe(0);
             expect(appStore.state.cart.productsIds).not.toEqual([]);
         });
