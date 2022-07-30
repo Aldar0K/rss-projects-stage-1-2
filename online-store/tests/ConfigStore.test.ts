@@ -17,6 +17,7 @@ describe('AppStore', () => {
 
     beforeEach(() => {
         configStore = new ConfigStore();
+        localStorage.clear();
     });
 
     describe('update', () => {
