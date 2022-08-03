@@ -1,6 +1,6 @@
-import { ICar } from '../Interfaces/ICar';
+import ICar from '../Interfaces/ICar';
 
-export class AppModel {
+class AppModel {
   static isExist = false;
 
   static instance: AppModel;

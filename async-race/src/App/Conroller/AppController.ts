@@ -1,5 +1,6 @@
 import AppModel from '../Model/AppModel';
 import AppView from '../View/AppView';
+import store from '../Store/Store';
 
 class AppController {
   model: AppModel;
