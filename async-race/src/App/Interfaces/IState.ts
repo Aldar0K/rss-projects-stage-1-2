@@ -1,17 +1,14 @@
-import ICar from './ICar'
-import IWinner from './IWinner';
-
 interface IState {
   carsPage: number;
-  cars: Array<ICar>;
+  carsIds: Array<number>;
   carsCount: number;
   winnersPage: number;
-  winners: Array<IWinner>;
+  winnersIds: Array<number>;
   winnersCount: number;
   animation: {};
   view: 'Garage' | 'Winners';
-  sortBy: string;
-  sortOrder: string;
+  sort: 'wins' | 'time';
+  order: 'asc' | 'desc';
 }
 
 export default IState;

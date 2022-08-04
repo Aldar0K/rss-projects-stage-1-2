@@ -13,7 +13,7 @@ class AppController {
   }
 
   async start() {
-    const data = await this.model.fetchCars();
+    const data = await this.model.getCars();
 
     // eslint-disable-next-line no-console
     console.log(data);

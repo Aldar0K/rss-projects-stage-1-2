@@ -3,12 +3,8 @@ type Page = 'Garage' | 'Winners';
 class AppView {
   private defaultPage: Page = 'Garage';
 
-  private currentPage: Page;
-
   constructor(page: Page) {
-    this.currentPage = page;
-
-    this.renderPage(this.currentPage);
+    this.renderPage(page);
   }
 
   renderPage(page: Page = this.defaultPage): string {

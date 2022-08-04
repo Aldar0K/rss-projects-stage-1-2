@@ -6,7 +6,7 @@ class App {
   controller: AppController;
 
   constructor() {
-    this.controller = new AppController(new AppModel(), new AppView());
+    this.controller = new AppController(new AppModel(), new AppView('Garage'));
   }
 
   start() {
