@@ -1,10 +1,11 @@
-import ICar from '../Interfaces/ICar';
+// import ICar from '../Interfaces/ICar';
 
 export const baseUrl = 'http://127.0.0.1:3000';
 export const garageUrl = `${baseUrl}/garage`;
 export const winnersUrl = `${baseUrl}/winners`;
 export const engineUrl = `${baseUrl}/engine`;
 
+export const DEFAULT_PAGE: number = 1;
 export const DEFAULT_PAGE_LIMIT: number = 7;
 
 export const producers = ['Lada', 'Acura', 'Alfa-Romeo', 'Aston-Martin', 'Audi', 'Bentley', 'BMW', 'Bugatti', 'Buick', 'Cadillac', 'Chevrolet', 'Chrysler', 'Citroen', 'Dodge', 'Ferrari', 'Fiat', 'Ford', 'Geely', 'Genesis', 'GMC', 'Honda', 'Hyundai', 'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Koenigsegg', 'Lamborghini', 'Lancia', 'Land Rover', 'Lexus', 'Lincoln', 'Lotus', 'Maserati', 'Maybach', 'Mazda', 'McLaren', 'Mercedes', 'Mini', 'Mitsubishi', 'Nissan', 'Opel', 'Pagani', 'Peugeot', 'Pontiac', 'Porsche', 'Ram', 'Renault', 'Rolls-Royce', 'Skoda', 'Smart', 'Subaru', 'Suzuki', 'Tesla', 'Toyota', 'Volkswagen', 'Volvo'];
