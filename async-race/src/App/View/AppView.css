@@ -1,70 +1,66 @@
-*{
-	padding: 0;
-	margin: 0;
-	border: 0;
-}
-*,*:before,*:after{
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-:focus,:active{outline: none;}
-a:focus,a:active{outline: none;}
-
-nav,footer,header,aside{display: block;}
-
-html,body{
-	height: 100%;
-	width: 100%;
-	font-size: 100%;
-	line-height: 1;
-	font-size: 14px;
-	-ms-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
-}
-input,button,textarea{font-family:inherit;}
-
-input::-ms-clear{display: none;}
-button{cursor: pointer;}
-button::-moz-focus-inner {padding:0;border:0;}
-a, a:visited{text-decoration: none;}
-a:hover{text-decoration: none;}
-ul li{list-style: none;}
-img{vertical-align: top;}
-
-h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
-
-/*
-color-primary: #fc8507;
-color-additional: #333;
-color-background: #f6f6f6;
-color-light: #fff;
-color-dark: #000;
-
-desktop-width: 1220px;
-tablet-width: 1020px;
-mobile-width: 540px;
-*/
-
-html {
-    font-size: 10px;
+button {
+	padding: .2em .4em;
+	border: 1px solid rgb(43, 41, 41);
 }
 
-body {
-    font-size: 1.4rem;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f6f6f6;
+.wrapper {
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-h1 {
-    font-size: 2.5rem;
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    min-height: 100%;
 }
 
-h2 {
+.header__container {
+    padding: 1.2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
+.main__container {
+    padding: 1.2rem;
+
+    display: flex;
+	flex-direction: column;
+    gap: 2rem;
+}
+
+.main__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer__container {
+    padding: 1.2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__data {
     font-size: 2rem;
 }
 
-h3 {
-    font-size: 1.7rem;
+.footer__rss img {
+    width: 12rem;
 }

@@ -1,3 +1,4 @@
+import './global.css';
 import App from './App/App';
 
 console.log('Hello World!');
