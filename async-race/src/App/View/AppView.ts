@@ -4,6 +4,7 @@ import ICar from '../Interfaces/ICar';
 import IWinner from '../Interfaces/IWinner';
 // import CarsItem from './Components/CarsItem/CarsItem';
 import CarsList from './Components/CarsList/CarsList';
+import store from '../Store/Store';
 
 type Page = 'Garage' | 'Winners';
 type Data = ICar[] | IWinner[] | undefined;
@@ -36,7 +37,22 @@ class AppView {
 
       <main class="main">
         <div class="container main__container">
+          <div class="dashboard">
+            <div class="dasboard__info">
+              <h3>Garage (${store.state.carsCount})</h3>
+              <h3>Page #${store.state.carsPage}</h3>
+            </div>
+            <div class="dashboard__controls">
+              <div class="dashboard__create"></div>
+              <div class="dashboard__update"></div>
+              <div class="dashboard__race"></div>
+            </div>
+          </div>
           ${(new CarsList(data)).render()}
+          <div class="page-buttons">
+            <button class="btn btn-garage-prev" disabled>PREV</button>
+            <button class="btn btn-garage-next">NEXT</button>
+          </div>
         </div>
       </main>
 

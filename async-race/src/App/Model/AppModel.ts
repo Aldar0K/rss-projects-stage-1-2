@@ -2,6 +2,7 @@ import ICar from '../Interfaces/ICar';
 // import store from '../Store/Store';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { garageUrl, winnersUrl, engineUrl, DEFAULT_PAGE_LIMIT, DEFAULT_PAGE } from '../Utils/Utils';
+import store from '../Store/Store';
 
 class AppModel {
   private loading = false;
@@ -38,7 +39,7 @@ class AppModel {
     // TODO Работает ли? Если нет - заменить amountOfCars на свойство Store.
     if (response.headers.get('X-Total-Count')) {
       this.updateAmountOfCars(Number(response.headers.get('X-Total-Count')));
-      console.log(this.amountOfCars);
+      store.update({ carsCount: Number(response.headers.get('X-Total-Count')), carsPage: page });
     }
 
     return cars;

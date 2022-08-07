@@ -1,5 +1,6 @@
 import './CarsItem.css';
 import ICar from '../../../Interfaces/ICar';
+import { renderCarImage } from '../../../Utils/Utils';
 
 class CarsItem {
   private car: ICar;
@@ -24,7 +25,7 @@ class CarsItem {
       </div>
       <div class="racing-track">
         <div class="car car-${this.car.id}" data-id="${this.car.id}">
-          <svg class="svg-car" height="50px" width="100px">
+          ${renderCarImage(this.car.color)}
         </div>
         <img clas="finish-line"></img>
       </div>
