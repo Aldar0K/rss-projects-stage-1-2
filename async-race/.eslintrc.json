@@ -18,6 +18,7 @@
     ],
     "rules": {
         "@typescript-eslint/no-explicit-any": "error",
+        "object-curly-newline": "off",
         "no-debugger": "off",
         "class-methods-use-this": "off",
         "no-console": 0

@@ -1,5 +1,6 @@
 import ICar from '../Interfaces/ICar';
-import store from '../Store/Store';
+// import store from '../Store/Store';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { garageUrl, winnersUrl, engineUrl, DEFAULT_PAGE_LIMIT, DEFAULT_PAGE } from '../Utils/Utils';
 
 class AppModel {
@@ -7,12 +8,15 @@ class AppModel {
 
   private error: Error | null = null;
 
-  cars: ICar[];
+  public cars: ICar[] = [];
+
+  public amountOfCars: number = 0;
 
   constructor() {
     this.fetchCars();
   }
 
+  // TODO Избавиться от этого метода, либо использовать только его.
   private fetchCars(): void {
     this.loading = true;
     this.getCars()
@@ -27,18 +31,21 @@ class AppModel {
       });
   }
 
-  async getCars(page: number = DEFAULT_PAGE, limit = DEFAULT_PAGE_LIMIT): Promise<ICar[]> {
+  async getCars(page: number = DEFAULT_PAGE, limit: number = DEFAULT_PAGE_LIMIT): Promise<ICar[]> {
     const response = await fetch(`${garageUrl}?_page=${page}&_limit=${limit}`);
     const cars: Promise<ICar[]> = await response.json();
 
-    // Можно убрать в отдельный метод.
+    // TODO Работает ли? Если нет - заменить amountOfCars на свойство Store.
     if (response.headers.get('X-Total-Count')) {
-      store.update({
-        carsCount: Number(response.headers.get('X-Total-Count')),
-      });
+      this.updateAmountOfCars(Number(response.headers.get('X-Total-Count')));
+      console.log(this.amountOfCars);
     }
 
     return cars;
+  }
+
+  updateAmountOfCars(value: number): void {
+    this.amountOfCars = value;
   }
 
   async getCar(id: number): Promise<ICar> {

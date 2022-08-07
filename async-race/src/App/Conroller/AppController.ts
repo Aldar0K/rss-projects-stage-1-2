@@ -12,12 +12,11 @@ class AppController {
   }
 
   async start() {
-    const data = await this.model.getCars();
+    this.model.cars = await this.model.getCars();
 
-    // eslint-disable-next-line no-console
-    console.log(data);
+    console.log(this.model.cars);
 
-    // this.view.render(data);
+    this.view.render('Garage', this.model.cars);
   }
 }
 
