@@ -1,9 +1,7 @@
 .car-container {
     display: flex;
     align-items: center;
-    gap: 2rem;
-
-    /* border: 1px solid black; */
+    gap: 1.2rem;
 }
 
 .car-params {

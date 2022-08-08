@@ -1,5 +1,5 @@
 import './AppView.css';
-// import { createElement, getElement } from '../Utils/Utils';
+import { startDriving, stopDriving } from '../Utils/Utils';
 import ICar from '../Interfaces/ICar';
 import IWinner from '../Interfaces/IWinner';
 // import CarsItem from './Components/CarsItem/CarsItem';
@@ -20,6 +20,8 @@ class AppView {
     this.currentPage = page;
 
     document.body.innerHTML = page === 'Garage' ? this.renderGarage(data as ICar[]) : this.renderWinners();
+
+    this.addListeners();
   }
 
   renderGarage(data: ICar[]): string {
@@ -37,22 +39,38 @@ class AppView {
 
       <main class="main">
         <div class="container main__container">
-          <div class="dashboard">
-            <div class="dasboard__info">
-              <h3>Garage (${store.state.carsCount})</h3>
-              <h3>Page #${store.state.carsPage}</h3>
+          <div class="garage">
+            <div class="dashboard">
+              <div class="dasboard__info">
+                <h3>Garage (${store.state.carsCount})</h3>
+                <h3>Page #${store.state.carsPage}</h3>
+              </div>
+              <div class="dashboard__controls">
+                <div class="dashboard__create" id="create">
+                  <input class="input create-name" id="input create-name" name="name" type="text">
+                  <input class="input create-color" id="input create-name" name="color" type="color" value="#ffffff">
+                  <button class="button create-button" type="submit">CREATE</button>
+                </div>
+                <div class="dashboard__update" id="update">
+                  <input class="input update-name" id="input update-name" name="name" type="text" disabled>
+                  <input class="input update-color" id="input update-name" name="color" type="color" value="#ffffff" disabled>
+                  <button class="button update-button" type="submit" disabled>UPDATE</button>
+                </div>
+                <div class="dashboard__race">
+                  <button class="button race-button" id="race">RACE</button>
+                  <button class="button reset-button" id="reset">RESET</button>
+                  <button class="button generator-button" id="generator">GENERATE</button>
+                </div>
+              </div>
             </div>
-            <div class="dashboard__controls">
-              <div class="dashboard__create"></div>
-              <div class="dashboard__update"></div>
-              <div class="dashboard__race"></div>
+            ${(new CarsList(data)).render()}
+            <div class="page-buttons">
+              <button class="btn btn-garage-prev" disabled>PREV</button>
+              <button class="btn btn-garage-next">NEXT</button>
             </div>
           </div>
-          ${(new CarsList(data)).render()}
-          <div class="page-buttons">
-            <button class="btn btn-garage-prev" disabled>PREV</button>
-            <button class="btn btn-garage-next">NEXT</button>
-          </div>
+
+          <div class="winners hidden"></div>
         </div>
       </main>
 
@@ -76,6 +94,26 @@ class AppView {
 
   renderWinners(): string {
     return '';
+  }
+
+  bindAddCar(handler: CallableFunction): void {
+    (document.querySelector('.create-button') as HTMLButtonElement).addEventListener('click', () => {
+      console.log('click!');
+      console.log(handler);
+    });
+  }
+
+  addListeners(): void {
+    (document.querySelectorAll('.btn-start-car') as NodeListOf<HTMLButtonElement>).forEach((button) => {
+      button.addEventListener('click', () => {
+        startDriving(Number(button.dataset.id));
+      });
+    });
+    (document.querySelectorAll('.btn-reset-car') as NodeListOf<HTMLButtonElement>).forEach((button) => {
+      button.addEventListener('click', () => {
+        stopDriving(Number(button.dataset.id));
+      });
+    });
   }
 }
 

@@ -1,4 +1,7 @@
 // import ICar from '../Interfaces/ICar';
+// eslint-disable-next-line import/no-cycle
+import AppModel from '../Model/AppModel';
+// import store from '../Store/Store';
 
 export const baseUrl = 'http://127.0.0.1:3000';
 export const garageUrl = `${baseUrl}/garage`;
@@ -85,22 +88,22 @@ export const renderCarImage = (color: string) => `
 //     color:
 //   });
 
-export const getPositionAtCenter = (element: Element): { x: number, y: number } => {
-  const { top, left, width, height } = element.getBoundingClientRect();
-  const x = left + width / 2;
-  const y = top + height / 2;
-  return { x, y };
-};
+// export const getPositionAtCenter = (element: Element): { x: number, y: number } => {
+//   const { top, left, width, height } = element.getBoundingClientRect();
+//   const x = left + width / 2;
+//   const y = top + height / 2;
+//   return { x, y };
+// };
 
-export const getDistanceBetweenElements = (a: Element, b: Element): number => {
-  const aPosition = getPositionAtCenter(a);
-  const bPosition = getPositionAtCenter(b);
-  return Math.hypot(aPosition.x - bPosition.x, aPosition.y - bPosition.y);
-};
+// export const getDistanceBetweenElements = (a: Element, b: Element): number => {
+//   const aPosition = getPositionAtCenter(a);
+//   const bPosition = getPositionAtCenter(b);
+//   return Math.hypot(aPosition.x - bPosition.x, aPosition.y - bPosition.y);
+// };
 
 // export const animation = (car: HTMLElement, distance: number, animationTime: number): void => {
 //   let start: number | null = null;
-//   const state = {};
+//   const state: Object = {};
 
 //   const step = (timestamp: number) => {
 //     if (!start) start = timestamp;
@@ -110,10 +113,30 @@ export const getDistanceBetweenElements = (a: Element, b: Element): number => {
 //     car.style.transform = `translateX(${Math.min(passed, distance)}px)`;
 
 //     if (passed < distance) {
-//       state.id = window.requestAnimationFrame(step);
+//       state[id] = window.requestAnimationFrame(step);
 //     }
 //   }
 // };
+
+export const animationStart = (car: HTMLElement, endX: number, duration: number): void => {
+  let currentX = 0;
+  // const state = {};
+  const framesCount = (duration / 1000) * 60;
+  const dX = (endX - currentX) / framesCount;
+
+  const tick = () => {
+    currentX += dX;
+
+    // eslint-disable-next-line no-param-reassign
+    car.style.transform = `translateX(${currentX}px)`;
+
+    if (currentX < endX) {
+      requestAnimationFrame(tick);
+      // state.id = requestAnimationFrame(tick);
+    }
+  };
+  tick();
+};
 
 // export const raceAll = async(promises: Promise[], ids: number[]) => {
 //   const { success, id, time } = await Promise.race(promises);
@@ -135,3 +158,43 @@ export const getDistanceBetweenElements = (a: Element, b: Element): number => {
 //   const winner = await raceAll(promises, store.state.carsIds);
 //   return winner;
 // };
+
+export const startDriving = async (id: number) => {
+  const startButton = document.querySelector(`#btn-start-car-${id}`) as HTMLButtonElement;
+  startButton.disabled = true;
+  // startButton.classList.toggle('enabling', true);
+
+  const { velocity, distance } = await AppModel.startEngine(id);
+  const time = Math.round(distance / velocity);
+
+  // startButton.classList.toggle('enabling', false);
+  // (document.querySelector(`#btn-reset-car-${id}`) as HTMLButtonElement).disabled = false;
+
+  const car = document.querySelector(`#car-${id}`) as HTMLDivElement;
+  const htmlDistance = (car.parentElement as HTMLDivElement).clientWidth - car.clientWidth;
+
+  animationStart(car, htmlDistance, time);
+
+  const { success } = await AppModel.drive(id);
+
+  if (!success) {
+    car.style.display = 'none';
+  }
+
+  (document.querySelector(`#btn-reset-car-${id}`) as HTMLButtonElement).disabled = false;
+};
+
+export const stopDriving = async (id: number) => {
+  const resetButton = document.querySelector(`#btn-reset-car-${id}`) as HTMLButtonElement;
+  resetButton.disabled = true;
+
+  await AppModel.stopEngine(id);
+  (document.querySelector(`#btn-start-car-${id}`) as HTMLButtonElement).disabled = true;
+
+  const car = document.querySelector(`#car-${id}`) as HTMLDivElement;
+  car.style.transform = 'translateX(0)';
+  car.style.display = 'block';
+  // if (store.state.animation[id]) cancelAnimationFrame(store.state.animation[id].id);
+
+  (document.querySelector(`#btn-start-car-${id}`) as HTMLButtonElement).disabled = false;
+};
