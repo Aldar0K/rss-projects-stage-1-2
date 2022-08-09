@@ -1,293 +1,221 @@
-.button{transition:all .3s ease-out}.search-bar-wrapper,.main__sorter-form,.button,.main__value-filters,.main__range-filters,.main__search-bar-and-sorters,.main__cart,.main__product{border-radius:.5rem}.main__value-filters,.main__range-filters,.main__search-bar-and-sorters,.main__cart,.main__product,.header{box-shadow:0 .1rem 2.4rem 0 rgba(0,0,0,.14)}*{padding:0;margin:0;border:0}*,*:before,*:after{box-sizing:border-box}:focus,:active{outline:none}a:focus,a:active{outline:none}nav,footer,header,aside{display:block}html,body{height:100%;width:100%;font-size:100%;line-height:1;font-size:14px;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%}input,button,textarea{font-family:inherit}input::-ms-clear{display:none}button{cursor:pointer}button::-moz-focus-inner{padding:0;border:0}a,a:visited{text-decoration:none}a:hover{text-decoration:none}ul li{list-style:none}img{vertical-align:top}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:400}html{font-size:10px}body{font-size:1.6rem;line-height:2.6rem;font-weight:normal;font-style:normal;font-family:"Roboto",sans-serif;color:#000;background-color:#f6f6f6}h1{font-size:4rem;line-height:5rem;font-weight:normal;font-style:normal}@media(max-width: 1020px){h1{font-size:3rem}}h2{font-size:2.4rem;line-height:2.4rem;font-weight:normal;font-style:normal}h3{font-size:2rem;line-height:2rem;font-weight:normal;font-style:normal}.hidden{display:none}.header__logo{width:6rem}@media(max-width: 1020px){.header__logo{width:4rem}}.header__logo img{width:100%;height:100%}.wrapper{min-height:100%;display:flex;flex-direction:column;overflow:hidden}.conteiner{margin:0 auto;max-width:1220px;min-height:100%}.header{background-color:#fc8507}.header__conteiner{padding:1.2rem;display:flex;justify-content:space-between;align-items:center}.main{flex:1 1 auto}.main__conteiner{padding:1.2rem;display:flex;gap:1rem}@media(max-width: 1220px){.main__conteiner{flex-direction:column}}.main__buttons{display:flex;justify-content:center;align-items:center;gap:2rem}.footer{background-color:#333}.footer__conteiner{padding:1.2rem;display:flex;justify-content:space-between;align-items:center}.footer__data{color:#fff;font-size:2rem}@media(max-width: 1020px){.footer__data{font-size:1.8rem}}.footer__data a{color:#fc8507}.footer__rss img{width:12rem}@media(max-width: 1020px){.footer__rss img{width:10rem}}.main__products{flex:1 1 69%;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:1rem}.main__product{position:relative;padding:.8rem;flex:1 1 32%;display:flex;flex-direction:column;justify-content:center;align-items:center;background-color:#fff}@media(max-width: 1020px){.main__product{flex:1 1 49%}}@media(max-width: 540px){.main__product{flex:1 1 100%}}.main__product_active::after{position:absolute;right:.5rem;bottom:-0.5rem;content:"In cart";color:#fc8507}.main__product img{padding:.5rem;max-width:100%}.main__sidebar{flex:1 1 30%;display:flex;flex-direction:column;gap:1rem}@media(max-width: 1220px){.main__sidebar{flex-direction:row-reverse}}@media(max-width: 1020px){.main__sidebar{flex-direction:column}}.main__cart{padding:1.5rem;display:flex;gap:1rem;justify-content:center;align-items:center;background-color:#fff}@media(max-width: 1220px){.main__cart{flex-direction:column-reverse}}@media(max-width: 1020px){.main__cart{flex-direction:row}}.main__cart img{width:7rem}@media(max-width: 1220px){.main__cart img{width:5rem}}@media(max-width: 1020px){.main__cart img{width:6rem}}.main__cart span{font-size:4rem;color:#fc8507}@media(max-width: 1220px){.main__cart span{width:3rem}}@media(max-width: 1020px){.main__cart span{width:2rem}}.main__controls{display:flex;flex-direction:column;gap:1rem}@media(max-width: 1220px){.main__controls{flex:1 1 90%;flex-direction:row}}@media(max-width: 1020px){.main__controls{flex-direction:column}}.main__search-bar-and-sorters{padding:1rem;display:flex;flex-direction:column;gap:1.5rem;background-color:#fff}@media(max-width: 1220px){.main__search-bar-and-sorters{flex:1 1 25%}}.main__range-filters{padding:1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3rem;background-color:#fff}@media(max-width: 1220px){.main__range-filters{flex:1 1 25%}}.main__range-slider{width:100%;display:flex;flex-direction:column;align-items:center;gap:1.5rem}.main__value-filters{padding:1rem;display:flex;flex-direction:column;gap:1.5rem;background-color:#fff}@media(max-width: 1220px){.main__value-filters{flex:1 1 40%}}.button{padding:.3rem;font-size:1.4rem}.button:hover{background-color:#fc8507}.button_active{background-color:#fc8507}#slider-amount,#slider-year{width:90%}.noUi-connects .noUi-connect{background-color:#fc8507}.main__sorter{display:flex;flex-direction:column;gap:1rem}.main__sorter-form{padding:.2rem;border:1px solid #fc8507}.main__sorter-select{width:100%;height:100%;font-size:1.3rem}.main__search-bar{display:flex;flex-direction:column;gap:1rem}.search-bar-wrapper{padding:.2rem;border:1px solid #fc8507}.search-bar-input{width:100%;height:100%;font-size:1.5rem}.main__filter-by-brand,.main__filter-by-cameras,.main__filter-by-color,.main__filter-by-cart{max-width:100%;display:flex;flex-wrap:wrap;gap:.5rem}
-/* Functional styling;
- * These styles are required for noUiSlider to function.
- * You don't need to change these rules to apply your design.
- */
-.noUi-target,
-.noUi-target * {
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-user-select: none;
-  touch-action: none;
-  -moz-user-select: none;
-  user-select: none;
-  box-sizing: border-box;
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
-.noUi-target {
-  position: relative;
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
-.noUi-base,
-.noUi-connects {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
 }
-/* Wrapper for all connect elements.
- */
-.noUi-connects {
-  overflow: hidden;
-  z-index: 0;
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+
+html {
+    font-size: 10px;
 }
-.noUi-connect,
-.noUi-origin {
-  will-change: transform;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  -ms-transform-origin: 0 0;
-  -webkit-transform-origin: 0 0;
-  -webkit-transform-style: preserve-3d;
-  transform-origin: 0 0;
-  transform-style: flat;
+
+body {
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+	color: black;
+    background-color: #b0e5d6;
 }
-/* Offset direction
- */
-.noUi-txt-dir-rtl.noUi-horizontal .noUi-origin {
-  left: 0;
-  right: auto;
+
+h1 {
+    font-size: 2.8rem;
 }
-/* Give origins 0 height/width so they don't interfere with clicking the
- * connect elements.
- */
-.noUi-vertical .noUi-origin {
-  top: -100%;
-  width: 0;
+
+h2 {
+    font-size: 2rem;
 }
-.noUi-horizontal .noUi-origin {
-  height: 0;
+
+h3 {
+    font-size: 1.6rem;
 }
-.noUi-handle {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  position: absolute;
+
+.car-container {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
 }
-.noUi-touch-area {
-  height: 100%;
-  width: 100%;
+
+.car-params {
+    height: 7rem;
+    width: 20%;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid black;
 }
-.noUi-state-tap .noUi-connect,
-.noUi-state-tap .noUi-origin {
-  transition: transform 0.3s;
+
+.car-params__top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.noUi-state-drag * {
-  cursor: inherit !important;
+
+.car-params__top h3 {
+    max-width: 100px;
+    text-align: center;
+    overflow: hidden;
 }
-/* Slider size and handle placement;
- */
-.noUi-horizontal {
-  height: 18px;
+
+.car-params__bottom {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
-.noUi-horizontal .noUi-handle {
-  width: 34px;
-  height: 28px;
-  right: -17px;
-  top: -6px;
+
+.racing-track {
+    position: relative;
+    width: 100%;
+    height: 8rem;
+
+    background-color: cadetblue;
 }
-.noUi-vertical {
-  width: 18px;
+
+.car {
+    position: relative;
+    width: 150px;
 }
-.noUi-vertical .noUi-handle {
-  width: 28px;
-  height: 34px;
-  right: -6px;
-  bottom: -17px;
+
+.cars-container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
-.noUi-txt-dir-rtl.noUi-horizontal .noUi-handle {
-  left: -17px;
-  right: auto;
+
+button {
+	padding: .2em .4em;
+	border: 1px solid rgb(43, 41, 41);
+    transition: all .3s ease;
 }
-/* Styling;
- * Giving the connect element a border radius causes issues with using transform: scale
- */
-.noUi-target {
-  background: #FAFAFA;
-  border-radius: 4px;
-  border: 1px solid #D3D3D3;
-  box-shadow: inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;
+
+button:hover {
+    background-color: rgb(130, 204, 181);
 }
-.noUi-connects {
-  border-radius: 3px;
+
+button:active {
+    background-color: rgb(101, 158, 147);
 }
-.noUi-connect {
-  background: #3FB8AF;
+
+.wrapper {
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
-/* Handles and cursors;
- */
-.noUi-draggable {
-  cursor: ew-resize;
+
+.container {
+    margin: 0 auto;
+    /* max-width: 1400px; */
+    min-height: 100%;
 }
-.noUi-vertical .noUi-draggable {
-  cursor: ns-resize;
+
+.header__container {
+    padding: 1.2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.noUi-handle {
-  border: 1px solid #D9D9D9;
-  border-radius: 3px;
-  background: #FFF;
-  cursor: default;
-  box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;
+
+.nav {
+    display: flex;
+    gap: 1rem;
 }
-.noUi-active {
-  box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;
+
+.main {
+    flex: 1 1 auto;
 }
-/* Handle stripes;
- */
-.noUi-handle:before,
-.noUi-handle:after {
-  content: "";
-  display: block;
-  position: absolute;
-  height: 14px;
-  width: 1px;
-  background: #E8E7E6;
-  left: 14px;
-  top: 6px;
+
+.main__container {
+    padding: 1.2rem;
+
+    display: flex;
+	flex-direction: column;
+    gap: 2rem;
 }
-.noUi-handle:after {
-  left: 17px;
+
+.main__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }
-.noUi-vertical .noUi-handle:before,
-.noUi-vertical .noUi-handle:after {
-  width: 14px;
-  height: 1px;
-  left: 6px;
-  top: 14px;
+
+.footer__container {
+    padding: 1.2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.noUi-vertical .noUi-handle:after {
-  top: 17px;
+
+.footer__data {
+    font-size: 2rem;
 }
-/* Disabled state;
- */
-[disabled] .noUi-connect {
-  background: #B8B8B8;
+
+.footer__rss img {
+    width: 12rem;
 }
-[disabled].noUi-target,
-[disabled].noUi-handle,
-[disabled] .noUi-handle {
-  cursor: not-allowed;
+
+.hidden {
+    display: none;
 }
-/* Base;
- *
- */
-.noUi-pips,
-.noUi-pips * {
-  box-sizing: border-box;
+
+.dashboard {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
 }
-.noUi-pips {
-  position: absolute;
-  color: #999;
+
+.dashboard__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
-/* Values;
- *
- */
-.noUi-value {
-  position: absolute;
-  white-space: nowrap;
-  text-align: center;
+
+.dashboard__create,
+.dashboard__update {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
 }
-.noUi-value-sub {
-  color: #ccc;
-  font-size: 10px;
-}
-/* Markings;
- *
- */
-.noUi-marker {
-  position: absolute;
-  background: #CCC;
-}
-.noUi-marker-sub {
-  background: #AAA;
-}
-.noUi-marker-large {
-  background: #AAA;
-}
-/* Horizontal layout;
- *
- */
-.noUi-pips-horizontal {
-  padding: 10px 0;
-  height: 80px;
-  top: 100%;
-  left: 0;
-  width: 100%;
-}
-.noUi-value-horizontal {
-  transform: translate(-50%, 50%);
-}
-.noUi-rtl .noUi-value-horizontal {
-  transform: translate(50%, 50%);
-}
-.noUi-marker-horizontal.noUi-marker {
-  margin-left: -1px;
-  width: 2px;
-  height: 5px;
-}
-.noUi-marker-horizontal.noUi-marker-sub {
-  height: 10px;
-}
-.noUi-marker-horizontal.noUi-marker-large {
-  height: 15px;
-}
-/* Vertical layout;
- *
- */
-.noUi-pips-vertical {
-  padding: 0 10px;
-  height: 100%;
-  top: 0;
-  left: 100%;
-}
-.noUi-value-vertical {
-  transform: translate(0, -50%);
-  padding-left: 25px;
-}
-.noUi-rtl .noUi-value-vertical {
-  transform: translate(0, 50%);
-}
-.noUi-marker-vertical.noUi-marker {
-  width: 5px;
-  height: 2px;
-  margin-top: -1px;
-}
-.noUi-marker-vertical.noUi-marker-sub {
-  width: 10px;
-}
-.noUi-marker-vertical.noUi-marker-large {
-  width: 15px;
-}
-.noUi-tooltip {
-  display: block;
-  position: absolute;
-  border: 1px solid #D9D9D9;
-  border-radius: 3px;
-  background: #fff;
-  color: #000;
-  padding: 5px;
-  text-align: center;
-  white-space: nowrap;
-}
-.noUi-horizontal .noUi-tooltip {
-  transform: translate(-50%, 0);
-  left: 50%;
-  bottom: 120%;
-}
-.noUi-vertical .noUi-tooltip {
-  transform: translate(0, -50%);
-  top: 50%;
-  right: 120%;
-}
-.noUi-horizontal .noUi-origin > .noUi-tooltip {
-  transform: translate(50%, 0);
-  left: auto;
-  bottom: 10px;
-}
-.noUi-vertical .noUi-origin > .noUi-tooltip {
-  transform: translate(0, -18px);
-  top: auto;
-  right: 28px;
+
+.dashboard__race {
+    display: flex;
+    gap: .5rem;
 }
 
