@@ -35,6 +35,8 @@ img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
+/* reset */
+
 html {
     font-size: 10px;
 }
@@ -47,11 +49,12 @@ body {
 }
 
 h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
 }
 
 h2 {
-    font-size: 2rem;
+    text-align: center;
+    font-size: 2.5rem;
 }
 
 h3 {
@@ -65,26 +68,26 @@ h3 {
 }
 
 .car-params {
-    height: 7rem;
-    width: 20%;
-    padding: .5rem;
     display: flex;
+    padding: .5rem;
+    height: 7rem;
+    max-width: 18rem;
+    min-width: 18rem;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
     border: 1px solid black;
 }
 
 .car-params__top {
-    width: 100%;
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
 }
 
 .car-params__top h3 {
-    max-width: 100px;
+    max-width: 10rem;
     text-align: center;
     overflow: hidden;
 }
@@ -99,13 +102,12 @@ h3 {
     position: relative;
     width: 100%;
     height: 8rem;
-
     background-color: cadetblue;
 }
 
 .car {
     position: relative;
-    width: 150px;
+    width: 15rem;
 }
 
 .cars-container {
@@ -129,23 +131,20 @@ button:active {
 }
 
 .wrapper {
-    min-height: 100%;
-
     display: flex;
+    min-height: 100%;
     flex-direction: column;
     overflow: hidden;
 }
 
 .container {
     margin: 0 auto;
-    /* max-width: 1400px; */
     min-height: 100%;
 }
 
 .header__container {
-    padding: 1.2rem;
-
     display: flex;
+    padding: 1.2rem;
     justify-content: space-between;
     align-items: center;
 }
@@ -160,9 +159,8 @@ button:active {
 }
 
 .main__container {
-    padding: 1.2rem;
-
     display: flex;
+    padding: 1.2rem;
 	flex-direction: column;
     gap: 2rem;
 }
@@ -175,9 +173,8 @@ button:active {
 }
 
 .footer__container {
-    padding: 1.2rem;
-
     display: flex;
+    padding: 1.2rem;
     justify-content: space-between;
     align-items: center;
 }
@@ -195,8 +192,8 @@ button:active {
 }
 
 .dashboard {
-    padding: 1rem;
     display: flex;
+    padding: 1rem;
     flex-direction: row-reverse;
     justify-content: space-between;
 }
@@ -217,5 +214,37 @@ button:active {
 .dashboard__race {
     display: flex;
     gap: .5rem;
+}
+
+.create-name,
+.update-name {
+    height: 2.4rem;
+}
+
+.winners-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+td {
+    width: 20%;
+    text-align: center;
+}
+
+.td-image svg {
+    min-width: 6rem;
+    max-width: 80%;
+}
+
+.winners-table {
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .car-container {
+        flex-direction: column;
+    }
 }
 
