@@ -1,16 +1,18 @@
-import IState from '../Interfaces/IState';
+import { IState } from './Intefaces';
 
 const defaultState: IState = {
   carsPage: 1,
-  carsIds: [],
+  cars: [],
   carsCount: 0,
   winnersPage: 1,
-  winnersIds: [],
+  winners: [],
   winnersCount: 0,
-  animation: {},
+  animations: {},
   view: 'Garage',
   sort: 'wins',
-  order: 'asc',
+  order: 'ASC',
+  btnPrev: false,
+  btnNext: false,
 };
 
 class Store {
@@ -22,7 +24,6 @@ class Store {
 
   constructor() {
     if (Store.isExist) {
-      // eslint-disable-next-line no-constructor-return
       return Store.instance;
     }
 

@@ -1,7 +1,20 @@
-import './global.css';
-import App from './App/App';
+import '../global.css';
+import { getCars, getWinners } from './API';
+import store from './Store';
+import { render, listen, updateStateGarage } from './View';
 
-console.log('Hello World!');
+render();
 
-const app = new App();
-app.start();
+(async () => {
+  store.update({
+    cars: await getCars(),
+    winners: await getWinners(),
+  });
+  render();
+})();
+
+(async () => {
+  await updateStateGarage();
+})();
+
+listen();

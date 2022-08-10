@@ -1,0 +1,249 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+
+/* reset */
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+	color: black;
+    background-color: #b0e5d6;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+.car-container {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.car-params {
+    display: flex;
+    padding: .5rem;
+    height: 7rem;
+    max-width: 18rem;
+    min-width: 18rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.car-params__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.car-params__top h3 {
+    max-width: 10rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.car-params__bottom {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.racing-track {
+    position: relative;
+    width: 100%;
+    height: 8rem;
+    background-color: cadetblue;
+}
+
+.car {
+    position: relative;
+    width: 15rem;
+}
+
+.cars-container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+button {
+	padding: .2em .4em;
+	border: 1px solid rgb(43, 41, 41);
+    transition: all .3s ease;
+}
+
+button:hover {
+    background-color: rgb(130, 204, 181);
+}
+
+button:active {
+    background-color: rgb(101, 158, 147);
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.container {
+    margin: 0 auto;
+    min-height: 100%;
+}
+
+.header__container {
+    display: flex;
+    padding: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
+.main__container {
+    display: flex;
+    padding: 1.2rem;
+	flex-direction: column;
+    gap: 2rem;
+}
+
+.main__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer__container {
+    display: flex;
+    padding: 1.2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__data {
+    font-size: 2rem;
+}
+
+.footer__rss img {
+    width: 12rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.dashboard {
+    display: flex;
+    padding: 1rem;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.dashboard__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dashboard__create,
+.dashboard__update {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.dashboard__race {
+    display: flex;
+    gap: .5rem;
+}
+
+.create-name,
+.update-name {
+    height: 2.4rem;
+}
+
+.winners-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+td {
+    width: 20%;
+    text-align: center;
+}
+
+.td-image svg {
+    min-width: 6rem;
+    max-width: 80%;
+}
+
+.winners-table {
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .car-container {
+        flex-direction: column;
+    }
+}
