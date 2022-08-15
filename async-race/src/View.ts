@@ -288,10 +288,8 @@ export const listen = () => {
       (target as HTMLButtonElement).disabled = true;
       const { carWinner, time } = await race(startDriving);
       await saveWinner(carWinner.id, time);
-      // eslint-disable-next-line no-alert
       alert(`${carWinner.name} finished first!\nTime: ${time}`);
       (document.querySelector('.reset-button') as HTMLButtonElement).disabled = false;
-
       (document.querySelector('.btn-prev') as HTMLButtonElement).disabled = !store.state.btnPrev;
       (document.querySelector('.btn-next') as HTMLButtonElement).disabled = !store.state.btnNext;
     }
