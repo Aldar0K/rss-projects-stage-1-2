@@ -1,4 +1,3 @@
-import { createCar } from './API';
 import { ICar } from './Intefaces';
 import store from './Store';
 
@@ -48,12 +47,6 @@ export const getRandomName = (): string => {
   const producer = producers[Math.floor(Math.random() * producers.length)];
   const model = models[Math.floor(Math.random() * models.length)];
   return `${producer} ${model}`;
-};
-
-export const generateRandomCars = async (amount: number = 100): Promise<void> => {
-  for (let i = 0; i < amount; i += 1) {
-    await createCar({ name: getRandomName(), color: getRandomColor() });
-  }
 };
 
 export const raceAll = async (promises: Array<Promise<{ success: boolean, id: number, time: number }>>, ids: number[]): Promise<{ carWinner: ICar, time: number }> => {

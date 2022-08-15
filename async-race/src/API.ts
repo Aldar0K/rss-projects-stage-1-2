@@ -1,6 +1,6 @@
 import { ICar, IWinner } from './Intefaces';
 import store from './Store';
-import { garageUrl, engineUrl, winnersUrl, CARS_PAGE_LIMIT, WINNERS_PAGE_LIMIT } from './Utils';
+import { garageUrl, engineUrl, winnersUrl, CARS_PAGE_LIMIT, WINNERS_PAGE_LIMIT, getRandomName, getRandomColor } from './Utils';
 
 export const getCars = async (page: number = store.state.carsPage, limit: number = CARS_PAGE_LIMIT)
 : Promise<ICar[]> => {
@@ -96,5 +96,11 @@ export const saveWinner = async (id: number, time: number) => {
       wins: winner.wins + 1,
       time: time < winner.time ? time : winner.time,
     });
+  }
+};
+
+export const generateRandomCars = async (amount: number = 100): Promise<void> => {
+  for (let i = 0; i < amount; i += 1) {
+    await createCar({ name: getRandomName(), color: getRandomColor() });
   }
 };

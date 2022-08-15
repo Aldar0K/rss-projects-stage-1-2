@@ -21,9 +21,7 @@
         "object-curly-newline": "off",
         "no-debugger": "off",
         "class-methods-use-this": "off",
-        "no-console": 0,
         "max-len": "off",
-        "import/no-cycle": "off",
         "no-await-in-loop": "off"
     }
 }

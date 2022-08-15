@@ -1,6 +1,6 @@
-import { getCars, getWinners, startEngine, stopEngine, drive, getCar, deleteCar, deleteWinner, saveWinner, createCar, updateCar } from './API';
+import { getCars, getWinners, startEngine, stopEngine, drive, getCar, deleteCar, deleteWinner, saveWinner, createCar, updateCar, generateRandomCars } from './API';
 import { ICar } from './Intefaces';
-import { animation, generateRandomCars, race, CARS_PAGE_LIMIT, WINNERS_PAGE_LIMIT } from './Utils';
+import { animation, race, CARS_PAGE_LIMIT, WINNERS_PAGE_LIMIT } from './Utils';
 import store from './Store';
 
 let selectedCar: ICar;
