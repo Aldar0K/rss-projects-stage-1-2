@@ -22,7 +22,6 @@ export const animation = (car: HTMLElement, endX: number, duration: number): Rec
   const tick = () => {
     currentX += dX;
 
-    // eslint-disable-next-line no-param-reassign
     car.style.transform = `translateX(${currentX}px)`;
 
     if (currentX < endX) {

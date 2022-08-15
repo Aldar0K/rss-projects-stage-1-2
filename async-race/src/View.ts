@@ -241,117 +241,137 @@ const setSortOrder = async (sortBy: 'id' | 'wins' | 'time') => {
   (document.querySelector('.winners') as HTMLDivElement).innerHTML = renderWinners();
 };
 
-export const listen = (): void => {
-  document.body.addEventListener('click', async (e) => {
-    const { target } = e;
-    if ((target as HTMLButtonElement).classList.contains('btn-start-car')) {
-      const id = Number((target as HTMLButtonElement).dataset.id);
-      await startDriving(id);
-      (document.querySelector('.btn-prev') as HTMLButtonElement).disabled = !store.state.btnPrev;
-      (document.querySelector('.btn-next') as HTMLButtonElement).disabled = !store.state.btnNext;
-    }
-    if ((target as HTMLButtonElement).classList.contains('btn-reset-car')) {
-      const id = Number((target as HTMLButtonElement).dataset.id);
-      stopDriving(id);
-    }
-    if ((target as HTMLButtonElement).classList.contains('btn-edit')) {
-      const id = Number((target as HTMLButtonElement).dataset.id);
-      selectedCar = await getCar(id);
-      (document.querySelector('.update-name') as HTMLInputElement).value = selectedCar.name;
-      (document.querySelector('.update-color') as HTMLInputElement).value = selectedCar.color;
-      (document.querySelector('.update-name') as HTMLInputElement).disabled = false;
-      (document.querySelector('.update-color') as HTMLInputElement).disabled = false;
-      (document.querySelector('.update-button') as HTMLInputElement).disabled = false;
-    }
-    if ((target as HTMLButtonElement).classList.contains('update-button')) {
-      const newName = (document.querySelector('.update-name') as HTMLInputElement).value;
-      const newColor = (document.querySelector('.update-color') as HTMLInputElement).value;
-      await updateCar(selectedCar.id, { name: newName, color: newColor });
+const checkCarsParams = async (target: EventTarget): Promise<void> => {
+  if ((target as HTMLButtonElement).classList.contains('btn-start-car')) {
+    const id = Number((target as HTMLButtonElement).dataset.id);
+    await startDriving(id);
+    (document.querySelector('.btn-prev') as HTMLButtonElement).disabled = !store.state.btnPrev;
+    (document.querySelector('.btn-next') as HTMLButtonElement).disabled = !store.state.btnNext;
+  }
+  if ((target as HTMLButtonElement).classList.contains('btn-reset-car')) {
+    const id = Number((target as HTMLButtonElement).dataset.id);
+    stopDriving(id);
+  }
+  if ((target as HTMLButtonElement).classList.contains('btn-edit')) {
+    const id = Number((target as HTMLButtonElement).dataset.id);
+    selectedCar = await getCar(id);
+    (document.querySelector('.update-name') as HTMLInputElement).value = selectedCar.name;
+    (document.querySelector('.update-color') as HTMLInputElement).value = selectedCar.color;
+    (document.querySelector('.update-name') as HTMLInputElement).disabled = false;
+    (document.querySelector('.update-color') as HTMLInputElement).disabled = false;
+    (document.querySelector('.update-button') as HTMLInputElement).disabled = false;
+  }
+  if ((target as HTMLButtonElement).classList.contains('btn-delete')) {
+    const id = Number((target as HTMLButtonElement).dataset.id);
+    await deleteCar(id);
+    await deleteWinner(id);
+    await updateStateGarage();
+    (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
+  }
+  if ((target as HTMLButtonElement).classList.contains('generator-button')) {
+    (target as HTMLButtonElement).disabled = true;
+    await generateRandomCars();
+    await updateStateGarage();
+    (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
+    (target as HTMLButtonElement).disabled = false;
+  }
+};
+
+const checkPrevNextButtons = async (target: EventTarget): Promise<void> => {
+  if ((target as HTMLButtonElement).classList.contains('btn-prev')) {
+    if (store.state.view === 'Garage') {
+      store.state.carsPage -= 1;
       await updateStateGarage();
       (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
-    }
-    if ((target as HTMLButtonElement).classList.contains('btn-delete')) {
-      const id = Number((target as HTMLButtonElement).dataset.id);
-      await deleteCar(id);
-      await deleteWinner(id);
-      await updateStateGarage();
-      (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
-    }
-    if ((target as HTMLButtonElement).classList.contains('generator-button')) {
-      (target as HTMLButtonElement).disabled = true;
-      await generateRandomCars();
-      await updateStateGarage();
-      (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
-      (target as HTMLButtonElement).disabled = false;
-    }
-    if ((target as HTMLButtonElement).classList.contains('race-button')) {
-      (target as HTMLButtonElement).disabled = true;
-      const { carWinner, time } = await race(startDriving);
-      await saveWinner(carWinner.id, time);
-      alert(`${carWinner.name} finished first!\nTime: ${time}`);
-      (document.querySelector('.reset-button') as HTMLButtonElement).disabled = false;
-      (document.querySelector('.btn-prev') as HTMLButtonElement).disabled = !store.state.btnPrev;
-      (document.querySelector('.btn-next') as HTMLButtonElement).disabled = !store.state.btnNext;
-    }
-    if ((target as HTMLButtonElement).classList.contains('reset-button')) {
-      (target as HTMLButtonElement).disabled = true;
-      store.state.cars.forEach(({ id }) => stopDriving(id));
-      (document.querySelector('.race-button') as HTMLButtonElement).disabled = false;
-    }
-    if ((target as HTMLButtonElement).classList.contains('btn-prev')) {
-      if (store.state.view === 'Garage') {
-        store.state.carsPage -= 1;
-        await updateStateGarage();
-        (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
-      } else {
-        store.state.winnersPage -= 1;
-        await updateStateWinners();
-        (document.querySelector('.winners') as HTMLDivElement).innerHTML = renderWinners();
-      }
-    }
-    if ((target as HTMLButtonElement).classList.contains('btn-next')) {
-      if (store.state.view === 'Garage') {
-        store.state.carsPage += 1;
-        await updateStateGarage();
-        (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
-      } else {
-        store.state.winnersPage += 1;
-        await updateStateWinners();
-        (document.querySelector('.winners') as HTMLDivElement).innerHTML = renderWinners();
-      }
-    }
-    if ((target as HTMLButtonElement).classList.contains('btn-garage')) {
-      store.state.view = 'Garage';
-      (document.querySelector('.btn-garage') as HTMLButtonElement).disabled = true;
-      (document.querySelector('.btn-winners') as HTMLButtonElement).disabled = false;
-      (document.querySelector('.garage') as HTMLDivElement).classList.toggle('hidden');
-      (document.querySelector('.winners') as HTMLDivElement).classList.toggle('hidden');
-      if (store.state.carsPage > 1) (document.querySelector('.btn-prev') as HTMLButtonElement).disabled = false;
-      (document.querySelector('.btn-next') as HTMLButtonElement).disabled = false;
-      store.update({ btnNext: true });
-    }
-    if ((target as HTMLButtonElement).classList.contains('btn-winners')) {
-      store.state.view = 'Winners';
-      (document.querySelector('.btn-winners') as HTMLButtonElement).disabled = true;
-      (document.querySelector('.btn-garage') as HTMLButtonElement).disabled = false;
-      (document.querySelector('.winners') as HTMLDivElement).classList.toggle('hidden');
-      (document.querySelector('.garage') as HTMLDivElement).classList.toggle('hidden');
+    } else {
+      store.state.winnersPage -= 1;
       await updateStateWinners();
       (document.querySelector('.winners') as HTMLDivElement).innerHTML = renderWinners();
     }
-    if ((target as HTMLButtonElement).classList.contains('table-wins')) {
-      setSortOrder('wins');
-    }
-    if ((target as HTMLButtonElement).classList.contains('table-time')) {
-      setSortOrder('time');
-    }
-    if ((target as HTMLButtonElement).classList.contains('create-button')) {
-      const name = (document.querySelector('.create-name') as HTMLInputElement).value;
-      const color = (document.querySelector('.create-color') as HTMLInputElement).value;
-      await createCar({ name, color });
+  }
+  if ((target as HTMLButtonElement).classList.contains('btn-next')) {
+    if (store.state.view === 'Garage') {
+      store.state.carsPage += 1;
       await updateStateGarage();
       (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
-      (document.querySelector('.create-name') as HTMLInputElement).value = '';
+    } else {
+      store.state.winnersPage += 1;
+      await updateStateWinners();
+      (document.querySelector('.winners') as HTMLDivElement).innerHTML = renderWinners();
     }
+  }
+};
+
+const checkPageButtons = async (target: EventTarget): Promise<void> => {
+  if ((target as HTMLButtonElement).classList.contains('btn-garage')) {
+    store.state.view = 'Garage';
+    (document.querySelector('.btn-garage') as HTMLButtonElement).disabled = true;
+    (document.querySelector('.btn-winners') as HTMLButtonElement).disabled = false;
+    (document.querySelector('.garage') as HTMLDivElement).classList.toggle('hidden');
+    (document.querySelector('.winners') as HTMLDivElement).classList.toggle('hidden');
+    if (store.state.carsPage > 1) (document.querySelector('.btn-prev') as HTMLButtonElement).disabled = false;
+    (document.querySelector('.btn-next') as HTMLButtonElement).disabled = false;
+    store.update({ btnNext: true });
+  }
+  if ((target as HTMLButtonElement).classList.contains('btn-winners')) {
+    store.state.view = 'Winners';
+    (document.querySelector('.btn-winners') as HTMLButtonElement).disabled = true;
+    (document.querySelector('.btn-garage') as HTMLButtonElement).disabled = false;
+    (document.querySelector('.winners') as HTMLDivElement).classList.toggle('hidden');
+    (document.querySelector('.garage') as HTMLDivElement).classList.toggle('hidden');
+    await updateStateWinners();
+    (document.querySelector('.winners') as HTMLDivElement).innerHTML = renderWinners();
+  }
+};
+
+const checkGarageButtons = async (target: EventTarget): Promise<void> => {
+  if ((target as HTMLButtonElement).classList.contains('race-button')) {
+    (target as HTMLButtonElement).disabled = true;
+    const { carWinner, time } = await race(startDriving);
+    await saveWinner(carWinner.id, time);
+    alert(`${carWinner.name} finished first!\nTime: ${time}`);
+    (document.querySelector('.reset-button') as HTMLButtonElement).disabled = false;
+    (document.querySelector('.btn-prev') as HTMLButtonElement).disabled = !store.state.btnPrev;
+    (document.querySelector('.btn-next') as HTMLButtonElement).disabled = !store.state.btnNext;
+  }
+  if ((target as HTMLButtonElement).classList.contains('reset-button')) {
+    (target as HTMLButtonElement).disabled = true;
+    store.state.cars.forEach(({ id }) => stopDriving(id));
+    (document.querySelector('.race-button') as HTMLButtonElement).disabled = false;
+  }
+  if ((target as HTMLButtonElement).classList.contains('create-button')) {
+    const name = (document.querySelector('.create-name') as HTMLInputElement).value;
+    const color = (document.querySelector('.create-color') as HTMLInputElement).value;
+    await createCar({ name, color });
+    await updateStateGarage();
+    (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
+    (document.querySelector('.create-name') as HTMLInputElement).value = '';
+  }
+  if ((target as HTMLButtonElement).classList.contains('update-button')) {
+    const newName = (document.querySelector('.update-name') as HTMLInputElement).value;
+    const newColor = (document.querySelector('.update-color') as HTMLInputElement).value;
+    await updateCar(selectedCar.id, { name: newName, color: newColor });
+    await updateStateGarage();
+    (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
+  }
+};
+
+const checkWinnersButtons = async (target: EventTarget): Promise<void> => {
+  if ((target as HTMLButtonElement).classList.contains('table-wins')) {
+    setSortOrder('wins');
+  }
+  if ((target as HTMLButtonElement).classList.contains('table-time')) {
+    setSortOrder('time');
+  }
+};
+
+export const listen = (): void => {
+  document.body.addEventListener('click', async (e) => {
+    const target = e.target as EventTarget;
+    checkCarsParams(target);
+    checkPrevNextButtons(target);
+    checkPageButtons(target);
+    checkGarageButtons(target);
+    checkWinnersButtons(target);
   });
 };

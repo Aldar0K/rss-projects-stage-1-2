@@ -23,6 +23,7 @@
         "class-methods-use-this": "off",
         "max-len": "off",
         "no-alert": "off",
+        "no-param-reassign": "off",
         "no-await-in-loop": "off"
     }
 }
