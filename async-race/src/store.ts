@@ -24,6 +24,7 @@ class Store {
 
   constructor() {
     if (Store.isExist) {
+      // eslint-disable-next-line no-constructor-return
       return Store.instance;
     }
 
