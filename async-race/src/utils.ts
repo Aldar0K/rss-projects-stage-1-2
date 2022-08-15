@@ -51,7 +51,7 @@ export const getRandomName = (): string => {
 };
 
 export const generateRandomCars = async (amount: number = 100): Promise<void> => {
-  for (let i = 0; i < amount; i++) {
+  for (let i = 0; i < amount; i += 1) {
     await createCar({ name: getRandomName(), color: getRandomColor() });
   }
 };

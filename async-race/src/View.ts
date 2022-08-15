@@ -302,22 +302,22 @@ export const listen = () => {
     }
     if ((target as HTMLButtonElement).classList.contains('btn-prev')) {
       if (store.state.view === 'Garage') {
-        store.state.carsPage--;
+        store.state.carsPage -= 1;
         await updateStateGarage();
         (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
       } else {
-        store.state.winnersPage--;
+        store.state.winnersPage -= 1;
         await updateStateWinners();
         (document.querySelector('.winners') as HTMLDivElement).innerHTML = renderWinners();
       }
     }
     if ((target as HTMLButtonElement).classList.contains('btn-next')) {
       if (store.state.view === 'Garage') {
-        store.state.carsPage++;
+        store.state.carsPage += 1;
         await updateStateGarage();
         (document.querySelector('.garage') as HTMLDivElement).innerHTML = renderGarage();
       } else {
-        store.state.winnersPage++;
+        store.state.winnersPage += 1;
         await updateStateWinners();
         (document.querySelector('.winners') as HTMLDivElement).innerHTML = renderWinners();
       }
