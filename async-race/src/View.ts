@@ -117,8 +117,7 @@ const renderWinners = (): string => `
   </div>
 `;
 
-// TODO Функция точно должна быть ассинхронной?
-export const render = () => {
+export const render = (): void => {
   document.body.innerHTML = `
   <wrapper class="wrapper">
     <header class="header">
@@ -158,7 +157,7 @@ export const render = () => {
   `;
 };
 
-export const updateStateGarage = async () => {
+export const updateStateGarage = async (): Promise<void> => {
   store.update({ cars: await getCars() });
 
   if (store.state.carsPage * CARS_PAGE_LIMIT < store.state.carsCount) {
@@ -178,10 +177,11 @@ export const updateStateGarage = async () => {
   }
 };
 
-export const updateStateWinners = async () => {
+export const updateStateWinners = async (): Promise<void> => {
   store.update({
     winners: await getWinners(store.state.winnersPage, CARS_PAGE_LIMIT, store.state.sort, store.state.order),
   });
+
   if (store.state.winnersPage * WINNERS_PAGE_LIMIT < store.state.winnersCount) {
     (document.querySelector('.btn-next') as HTMLButtonElement).disabled = false;
     store.update({ btnNext: true });
@@ -221,7 +221,7 @@ export const startDriving = async (id: number): Promise<{ success: boolean, id: 
   return { success, id, time };
 };
 
-export const stopDriving = async (id: number) => {
+export const stopDriving = async (id: number): Promise<void> => {
   (document.querySelector(`#btn-reset-car-${id}`) as HTMLButtonElement).disabled = true;
 
   await stopEngine(id);
@@ -241,7 +241,7 @@ const setSortOrder = async (sortBy: 'id' | 'wins' | 'time') => {
   (document.querySelector('.winners') as HTMLDivElement).innerHTML = renderWinners();
 };
 
-export const listen = () => {
+export const listen = (): void => {
   document.body.addEventListener('click', async (e) => {
     const { target } = e;
     if ((target as HTMLButtonElement).classList.contains('btn-start-car')) {

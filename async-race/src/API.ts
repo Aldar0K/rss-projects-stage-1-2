@@ -2,8 +2,7 @@ import { ICar, IWinner } from './Intefaces';
 import store from './Store';
 import { garageUrl, engineUrl, winnersUrl, CARS_PAGE_LIMIT, WINNERS_PAGE_LIMIT, getRandomName, getRandomColor } from './Utils';
 
-export const getCars = async (page: number = store.state.carsPage, limit: number = CARS_PAGE_LIMIT)
-: Promise<ICar[]> => {
+export const getCars = async (page: number = store.state.carsPage, limit: number = CARS_PAGE_LIMIT): Promise<ICar[]> => {
   const response = await fetch(`${garageUrl}?_page=${page}&_limit=${limit}`);
   const cars: Promise<ICar[]> = await response.json();
 
@@ -16,8 +15,7 @@ export const getCars = async (page: number = store.state.carsPage, limit: number
 
 export const getCar = async (id: number): Promise<ICar> => (await fetch(`${garageUrl}/${id}`)).json();
 
-export const createCar = async (body: { name: string, color: string })
-: Promise<ICar> => (await fetch(garageUrl, {
+export const createCar = async (body: { name: string, color: string }): Promise<ICar> => (await fetch(garageUrl, {
   method: 'POST',
   body: JSON.stringify(body),
   headers: {
@@ -38,9 +36,13 @@ export const updateCar = async (id: number, body: { name: string, color: string 
   },
 })).json();
 
-export const startEngine = async (id: number): Promise<{ velocity: number, distance: number }> => (await fetch(`${engineUrl}?id=${id}&status=started`, { method: 'PATCH' })).json();
+export const startEngine = async (id: number): Promise<{ velocity: number, distance: number }> => (await fetch(`${engineUrl}?id=${id}&status=started`, {
+  method: 'PATCH',
+})).json();
 
-export const stopEngine = async (id: number): Promise<{ velocity: number, distance: number }> => (await fetch(`${engineUrl}?id=${id}&status=stopped`, { method: 'PATCH' })).json();
+export const stopEngine = async (id: number): Promise<{ velocity: number, distance: number }> => (await fetch(`${engineUrl}?id=${id}&status=stopped`, {
+  method: 'PATCH',
+})).json();
 
 export const drive = async (id: number): Promise<{ success: boolean }> => {
   const response = await fetch(`${engineUrl}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
@@ -66,10 +68,11 @@ export const getWinner = async (id: number): Promise<IWinner> => (await fetch(`$
 
 export const getWinnerStatus = async (id: number) => (await fetch(`${winnersUrl}/${id}`)).status;
 
-export const deleteWinner = async (id: number): Promise<IWinner> => (await fetch(`${winnersUrl}/${id}`, { method: 'DELETE' })).json();
+export const deleteWinner = async (id: number): Promise<IWinner> => (await fetch(`${winnersUrl}/${id}`, {
+  method: 'DELETE',
+})).json();
 
-export const createWinner = async (body: { id: number, wins: number, time: number })
-: Promise<IWinner> => (await fetch(winnersUrl, {
+export const createWinner = async (body: { id: number, wins: number, time: number }): Promise<IWinner> => (await fetch(winnersUrl, {
   method: 'POST',
   body: JSON.stringify(body),
   headers: {
@@ -85,7 +88,7 @@ export const updateWinner = async (id: number, body: { wins: number, time: numbe
   },
 })).json();
 
-export const saveWinner = async (id: number, time: number) => {
+export const saveWinner = async (id: number, time: number): Promise<void> => {
   const winnerStatus = await getWinnerStatus(id);
 
   if (winnerStatus === 404) {
