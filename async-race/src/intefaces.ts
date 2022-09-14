@@ -1,3 +1,6 @@
+export type Sort = 'id' | 'wins' | 'time';
+export type Order = 'ASC' | 'DESC';
+
 export interface ICar {
   id: number;
   name: string;

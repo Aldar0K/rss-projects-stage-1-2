@@ -1,4 +1,4 @@
-import { ICar, IWinner } from './Intefaces';
+import { ICar, IWinner, Order, Sort } from './Intefaces';
 import store from './Store';
 import { garageUrl, engineUrl, winnersUrl, CARS_PAGE_LIMIT, WINNERS_PAGE_LIMIT, getRandomName, getRandomColor } from './Utils';
 
@@ -49,7 +49,7 @@ export const drive = async (id: number): Promise<{ success: boolean }> => {
   return response.status !== 200 ? { success: false } : { ...(await response.json()) };
 };
 
-export const getWinners = async (page: number = 1, limit: number = WINNERS_PAGE_LIMIT, sort: 'id' | 'wins' | 'time' = 'time', order: 'ASC' | 'DESC' = 'ASC'): Promise<IWinner[]> => {
+export const getWinners = async (page: number = 1, limit: number = WINNERS_PAGE_LIMIT, sort: Sort = 'time', order: Order = 'ASC'): Promise<IWinner[]> => {
   const response = await fetch(`${winnersUrl}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`);
   const winners: Promise<IWinner[]> = await response.json();
 
