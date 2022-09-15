@@ -373,3 +373,10 @@ export const listen = (): void => {
     checkWinnersButtons(target);
   });
 };
+
+export const start = async () => {
+  render();
+  await updateStateGarage();
+  render();
+  listen();
+};
