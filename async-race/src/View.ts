@@ -308,8 +308,8 @@ const checkPageButtons = async (target: EventTarget): Promise<void> => {
     (document.querySelector('.garage') as HTMLDivElement).classList.toggle('hidden');
     (document.querySelector('.winners') as HTMLDivElement).classList.toggle('hidden');
     if (store.state.carsPage > 1) (document.querySelector('.btn-prev') as HTMLButtonElement).disabled = false;
-    (document.querySelector('.btn-next') as HTMLButtonElement).disabled = false;
-    store.update({ btnNext: true });
+    if (store.state.carsPage * CARS_PAGE_LIMIT < store.state.carsCount) (document.querySelector('.btn-next') as HTMLButtonElement).disabled = false;
+    store.update({ btnNext: store.state.carsPage * CARS_PAGE_LIMIT < store.state.carsCount });
   }
   if ((target as HTMLButtonElement).classList.contains('btn-winners')) {
     store.state.view = 'Winners';
