@@ -16,20 +16,10 @@ const defaultState: IState = {
 };
 
 class Store {
-  static isExist: boolean;
-
-  static instance: Store;
-
-  public state: IState = defaultState;
+  state: IState;
 
   constructor() {
-    if (Store.isExist) {
-      // eslint-disable-next-line no-constructor-return
-      return Store.instance;
-    }
-
-    Store.isExist = true;
-    Store.instance = this;
+    this.state = defaultState;
   }
 
   update(state: Partial<IState>): void {
