@@ -12,19 +12,18 @@ export const winnersUrl = `${baseUrl}/winners`;
 export const producers = ['Lada', 'Acura', 'Alfa-Romeo', 'Aston-Martin', 'Audi', 'Bentley', 'BMW', 'Bugatti', 'Buick', 'Cadillac', 'Chevrolet', 'Chrysler', 'Citroen', 'Dodge', 'Ferrari', 'Fiat', 'Ford', 'Geely', 'Genesis', 'GMC', 'Honda', 'Hyundai', 'Infiniti', 'Jaguar', 'Jeep', 'Kia', 'Koenigsegg', 'Lamborghini', 'Lancia', 'Land Rover', 'Lexus', 'Lincoln', 'Lotus', 'Maserati', 'Maybach', 'Mazda', 'McLaren', 'Mercedes', 'Mini', 'Mitsubishi', 'Nissan', 'Opel', 'Pagani', 'Peugeot', 'Pontiac', 'Porsche', 'Ram', 'Renault', 'Rolls-Royce', 'Skoda', 'Smart', 'Subaru', 'Suzuki', 'Tesla', 'Toyota', 'Volkswagen', 'Volvo'];
 export const models = ['Durango', 'Challenger', 'Charger', 'Grand Caravan', 'X7', 'X5', 'X3', 'X6 M', 'X6', 'X1', 'X4', 'Aircross', 'Duster', 'CR-V', 'Corolla', 'C4 Cactus', 'DS3', 'C1', 'C3', 'Crossback', 'UX 250h', 'NX 300h', 'LC 500', 'RX 350/200t', 'Rapid', 'Largus', 'IS 200t', 'LS 500h', 'RX', 'Hatchback', 'CX-5', 'Sedan', 'CX-30', 'CX-9', 'CX-3', 'Roadster', 'Phantom', 'Camry', 'Polo', 'Cullinan', 'Ghost', 'Dawn', 'Duster', 'Arkana', 'Sandero', 'Logan', 'Logan MCV', 'Captur', 'Kadjar', 'RAV4', 'Rio', 'Creta', 'Solaris'];
 
-export const animation = (car: HTMLElement, endX: number, duration: number): Record<string, number> => {
-  let currentX = 0;
+export const animation = (car: HTMLElement, distance: number, duration: number): Record<string, number> => {
+  let start: number | null = null;
   const state: Record<string, number> = {};
 
-  const framesCount = (duration / 1000) * 60;
-  const dX = (endX - currentX) / framesCount;
+  const tick = (timestamp: number) => {
+    if (!start) start = timestamp;
+    const time = timestamp - start;
+    const passed = Math.round(time * (distance / duration));
 
-  const tick = () => {
-    currentX += dX;
+    car.style.transform = `translateX(${Math.min(passed, distance)}px)`;
 
-    car.style.transform = `translateX(${currentX}px)`;
-
-    if (currentX < endX) {
+    if (passed < distance) {
       state.id = window.requestAnimationFrame(tick);
     }
   };
