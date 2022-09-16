@@ -52,9 +52,7 @@ export const raceAll = async (promises: Array<Promise<{ success: boolean, id: nu
 
   if (!success) {
     const failedIndex = ids.findIndex((i) => i === id);
-    const restPromises = [
-      ...promises.slice(0, failedIndex), ...promises.slice(failedIndex + 1, promises.length),
-    ];
+    const restPromises = [...promises.slice(0, failedIndex), ...promises.slice(failedIndex + 1, promises.length)];
     const restIds = [...ids.slice(0, failedIndex), ...ids.slice(failedIndex + 1, ids.length)];
     return raceAll(restPromises, restIds);
   }

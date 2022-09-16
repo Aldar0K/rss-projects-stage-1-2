@@ -1,6 +1,6 @@
 import { getCars, getWinners, startEngine, stopEngine, drive, getCar, deleteCar, deleteWinner, saveWinner, createCar, updateCar, generateRandomCars } from './API';
 import { ICar } from './Intefaces';
-import { animation, race, CARS_PAGE_LIMIT, WINNERS_PAGE_LIMIT } from './Utils';
+import { animation, race, CARS_PAGE_LIMIT, WINNERS_PAGE_LIMIT, getRandomName } from './Utils';
 import store from './Store';
 
 let selectedCar: ICar;
@@ -338,7 +338,8 @@ const checkGarageButtons = async (target: EventTarget): Promise<void> => {
     (document.querySelector('.race-button') as HTMLButtonElement).disabled = false;
   }
   if ((target as HTMLButtonElement).classList.contains('create-button')) {
-    const name = (document.querySelector('.create-name') as HTMLInputElement).value;
+    let name = (document.querySelector('.create-name') as HTMLInputElement).value;
+    if (!name) name = getRandomName();
     const color = (document.querySelector('.create-color') as HTMLInputElement).value;
     await createCar({ name, color });
     await updateStateGarage();
