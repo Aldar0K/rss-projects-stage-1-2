@@ -1,0 +1,23 @@
+// Цвета текста.
+$color-primary: #F1CDB3;
+$color-active: #FDDCC4;
+$color-light-s: #FAFAFA;
+$color-light-xl: #FFFFFF;
+$color-dark-s: #CDCDCD;
+$color-dark-3xl: #292929;
+$color-dark-d: #000000;
+$color-dark-l: #545454;
+$color-dark-xl: #4C4C4C;
+$color-dark-m: #B2B2B2;
+$color-blackout: rgba(41, 41, 41, 0.6);
+
+// Цвета заднего фона.
+$color-background-light: #FFFFFF;
+$color-background-dark: #F6F6F6;
+$color-background-gradient: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+$color-background-footer: radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
+
+// Ширина контентной области.
+$content-width: 1279px;
+$tablet-width: 767px;
+$mobile-width: 319px;

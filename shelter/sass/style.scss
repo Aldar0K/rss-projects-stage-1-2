@@ -1,0 +1,36 @@
+// Reset and Normalize.
+@import "base/reset";
+@import "base/normalize";
+
+// Abstract.
+@import "abstract/constants";
+@import "abstract/fonts";
+@import "abstract/mixins";
+@import "abstract/placeholders";
+
+// Base.
+@import "base/base";
+@import "base/buttons";
+@import "base/logo";
+@import "base/menu";
+@import "base/modal";
+@import "base/pet-card";
+
+// Layouts.
+@import "layouts/wrapper";
+@import "layouts/header";
+@import "layouts/header-pets";
+@import "layouts/footer";
+
+// Components.
+// General.
+@import "components/navigation";
+@import "components/slider"; // Можно в дальнейшем сделать и для второй страницы и переместить в layouts.
+@import "components/pagination";
+// Page main.
+@import "components/main/pets";
+@import "components/main/not-only";
+@import "components/main/about";
+@import "components/main/help";
+@import "components/main/donation";
+// Page pets.
