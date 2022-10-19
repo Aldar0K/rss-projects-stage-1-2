@@ -5,17 +5,13 @@ import Modal from './js/Modal.js';
 // Импорт подкласса ArticleModal.
 import ArticleModal from './js/ArticleModal.js';
 
-
 // Медиа-запросы
 let queryDesktop = window.matchMedia("(min-width: 1280px)");
 let queryLaptop = window.matchMedia("(max-width: 1279px) and (min-width: 768px");
 let queryTablet = window.matchMedia("(max-width: 767px)");
 
-
 // При загрузке странице.
 window.onload = function () {
-    console.log('Score: 100 / 100');
-
     // Добавление слушателей для карточек питомцев.
     addCardsClickHandler();
 
@@ -31,12 +27,10 @@ window.onload = function () {
     }
 }
 
-
 // Функция для блокировки и разблокировки скролла на странице.
 function blockBody () {
     document.body.classList.toggle('body_lock');
 }
-
 
 // Меню бургер.
 const iconMenu = document.querySelector('.menu__icon');
@@ -61,7 +55,6 @@ if (iconMenu) {
         if (iconMenu.classList.contains("menu__icon_active")) toogleMenu();
     });
 }
-
 
 // Попап (модальное окно).
 // Добавление слушателей для карточек питомцев.
@@ -96,7 +89,6 @@ function renderArticleModalWindow (article) {
     modal.renderModal();
     blockBody();
 }
-
 
 // Slider main page.
 // Переменные для слайдера.
@@ -208,7 +200,6 @@ function getActiveIds () {
     }
     return activeIds;
 }
-
 
 // Pagination pets page.
 // Переменные для пагинации.

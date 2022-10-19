@@ -2,8 +2,6 @@
     z-index: 10;
     display: flex;
     flex-direction: column;
-    // width: 184px;
-    // height: 60px;
     &_dark {
         .logo__title {
             color: $color-dark-l;
@@ -25,7 +23,6 @@
     font-weight: 400;
     font-size: 1.3rem;
     line-height: 1.5rem;
-    /* identical to box height */
     align-items: center;
     letter-spacing: 0.1em;
     color: $color-light-xl;

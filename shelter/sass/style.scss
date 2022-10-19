@@ -25,7 +25,7 @@
 // Components.
 // General.
 @import "components/navigation";
-@import "components/slider"; // Можно в дальнейшем сделать и для второй страницы и переместить в layouts.
+@import "components/slider";
 @import "components/pagination";
 // Page main.
 @import "components/main/pets";
@@ -34,3 +34,4 @@
 @import "components/main/help";
 @import "components/main/donation";
 // Page pets.
+// TODO add pets styles.
