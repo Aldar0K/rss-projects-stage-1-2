@@ -1,10 +1,10 @@
 import { Product } from '../../Interfaces/Product';
 
 export class ProductsItem {
-    constructor(private product: Product) {}
+  constructor(private product: Product) {}
 
-    render(): string {
-        return `
+  render(): string {
+    return `
             <div class="main__product${this.product.inCart ? ' main__product_active' : ''}" id="${this.product.id}">
                 <h3>${this.product.name}</h3>
                 <img src = "${this.product.image}" alt = "${this.product.name}"/>
@@ -16,5 +16,5 @@ export class ProductsItem {
                 <span>Цена: ${this.product.price} рублей</span>
             </div>
         `;
-    }
+  }
 }

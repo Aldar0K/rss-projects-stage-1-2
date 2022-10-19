@@ -9,5 +9,4 @@
     "types": ["jest", "node"]
   },
   "files": ["src/index.ts"],
-  // "types": ["jest", "node"]
 }

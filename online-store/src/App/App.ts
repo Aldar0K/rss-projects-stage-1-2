@@ -4,32 +4,32 @@ import { ProductsList } from './Components/ProductsList/ProductsList';
 import { AppStore } from './Store/AppStore';
 
 export class App {
-    public cart: Cart;
-    public controls: Controls;
-    public productsList: ProductsList;
+  public cart: Cart;
+  public controls: Controls;
+  public productsList: ProductsList;
 
-    constructor() {
-        let amount = 0;
-        let productsIds: number[] = [];
-        const load = localStorage.getItem('appStore');
-        if (load) {
-            const parsedLoad: AppStore = JSON.parse(load);
-            amount = parsedLoad.state.cart.amount;
-            productsIds = parsedLoad.state.cart.productsIds;
-        }
-
-        this.cart = new Cart(amount, productsIds);
-        this.controls = new Controls();
-        this.productsList = new ProductsList();
+  constructor() {
+    let amount = 0;
+    let productsIds: number[] = [];
+    const load = localStorage.getItem('appStore');
+    if (load) {
+      const parsedLoad: AppStore = JSON.parse(load);
+      amount = parsedLoad.state.cart.amount;
+      productsIds = parsedLoad.state.cart.productsIds;
     }
 
-    start(): void {
-        const productsContainer = document.querySelector('.main__products') as HTMLDivElement;
-        productsContainer.innerHTML = this.productsList.render();
+    this.cart = new Cart(amount, productsIds);
+    this.controls = new Controls();
+    this.productsList = new ProductsList();
+  }
 
-        const cartContainer = document.querySelector('.main__cart') as HTMLDListElement;
-        cartContainer.innerHTML = this.cart.render();
-    }
+  start(): void {
+    const productsContainer = document.querySelector('.main__products') as HTMLDivElement;
+    productsContainer.innerHTML = this.productsList.render();
+
+    const cartContainer = document.querySelector('.main__cart') as HTMLDListElement;
+    cartContainer.innerHTML = this.cart.render();
+  }
 }
 
 export const app = new App();
